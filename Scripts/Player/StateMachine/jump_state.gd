@@ -13,7 +13,7 @@ var jump_type := JumpType.NORMAL
 
 
 func enter() -> void:
-	animated_sprite.play("idle")
+	animated_sprite.play("jump")
 
 
 	# ========================================================

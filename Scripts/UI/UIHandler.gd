@@ -8,6 +8,9 @@ class_name UIHandler
 var player_controller: PlayerController
 var hearts: Array[Heart] = []
 
+@export_subgroup("Dash")
+@export var dash_cooldown: TextureRect
+
 @export_subgroup("Menus")
 @export var pause_menu: Node
 
@@ -128,6 +131,30 @@ func _on_toxin_level_changed(_toxin_level: int) -> void:
 		player_controller.hazard_system.current_health,
 		player_controller.hazard_system.max_health
 	)
+	
+func process_dash(frame_count: int) -> void:
+	if not is_instance_valid(dash_cooldown):
+		return
+
+	var current: float = player_controller.dash_cooldown_timer
+	var maximum: float = player_controller.dash_cooldown_time
+
+	if maximum <= 0.0:
+		return
+
+	var progress: float = clampf(current / maximum, 0.0, 1.0)
+
+	var frame: int = (frame_count - 1) - roundi(progress * (frame_count - 1))
+
+	var atlas := dash_cooldown.texture as AtlasTexture
+	if atlas == null:
+		return
+
+	atlas.region = Rect2(
+		Vector2(frame * 16, 0),
+		Vector2(16,16)
+	)
+	
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("Pause"):
@@ -145,4 +172,6 @@ func _process(_delta: float) -> void:
 			touch_controlls.show()
 		elif not GameSettings.is_touch and touch_controlls.visible:
 			touch_controlls.hide()
+	
+	process_dash(21)
 	

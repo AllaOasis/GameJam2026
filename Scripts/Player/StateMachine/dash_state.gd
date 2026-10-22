@@ -3,7 +3,7 @@ class_name DashState
 
 
 func enter() -> void:
-	animated_sprite.play("idle")
+	animated_sprite.play("dash")
 
 	player_controller.can_dash = false
 	player_controller.dash_timer = player_controller.dash_time

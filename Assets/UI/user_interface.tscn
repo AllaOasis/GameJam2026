@@ -20,7 +20,7 @@ region = Rect2(0, 0, 16, 16)
 
 [node name="UserInterface" type="CanvasLayer" unique_id=392176404]
 
-[node name="UIHandler" type="Control" parent="." unique_id=1208962041 node_paths=PackedStringArray("hearts_container", "pause_menu", "touch_controlls")]
+[node name="UIHandler" type="Control" parent="." unique_id=1208962041 node_paths=PackedStringArray("hearts_container", "dash_cooldown", "pause_menu", "touch_controlls")]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -31,6 +31,7 @@ grow_vertical = 2
 script = ExtResource("1_cp5ti")
 hearts_container = NodePath("HBoxContainer")
 heart_scene = ExtResource("2_m8ba5")
+dash_cooldown = NodePath("DashDisplay")
 pause_menu = NodePath("PauseMenu")
 touch_controlls = NodePath("AndroidInterface")
 metadata/_custom_type_script = "uid://cqptqrjy58rko"
@@ -38,7 +39,7 @@ metadata/_custom_type_script = "uid://cqptqrjy58rko"
 [node name="AndroidInterface" parent="UIHandler" unique_id=1544986949 instance=ExtResource("3_sdast")]
 layout_mode = 1
 
-[node name="TextureRect" type="TextureRect" parent="UIHandler" unique_id=471483632]
+[node name="DashDisplay" type="TextureRect" parent="UIHandler" unique_id=471483632]
 layout_mode = 1
 offset_left = 9.0
 offset_top = 42.0
