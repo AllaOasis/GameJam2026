@@ -133,7 +133,7 @@ func _on_toxin_level_changed(_toxin_level: int) -> void:
 	)
 	
 func process_dash(frame_count: int) -> void:
-	if not is_instance_valid(dash_cooldown):
+	if !dash_cooldown:
 		return
 
 	var current: float = player_controller.dash_cooldown_timer
@@ -143,7 +143,6 @@ func process_dash(frame_count: int) -> void:
 		return
 
 	var progress: float = clampf(current / maximum, 0.0, 1.0)
-
 	var frame: int = (frame_count - 1) - roundi(progress * (frame_count - 1))
 
 	var atlas := dash_cooldown.texture as AtlasTexture

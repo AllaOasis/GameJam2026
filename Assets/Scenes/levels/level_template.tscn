@@ -8,7 +8,7 @@
 [ext_resource type="TileSet" uid="uid://cmbl5xpdpdcgb" path="res://Assets/TileSets/decore_tile_set.tres" id="4_scka8"]
 [ext_resource type="Script" uid="uid://holnxpvfc4ir" path="res://Assets/GameObjects/SpawnPoint.gd" id="5_ko8ew"]
 
-[node name="MovementTest" type="Node2D" unique_id=1838863765]
+[node name="LevelTemplate" type="Node2D" unique_id=1838863765]
 
 [node name="FollowCamera" type="Camera2D" parent="." unique_id=185714039]
 zoom = Vector2(2.5, 2.5)
