@@ -1,0 +1,148 @@
+[gd_scene format=3 uid="uid://bhtfj4blsnkbo"]
+
+[ext_resource type="Script" uid="uid://cqptqrjy58rko" path="res://Scripts/UI/UIHandler.gd" id="1_cp5ti"]
+[ext_resource type="PackedScene" uid="uid://ckpjv8qyfetob" path="res://Assets/UI/Heart.tscn" id="2_m8ba5"]
+[ext_resource type="Texture2D" uid="uid://d0kk6i2i7x8tu" path="res://Textures/UI/Button/Menu-Square-Button.png" id="3_byxu4"]
+[ext_resource type="PackedScene" uid="uid://bcgh2n0gfibwa" path="res://Assets/UI/android_interface.tscn" id="3_sdast"]
+[ext_resource type="Texture2D" uid="uid://dykxtcembdsuo" path="res://Textures/UI/Cooldown-Timer-Sheet.png" id="4_j8j7w"]
+[ext_resource type="Script" uid="uid://ckxa08jbyvhv1" path="res://Scripts/UI/Buttons/ActionButton.gd" id="4_mtxsc"]
+[ext_resource type="Texture2D" uid="uid://cwxnqkaqmwmdt" path="res://Textures/UI/Button/Resume-Button.png" id="5_7u4mn"]
+[ext_resource type="Texture2D" uid="uid://b4whxamvls0lp" path="res://Textures/UI/Button/ButtonDown/Menu-Square-Button-Clicked.png" id="5_mamnd"]
+[ext_resource type="Texture2D" uid="uid://bpxvnnhdrthie" path="res://Textures/UI/Button/Menu-Button.png" id="6_ytdsy"]
+[ext_resource type="Script" uid="uid://b56qifb45ldel" path="res://Scripts/UI/Buttons/SceneButton.gd" id="7_fojfy"]
+[ext_resource type="Texture2D" uid="uid://n5nba62lmomn" path="res://Textures/UI/touch-on.png" id="7_xryph"]
+[ext_resource type="Texture2D" uid="uid://cekfx1ohbjuqp" path="res://Textures/UI/touch-off.png" id="8_fojfy"]
+[ext_resource type="Script" uid="uid://cl48x0pr8we8o" path="res://Scripts/UI/Buttons/SettingsToggleButton.gd" id="9_xryph"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_82yni"]
+atlas = ExtResource("4_j8j7w")
+region = Rect2(0, 0, 16, 16)
+
+[node name="UserInterface" type="CanvasLayer" unique_id=392176404]
+
+[node name="UIHandler" type="Control" parent="." unique_id=1208962041 node_paths=PackedStringArray("hearts_container", "pause_menu", "touch_controlls")]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cp5ti")
+hearts_container = NodePath("HBoxContainer")
+heart_scene = ExtResource("2_m8ba5")
+pause_menu = NodePath("PauseMenu")
+touch_controlls = NodePath("AndroidInterface")
+metadata/_custom_type_script = "uid://cqptqrjy58rko"
+
+[node name="AndroidInterface" parent="UIHandler" unique_id=1544986949 instance=ExtResource("3_sdast")]
+layout_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="UIHandler" unique_id=471483632]
+layout_mode = 1
+offset_left = 9.0
+offset_top = 42.0
+offset_right = 41.0
+offset_bottom = 74.0
+texture = SubResource("AtlasTexture_82yni")
+
+[node name="ActionButton" type="TextureButton" parent="UIHandler" unique_id=1479259250]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -48.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = 48.0
+grow_horizontal = 0
+texture_normal = ExtResource("3_byxu4")
+texture_pressed = ExtResource("5_mamnd")
+stretch_mode = 5
+script = ExtResource("4_mtxsc")
+action = &"Pause"
+metadata/_custom_type_script = "uid://ckxa08jbyvhv1"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UIHandler" unique_id=1816315318]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 1
+offset_right = 120.0
+offset_bottom = 40.0
+offset_transform_enabled = true
+offset_transform_position = Vector2(25, 25)
+theme_override_constants/separation = 36
+
+[node name="Heart" parent="UIHandler/HBoxContainer" unique_id=1126544248 instance=ExtResource("2_m8ba5")]
+layout_mode = 2
+
+[node name="Heart2" parent="UIHandler/HBoxContainer" unique_id=505868577 instance=ExtResource("2_m8ba5")]
+layout_mode = 2
+
+[node name="Heart3" parent="UIHandler/HBoxContainer" unique_id=1423692447 instance=ExtResource("2_m8ba5")]
+layout_mode = 2
+
+[node name="PauseMenu" type="TextureRect" parent="UIHandler" unique_id=439671612]
+process_mode = 2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -65.0
+offset_top = -75.0
+offset_right = 65.0
+offset_bottom = 75.0
+grow_horizontal = 2
+grow_vertical = 2
+offset_transform_position = Vector2(0, -75)
+
+[node name="Panel" type="Panel" parent="UIHandler/PauseMenu" unique_id=1101981341]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UIHandler/PauseMenu" unique_id=365623717]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -65.0
+offset_top = -58.0
+offset_right = 65.0
+offset_bottom = 58.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ResumeButton" type="TextureButton" parent="UIHandler/PauseMenu/VBoxContainer" unique_id=1293292897]
+custom_minimum_size = Vector2(0, 36)
+layout_mode = 2
+texture_normal = ExtResource("5_7u4mn")
+stretch_mode = 5
+script = ExtResource("4_mtxsc")
+action = &"Pause"
+metadata/_custom_type_script = "uid://ckxa08jbyvhv1"
+
+[node name="SettingsToggleButton" type="TextureButton" parent="UIHandler/PauseMenu/VBoxContainer" unique_id=1815234767]
+custom_minimum_size = Vector2(0, 36)
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("8_fojfy")
+texture_pressed = ExtResource("7_xryph")
+stretch_mode = 5
+script = ExtResource("9_xryph")
+metadata/_custom_type_script = "uid://cl48x0pr8we8o"
+
+[node name="MainMenu" type="TextureButton" parent="UIHandler/PauseMenu/VBoxContainer" unique_id=1655622720]
+custom_minimum_size = Vector2(0, 36)
+layout_mode = 2
+texture_normal = ExtResource("6_ytdsy")
+stretch_mode = 5
+script = ExtResource("7_fojfy")
+level_path = "uid://bw0bsrvbkhlv8"
+metadata/_custom_type_script = "uid://b56qifb45ldel"

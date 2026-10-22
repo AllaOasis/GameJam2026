@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://dodyq4d6gm02c"]
+
+[ext_resource type="Texture2D" uid="uid://bpxvnnhdrthie" path="res://Textures/UI/Button/Menu-Button.png" id="1_tv448"]
+[ext_resource type="Script" uid="uid://b56qifb45ldel" path="res://Scripts/UI/Buttons/SceneButton.gd" id="2_588t6"]
+[ext_resource type="PackedScene" uid="uid://crda3a44g6mgj" path="res://Assets/GameObjects/Player/Player.tscn" id="3_588t6"]
+[ext_resource type="Texture2D" uid="uid://vjbwqmahoe50" path="res://Textures/UI/Button/Empty-Button.png" id="4_1j4yh"]
+[ext_resource type="FontFile" uid="uid://f4io8x4o2u53" path="res://Fonts/Pocketbit/Pocketbit.ttf" id="5_qd1sd"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_jctj4"]
+font = ExtResource("5_qd1sd")
+font_size = 22
+font_color = Color(0, 0, 0, 1)
+
+[node name="LevelSelector" type="Control" unique_id=1028165528]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=640447312]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SceneButton" type="TextureButton" parent="TextureRect" unique_id=1269047353]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -144.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = 80.0
+grow_horizontal = 0
+texture_normal = ExtResource("1_tv448")
+stretch_mode = 5
+script = ExtResource("2_588t6")
+level_path = "uid://bw0bsrvbkhlv8"
+metadata/_custom_type_script = "uid://b56qifb45ldel"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=505120357]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 25.0
+offset_top = -210.0
+offset_right = 305.0
+offset_bottom = 210.0
+grow_vertical = 2
+
+[node name="SceneButton" type="TextureButton" parent="VBoxContainer" unique_id=1362599648]
+custom_minimum_size = Vector2(0, 36)
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(24, 0)
+texture_normal = ExtResource("4_1j4yh")
+stretch_mode = 4
+script = ExtResource("2_588t6")
+level_path = "uid://bytx6t8qptvtd"
+player_scene = ExtResource("3_588t6")
+metadata/_custom_type_script = "uid://b56qifb45ldel"
+
+[node name="Label" type="Label" parent="VBoxContainer/SceneButton" unique_id=225267435]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 1.815
+offset_right = 114.0
+grow_vertical = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(24, 0)
+text = "LEVEL 1"
+label_settings = SubResource("LabelSettings_jctj4")
+vertical_alignment = 1

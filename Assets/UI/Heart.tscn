@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://ckpjv8qyfetob"]
+
+[ext_resource type="Script" uid="uid://dy0c58ohcmnv0" path="res://Scripts/Player/Heart.gd" id="1_gct37"]
+[ext_resource type="Texture2D" uid="uid://c2xrry3ve2hve" path="res://Textures/Hearts-Sheet2.png" id="2_l8c6q"]
+
+[node name="Heart" type="Control" unique_id=1126544248]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gct37")
+metadata/_custom_type_script = "uid://dy0c58ohcmnv0"
+
+[node name="HeartSprite" type="Sprite2D" parent="." unique_id=1846328184]
+scale = Vector2(2, 2)
+texture = ExtResource("2_l8c6q")
+hframes = 9

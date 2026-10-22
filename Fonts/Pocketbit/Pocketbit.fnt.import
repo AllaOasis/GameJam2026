@@ -1,0 +1,17 @@
+[remap]
+
+importer="font_data_bmfont"
+type="FontFile"
+uid="uid://cdtkk6oae7yds"
+path="res://.godot/imported/Pocketbit.fnt-7cad89064b9281a244825b193a43c125.fontdata"
+
+[deps]
+
+source_file="res://Fonts/Pocketbit/Pocketbit.fnt"
+dest_files=["res://.godot/imported/Pocketbit.fnt-7cad89064b9281a244825b193a43c125.fontdata"]
+
+[params]
+
+fallbacks=[]
+compress=true
+scaling_mode=2

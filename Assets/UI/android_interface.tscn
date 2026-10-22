@@ -1,0 +1,150 @@
+[gd_scene format=3 uid="uid://bcgh2n0gfibwa"]
+
+[ext_resource type="Script" uid="uid://cjvxyjhcqwcs" path="res://Scripts/UI/Joystick/virtual_joystick_controller.gd" id="1_e6sow"]
+[ext_resource type="Shader" uid="uid://c5xdgna3j4cd7" path="res://Scripts/UI/Joystick/VirtualJoystick.gdshader" id="2_dt3ac"]
+[ext_resource type="Texture2D" uid="uid://df5xp0pctwl2" path="res://Textures/UI/Stick.png" id="3_kpf33"]
+[ext_resource type="Texture2D" uid="uid://twotuf8rv3u2" path="res://Textures/UI/Button/Jump-Button.png" id="4_cg0ll"]
+[ext_resource type="Script" uid="uid://ckxa08jbyvhv1" path="res://Scripts/UI/Buttons/ActionButton.gd" id="4_dt3ac"]
+[ext_resource type="Texture2D" uid="uid://n0wmsywwnjaa" path="res://Textures/UI/Button/Empty-Square-Button.png" id="4_kpf33"]
+[ext_resource type="Texture2D" uid="uid://c87g0031l4b75" path="res://Textures/UI/Button/ButtonDown/Jump-Button-Clicked.png" id="5_cgwc7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0783u"]
+shader = ExtResource("2_dt3ac")
+
+[node name="AndroidInterface" type="Control" unique_id=1544986949]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Joystick" type="Control" parent="." unique_id=1882768463]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = -166.0
+offset_right = 166.0
+offset_bottom = -16.0
+grow_vertical = 0
+script = ExtResource("1_e6sow")
+
+[node name="JoystickBase" type="ColorRect" parent="Joystick" unique_id=1659395474]
+modulate = Color(0, 0, 0, 0.19607843)
+material = SubResource("ShaderMaterial_0783u")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -52.5
+offset_top = -52.5
+offset_right = 52.5
+offset_bottom = 52.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="JoystickKnob" type="TextureRect" parent="Joystick" unique_id=497727008]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_kpf33")
+
+[node name="ButtonControlls" type="Control" parent="." unique_id=163123021]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -182.0
+offset_top = -182.0
+offset_right = -32.0
+offset_bottom = -32.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Jump" type="TextureButton" parent="ButtonControlls" unique_id=2022734207]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -134.0
+offset_top = -56.0
+offset_right = -86.0
+offset_bottom = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+texture_normal = ExtResource("4_cg0ll")
+texture_pressed = ExtResource("5_cgwc7")
+stretch_mode = 5
+script = ExtResource("4_dt3ac")
+metadata/_custom_type_script = "uid://ckxa08jbyvhv1"
+
+[node name="Dash" type="TextureButton" parent="ButtonControlls" unique_id=1495280148]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -56.0
+offset_top = -134.0
+offset_right = -8.0
+offset_bottom = -86.0
+grow_horizontal = 0
+grow_vertical = 0
+texture_normal = ExtResource("4_kpf33")
+stretch_mode = 5
+script = ExtResource("4_dt3ac")
+action = &"Dash"
+metadata/_custom_type_script = "uid://ckxa08jbyvhv1"
+
+[node name="Interact" type="TextureButton" parent="ButtonControlls" unique_id=458445574]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -123.0
+offset_top = -123.0
+offset_right = -71.0
+offset_bottom = -71.0
+grow_horizontal = 0
+grow_vertical = 0
+texture_normal = ExtResource("4_kpf33")
+stretch_mode = 5
+script = ExtResource("4_dt3ac")
+action = &"Interact"
+metadata/_custom_type_script = "uid://ckxa08jbyvhv1"
+
+[node name="Shoot" type="TextureButton" parent="ButtonControlls" unique_id=1745681122]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -64.0
+grow_horizontal = 0
+grow_vertical = 0
+texture_normal = ExtResource("4_kpf33")
+stretch_mode = 5
+script = ExtResource("4_dt3ac")
+metadata/_custom_type_script = "uid://ckxa08jbyvhv1"

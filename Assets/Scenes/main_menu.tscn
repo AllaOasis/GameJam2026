@@ -1,0 +1,130 @@
+[gd_scene format=3 uid="uid://bw0bsrvbkhlv8"]
+
+[ext_resource type="Script" uid="uid://b56qifb45ldel" path="res://Scripts/UI/Buttons/SceneButton.gd" id="1_cbhea"]
+[ext_resource type="Script" uid="uid://h6wibu7i0bi" path="res://Scripts/UI/Buttons/OpenMenuButton.gd" id="1_fsbqx"]
+[ext_resource type="Texture2D" uid="uid://bwoowf6olqof6" path="res://Textures/UI/Button/Start-Button.png" id="1_tanm1"]
+[ext_resource type="Texture2D" uid="uid://cicfvkm75kh3g" path="res://Textures/UI/Button/ButtonDown/Start-Button-Clicked.png" id="2_0youy"]
+[ext_resource type="Script" uid="uid://cl48x0pr8we8o" path="res://Scripts/UI/Buttons/SettingsToggleButton.gd" id="2_cbhea"]
+[ext_resource type="Texture2D" uid="uid://c8f5c6a5vvif6" path="res://Textures/UI/Button/Settings-Button.png" id="3_tanm1"]
+[ext_resource type="Texture2D" uid="uid://dkkpxlr2sdh7v" path="res://Textures/UI/Button/ButtonDown/Settings-Button-Clicked.png" id="4_shbfh"]
+[ext_resource type="Texture2D" uid="uid://cr703sxj30jfi" path="res://Textures/UI/Button/Exit-Button.png" id="6_cvcoh"]
+[ext_resource type="Script" uid="uid://bo8jfphyk3ejk" path="res://Scripts/UI/Buttons/QuitButton.gd" id="8_kvp6s"]
+[ext_resource type="Texture2D" uid="uid://mvgyblt5iygh" path="res://Textures/UI/Button/ButtonDown/Exit-Button-Clicked.png" id="8_o6fo6"]
+[ext_resource type="Texture2D" uid="uid://cekfx1ohbjuqp" path="res://Textures/UI/touch-off.png" id="8_pd3f2"]
+[ext_resource type="Texture2D" uid="uid://n5nba62lmomn" path="res://Textures/UI/touch-on.png" id="9_jkcs5"]
+[ext_resource type="Texture2D" uid="uid://1hvn1rlgetok" path="res://Textures/UI/Button/ButtonHover/Exit-Button-Hover.png" id="9_m3o7a"]
+[ext_resource type="Texture2D" uid="uid://n0wmsywwnjaa" path="res://Textures/UI/Button/Empty-Square-Button.png" id="11_s067f"]
+[ext_resource type="Script" uid="uid://r85cu8mcfugw" path="res://Scripts/UI/Buttons/CloseMenuButton.gd" id="12_kvp6s"]
+
+[node name="MainMenu" type="Control" unique_id=1897049367]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="." unique_id=2019911401]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Menu Buttons" type="VBoxContainer" parent="." unique_id=1758779043]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 50.0
+offset_top = -160.0
+offset_right = 163.0
+offset_bottom = 160.0
+grow_vertical = 2
+
+[node name="Start" type="TextureButton" parent="Menu Buttons" unique_id=1324297137]
+custom_minimum_size = Vector2(0, 36)
+layout_mode = 2
+texture_normal = ExtResource("1_tanm1")
+texture_pressed = ExtResource("2_0youy")
+stretch_mode = 5
+script = ExtResource("1_cbhea")
+level_path = "uid://dodyq4d6gm02c"
+metadata/_custom_type_script = "uid://b56qifb45ldel"
+
+[node name="OpenMenuButton" type="TextureButton" parent="Menu Buttons" unique_id=355096867 node_paths=PackedStringArray("target_node")]
+custom_minimum_size = Vector2(0, 36)
+layout_mode = 2
+texture_normal = ExtResource("3_tanm1")
+texture_pressed = ExtResource("4_shbfh")
+stretch_mode = 5
+script = ExtResource("1_fsbqx")
+target_node = NodePath("../../Settings")
+metadata/_custom_type_script = "uid://h6wibu7i0bi"
+
+[node name="Exit" type="TextureButton" parent="Menu Buttons" unique_id=1534493309]
+custom_minimum_size = Vector2(0, 36)
+layout_mode = 2
+texture_normal = ExtResource("6_cvcoh")
+texture_pressed = ExtResource("8_o6fo6")
+texture_hover = ExtResource("9_m3o7a")
+stretch_mode = 5
+script = ExtResource("8_kvp6s")
+metadata/_custom_type_script = "uid://bo8jfphyk3ejk"
+
+[node name="Settings" type="TextureRect" parent="." unique_id=992836503]
+visible = false
+layout_mode = 1
+offset_left = 303.0
+offset_top = 107.0
+offset_right = 521.0
+offset_bottom = 342.0
+mouse_filter = 0
+
+[node name="Panel" type="Panel" parent="Settings" unique_id=914705889]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Settings" unique_id=1952875306]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SettingsToggleButton" type="TextureButton" parent="Settings/VBoxContainer2" unique_id=936920150]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("8_pd3f2")
+texture_pressed = ExtResource("9_jkcs5")
+stretch_mode = 4
+script = ExtResource("2_cbhea")
+metadata/_custom_type_script = "uid://cl48x0pr8we8o"
+
+[node name="CloseMenuButton" type="TextureButton" parent="Settings" unique_id=285026677 node_paths=PackedStringArray("target_node")]
+modulate = Color(1, 0.78431374, 0.78431374, 1)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -20.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 20.0
+grow_horizontal = 0
+texture_normal = ExtResource("11_s067f")
+stretch_mode = 4
+script = ExtResource("12_kvp6s")
+target_node = NodePath("..")
+metadata/_custom_type_script = "uid://r85cu8mcfugw"
