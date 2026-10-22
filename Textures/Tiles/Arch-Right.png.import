@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b75b6yixgo1bs"
-path="res://.godot/imported/Pass-Through.png-db0e48e0322a5c6e22d0e61cc6017708.ctex"
+uid="uid://cya3lb1nwwwom"
+path="res://.godot/imported/Arch-Right.png-6f4105c9dcebffab80f19f8d0e4d9c15.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Pass-Through.png"
-dest_files=["res://.godot/imported/Pass-Through.png-db0e48e0322a5c6e22d0e61cc6017708.ctex"]
+source_file="res://Textures/Tiles/Arch-Right.png"
+dest_files=["res://.godot/imported/Arch-Right.png-6f4105c9dcebffab80f19f8d0e4d9c15.ctex"]
 
 [params]
 

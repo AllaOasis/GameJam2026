@@ -1,0 +1,20 @@
+[gd_resource type="TileSet" format=3 uid="uid://cmbl5xpdpdcgb"]
+
+[ext_resource type="Texture2D" uid="uid://cvm2a0nhwl5v8" path="res://Textures/Tiles/Pillar-Medium.png" id="1_fjnvr"]
+[ext_resource type="Texture2D" uid="uid://0j7sigvc7qts" path="res://Textures/Tiles/Pillar-Short.png" id="2_emgaf"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yvqyr"]
+texture = ExtResource("1_fjnvr")
+texture_region_size = Vector2i(16, 96)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, 40)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hooyx"]
+texture = ExtResource("2_emgaf")
+texture_region_size = Vector2i(16, 64)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, 24)
+
+[resource]
+sources/0 = SubResource("TileSetAtlasSource_yvqyr")
+sources/1 = SubResource("TileSetAtlasSource_hooyx")

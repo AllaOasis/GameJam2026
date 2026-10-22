@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cgnqvpuhnl0td"
-path="res://.godot/imported/Temporary.png-a253c12cb0df24a04c39ad53c5285319.ctex"
+uid="uid://b75b6yixgo1bs"
+path="res://.godot/imported/Pass-Through.png-84f66fe0b1659f79166531c5b8085e73.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/UI/Temporary.png"
-dest_files=["res://.godot/imported/Temporary.png-a253c12cb0df24a04c39ad53c5285319.ctex"]
+source_file="res://Textures/Tiles/TileSets/Pass-Through.png"
+dest_files=["res://.godot/imported/Pass-Through.png-84f66fe0b1659f79166531c5b8085e73.ctex"]
 
 [params]
 

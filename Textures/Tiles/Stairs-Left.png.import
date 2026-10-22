@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bdcx2rmikn4yr"
-path="res://.godot/imported/All-Tiles.png-946372e1f83609920316702e6c508b0a.ctex"
+uid="uid://dqwbmj33hxcqy"
+path="res://.godot/imported/Stairs-Left.png-729284e51b25268b91e8f4cb896a91ee.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/All-Tiles.png"
-dest_files=["res://.godot/imported/All-Tiles.png-946372e1f83609920316702e6c508b0a.ctex"]
+source_file="res://Textures/Tiles/Stairs-Left.png"
+dest_files=["res://.godot/imported/Stairs-Left.png-729284e51b25268b91e8f4cb896a91ee.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://g7xm3lsot37q"
-path="res://.godot/imported/All-Tiles-Brick-Small.png-df3c3b528d00495a77e4f2363927c113.ctex"
+uid="uid://vtk38kh516t4"
+path="res://.godot/imported/Arch-Left.png-7257889bea35282e3ea6b2b6b19b851b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/All-Tiles-Brick-Small.png"
-dest_files=["res://.godot/imported/All-Tiles-Brick-Small.png-df3c3b528d00495a77e4f2363927c113.ctex"]
+source_file="res://Textures/Tiles/Arch-Left.png"
+dest_files=["res://.godot/imported/Arch-Left.png-7257889bea35282e3ea6b2b6b19b851b.ctex"]
 
 [params]
 
