@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bhtfj4blsnkbo"]
 
 [ext_resource type="Script" uid="uid://cqptqrjy58rko" path="res://Scripts/UI/UIHandler.gd" id="1_cp5ti"]
+[ext_resource type="Script" uid="uid://d2m7w67e6p51r" path="res://Scripts/ViewOnLoad.gd" id="1_oxvhq"]
 [ext_resource type="PackedScene" uid="uid://ckpjv8qyfetob" path="res://Assets/UI/Heart.tscn" id="2_m8ba5"]
 [ext_resource type="Texture2D" uid="uid://d0kk6i2i7x8tu" path="res://Textures/UI/Button/Menu-Square-Button.png" id="3_byxu4"]
 [ext_resource type="PackedScene" uid="uid://bcgh2n0gfibwa" path="res://Assets/UI/android_interface.tscn" id="3_sdast"]
@@ -19,6 +20,7 @@ atlas = ExtResource("4_j8j7w")
 region = Rect2(0, 0, 16, 16)
 
 [node name="UserInterface" type="CanvasLayer" unique_id=392176404]
+script = ExtResource("1_oxvhq")
 
 [node name="UIHandler" type="Control" parent="." unique_id=1208962041 node_paths=PackedStringArray("hearts_container", "dash_cooldown", "pause_menu", "touch_controlls")]
 process_mode = 3

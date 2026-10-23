@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://dkddlmmoqlt8q"]
+
+[ext_resource type="Script" uid="uid://binvp6qtsmxfd" path="res://Assets/GameObjects/Enemy/enemy.gd" id="1_infww"]
+[ext_resource type="SpriteFrames" uid="uid://bryrdj7pwec2i" path="res://Assets/GameObjects/Player/player_frames.tres" id="1_ul1uk"]
+[ext_resource type="Texture2D" uid="uid://iud5lfp5pv3n" path="res://icon.svg" id="2_e744n"]
+[ext_resource type="Texture2D" uid="uid://biv3m2x34bu8g" path="res://Textures/Foam-Medium.png" id="4_nhg1w"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jctj4"]
+radius = 6.0
+height = 24.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jctj4"]
+size = Vector2(302, 108)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_infww"]
+radius = 32.0
+
+[node name="Enemy" type="CharacterBody2D" unique_id=147339882 node_paths=PackedStringArray("detect_area", "wall_check", "ground_check")]
+collision_layer = 4
+collision_mask = 129
+script = ExtResource("1_infww")
+detect_area = NodePath("DetectArea")
+wall_check = NodePath("WallCheck")
+ground_check = NodePath("GroundCheck")
+stop_chasing_at_edges = false
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1974077383]
+sprite_frames = ExtResource("1_ul1uk")
+animation = &"idle"
+
+[node name="Sprite2D" type="Sprite2D" parent="AnimatedSprite2D" unique_id=618959240]
+modulate = Color(0.74346054, 0.28458428, 0.009122414, 1)
+position = Vector2(3.8146973e-06, -3.0000014)
+scale = Vector2(0.078125, 0.078125)
+texture = ExtResource("2_e744n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=332074212]
+position = Vector2(0, 4)
+shape = SubResource("CapsuleShape2D_jctj4")
+
+[node name="DetectArea" type="Area2D" parent="." unique_id=1610331137]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectArea" unique_id=515673653]
+shape = SubResource("RectangleShape2D_jctj4")
+
+[node name="AttackArea" type="Area2D" parent="." unique_id=604775888]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea" unique_id=1992039945]
+position = Vector2(0, 4)
+shape = SubResource("CircleShape2D_infww")
+
+[node name="PointLight2D" type="PointLight2D" parent="AttackArea/CollisionShape2D" unique_id=1925944659]
+position = Vector2(0.49999928, -2.5000038)
+scale = Vector2(5.4166665, 6.416667)
+color = Color(0, 1, 0, 1)
+texture = ExtResource("4_nhg1w")
+
+[node name="WallCheck" type="RayCast2D" parent="." unique_id=30319618]
+target_position = Vector2(12, 0)
+
+[node name="GroundCheck" type="RayCast2D" parent="." unique_id=1664399107]
+target_position = Vector2(-8, 32)
+collision_mask = 129

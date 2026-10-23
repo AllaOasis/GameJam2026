@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://crda3a44g6mgj"]
+
+[ext_resource type="Script" uid="uid://yy5o46xcnsqr" path="res://Scripts/Player/PlayerController.gd" id="1_t3fca"]
+[ext_resource type="SpriteFrames" uid="uid://bryrdj7pwec2i" path="res://Assets/GameObjects/Player/player_frames.tres" id="2_1eb5o"]
+[ext_resource type="Script" uid="uid://cnk40ouldcobd" path="res://Scripts/Player/HazardSystem.gd" id="3_xiq6a"]
+[ext_resource type="Script" uid="uid://b0386ews8ryxl" path="res://Scripts/Player/StateMachine/state_machine.gd" id="4_pcw4a"]
+[ext_resource type="Script" uid="uid://bveo68oovpt6c" path="res://Scripts/Player/StateMachine/dash_state.gd" id="5_8tnkg"]
+[ext_resource type="Script" uid="uid://c5d800g6ajm8m" path="res://Scripts/Player/StateMachine/drop_through_state.gd" id="6_re41a"]
+[ext_resource type="Script" uid="uid://ckvjhfyrm4jqb" path="res://Scripts/Player/StateMachine/fall_state.gd" id="7_sl3ku"]
+[ext_resource type="Script" uid="uid://djqhmkfj56ofh" path="res://Scripts/Player/StateMachine/idle_state.gd" id="8_iecgt"]
+[ext_resource type="Script" uid="uid://bse72i81wv1yk" path="res://Scripts/Player/StateMachine/jump_state.gd" id="9_0mke5"]
+[ext_resource type="Script" uid="uid://ey1sa2psmrsu" path="res://Scripts/Player/StateMachine/walk_state.gd" id="10_8q4yl"]
+[ext_resource type="Script" uid="uid://cfh2xkdke4gt3" path="res://Assets/GameObjects/Player/foam_canon.gd" id="11_1eb5o"]
+[ext_resource type="PackedScene" uid="uid://bagj0jsj05fyk" path="res://Assets/GameObjects/Foam/Foam.tscn" id="12_xiq6a"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i2024"]
+radius = 6.0
+height = 24.0
+
+[sub_resource type="Curve" id="Curve_1fhr0"]
+_limits = [0.0, 8.0, 0.0, 4.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(4, 8), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="Player" type="CharacterBody2D" unique_id=444719791 node_paths=PackedStringArray("player", "hazard_system") groups=["player"]]
+collision_layer = 2
+collision_mask = 129
+script = ExtResource("1_t3fca")
+player = NodePath(".")
+hazard_system = NodePath("HazardSystem")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1358888923]
+sprite_frames = ExtResource("2_1eb5o")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2108177663]
+position = Vector2(0, 4)
+shape = SubResource("CapsuleShape2D_i2024")
+
+[node name="HazardSystem" type="Node" parent="." unique_id=351905984]
+script = ExtResource("3_xiq6a")
+toxin_tween = SubResource("Curve_1fhr0")
+metadata/_custom_type_script = "uid://cnk40ouldcobd"
+
+[node name="StateMachine" type="Node" parent="." unique_id=1820705594 node_paths=PackedStringArray("player", "animated_sprite", "player_controller")]
+script = ExtResource("4_pcw4a")
+player = NodePath("..")
+animated_sprite = NodePath("../AnimatedSprite2D")
+player_controller = NodePath("..")
+default_state = &"IdleState"
+metadata/_custom_type_script = "uid://b0386ews8ryxl"
+
+[node name="DashState" type="Node" parent="StateMachine" unique_id=1521766489]
+script = ExtResource("5_8tnkg")
+metadata/_custom_type_script = "uid://bveo68oovpt6c"
+
+[node name="DropThroughState" type="Node" parent="StateMachine" unique_id=779242813]
+script = ExtResource("6_re41a")
+metadata/_custom_type_script = "uid://c5d800g6ajm8m"
+
+[node name="FallState" type="Node" parent="StateMachine" unique_id=943462686]
+script = ExtResource("7_sl3ku")
+metadata/_custom_type_script = "uid://ckvjhfyrm4jqb"
+
+[node name="IdleState" type="Node" parent="StateMachine" unique_id=543534810]
+script = ExtResource("8_iecgt")
+metadata/_custom_type_script = "uid://djqhmkfj56ofh"
+
+[node name="JumpState" type="Node" parent="StateMachine" unique_id=460263321]
+script = ExtResource("9_0mke5")
+metadata/_custom_type_script = "uid://bse72i81wv1yk"
+
+[node name="WalkState" type="Node" parent="StateMachine" unique_id=615207162]
+script = ExtResource("10_8q4yl")
+metadata/_custom_type_script = "uid://ey1sa2psmrsu"
+
+[node name="FoamCanon" type="Marker2D" parent="." unique_id=1259515207]
+position = Vector2(7, 3)
+script = ExtResource("11_1eb5o")
+projectile_scene = ExtResource("12_xiq6a")

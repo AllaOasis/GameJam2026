@@ -1,0 +1,28 @@
+[gd_resource type="TileSet" format=3 uid="uid://dar55l57n2spv"]
+
+[ext_resource type="Texture2D" uid="uid://bhpagwcsc32uu" path="res://Textures/Tiles/Decontamination-Background-Covered-Small.png" id="1_883ca"]
+[ext_resource type="Texture2D" uid="uid://b6q6chigjecbg" path="res://Textures/Tiles/Decontamination-Background-Grey-Small.png" id="2_5llnj"]
+[ext_resource type="Texture2D" uid="uid://cgyq3iwsbrcbc" path="res://Textures/Tiles/Decontamination-Background-Small.png" id="3_8ymqm"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d4vyp"]
+texture = ExtResource("1_883ca")
+texture_region_size = Vector2i(32, 80)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(-8, 32)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ay64g"]
+texture = ExtResource("2_5llnj")
+texture_region_size = Vector2i(32, 80)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(-8, 32)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6s155"]
+texture = ExtResource("3_8ymqm")
+texture_region_size = Vector2i(32, 80)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(-8, 32)
+
+[resource]
+sources/0 = SubResource("TileSetAtlasSource_d4vyp")
+sources/1 = SubResource("TileSetAtlasSource_ay64g")
+sources/2 = SubResource("TileSetAtlasSource_6s155")

@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://bagj0jsj05fyk"]
+
+[ext_resource type="Script" uid="uid://bkoc7byd84yme" path="res://Assets/GameObjects/Foam/foam.gd" id="1_pn14t"]
+[ext_resource type="Texture2D" uid="uid://po04l8oly7fb" path="res://Textures/Foam-Small.png" id="2_3cx0f"]
+[ext_resource type="Texture2D" uid="uid://biv3m2x34bu8g" path="res://Textures/Foam-Medium.png" id="3_3cx0f"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_45v3f"]
+radius = 5.0
+
+[node name="Foam" type="Area2D" unique_id=1980397966 node_paths=PackedStringArray("sprite")]
+collision_layer = 0
+collision_mask = 133
+script = ExtResource("1_pn14t")
+small_texture = ExtResource("2_3cx0f")
+medium_texture = ExtResource("3_3cx0f")
+sprite = NodePath("Sprite2D")
+medium_chance = 0.33
+lifetime = 1.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1498178041]
+texture = ExtResource("2_3cx0f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=47135948]
+shape = SubResource("CircleShape2D_45v3f")

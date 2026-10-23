@@ -10,6 +10,8 @@
 [ext_resource type="Script" uid="uid://djqhmkfj56ofh" path="res://Scripts/Player/StateMachine/idle_state.gd" id="8_iecgt"]
 [ext_resource type="Script" uid="uid://bse72i81wv1yk" path="res://Scripts/Player/StateMachine/jump_state.gd" id="9_0mke5"]
 [ext_resource type="Script" uid="uid://ey1sa2psmrsu" path="res://Scripts/Player/StateMachine/walk_state.gd" id="10_8q4yl"]
+[ext_resource type="Script" uid="uid://cfh2xkdke4gt3" path="res://Assets/GameObjects/Player/foam_canon.gd" id="11_1eb5o"]
+[ext_resource type="PackedScene" uid="uid://bagj0jsj05fyk" path="res://Assets/GameObjects/Foam/Foam.tscn" id="12_xiq6a"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i2024"]
 radius = 6.0
@@ -21,7 +23,7 @@ _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(4, 8), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [node name="Player" type="CharacterBody2D" unique_id=444719791 node_paths=PackedStringArray("player", "hazard_system") groups=["player"]]
-collision_layer = 129
+collision_layer = 2
 collision_mask = 129
 script = ExtResource("1_t3fca")
 player = NodePath(".")
@@ -71,3 +73,9 @@ metadata/_custom_type_script = "uid://bse72i81wv1yk"
 [node name="WalkState" type="Node" parent="StateMachine" unique_id=615207162]
 script = ExtResource("10_8q4yl")
 metadata/_custom_type_script = "uid://ey1sa2psmrsu"
+
+[node name="FoamCanon" type="Marker2D" parent="." unique_id=1259515207]
+position = Vector2(7, 3)
+script = ExtResource("11_1eb5o")
+projectile_scene = ExtResource("12_xiq6a")
+fire_cooldown = 0.1
