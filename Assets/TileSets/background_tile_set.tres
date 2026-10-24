@@ -2,12 +2,18 @@
 
 [ext_resource type="Texture2D" uid="uid://b2bptnuwu04p0" path="res://Textures/Tiles/Window-Small.png" id="1_4kb63"]
 [ext_resource type="Texture2D" uid="uid://s7d8n0tyxitx" path="res://Textures/Tiles/Background.png" id="1_j7dhq"]
+[ext_resource type="Texture2D" uid="uid://dtgfp1pwk1h1o" path="res://Textures/Tiles/Background-Brown.png" id="2_j7dhq"]
+[ext_resource type="Texture2D" uid="uid://b3y48a24r6xvd" path="res://Textures/Tiles/Window-Small-Brown.png" id="4_l5m6e"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j7dhq"]
 texture = ExtResource("1_4kb63")
 texture_region_size = Vector2i(32, 64)
 0:0/0 = 0
 0:0/0/texture_origin = Vector2i(-8, 24)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l5m6e"]
+texture = ExtResource("2_j7dhq")
+0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ihuie"]
 texture = ExtResource("1_j7dhq")
@@ -23,9 +29,17 @@ texture = ExtResource("1_j7dhq")
 0:0/0/terrains_peering_bit/top_side = 0
 0:0/0/terrains_peering_bit/top_right_corner = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7df0g"]
+texture = ExtResource("4_l5m6e")
+texture_region_size = Vector2i(32, 64)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(-8, 24)
+
 [resource]
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "Background"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 sources/12 = SubResource("TileSetAtlasSource_ihuie")
 sources/0 = SubResource("TileSetAtlasSource_j7dhq")
+sources/1 = SubResource("TileSetAtlasSource_l5m6e")
+sources/2 = SubResource("TileSetAtlasSource_7df0g")

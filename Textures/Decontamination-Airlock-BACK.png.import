@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bpqcj35yeqkga"
-path="res://.godot/imported/Decontamination-Airlock-FRONT.png-60de75a030863bf979afbf135520fe0d.ctex"
+uid="uid://dnkur6rdcgp8l"
+path="res://.godot/imported/Decontamination-Airlock-BACK.png-0e8cb8deb70ec0db5954fd03a16246e9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Tiles/Decontamination-Airlock-FRONT.png"
-dest_files=["res://.godot/imported/Decontamination-Airlock-FRONT.png-60de75a030863bf979afbf135520fe0d.ctex"]
+source_file="res://Textures/Decontamination-Airlock-BACK.png"
+dest_files=["res://.godot/imported/Decontamination-Airlock-BACK.png-0e8cb8deb70ec0db5954fd03a16246e9.ctex"]
 
 [params]
 
