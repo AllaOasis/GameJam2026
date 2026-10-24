@@ -13,7 +13,11 @@ config_version=5
 config/name="GameJam2026"
 run/main_scene="uid://dodyq4d6gm02c"
 config/features=PackedStringArray("4.7", "GL Compatibility")
-config/icon="res://icon.svg"
+boot_splash/bg_color=Color(0.08235294, 0.08235294, 0.08235294, 1)
+boot_splash/stretch_mode=2
+boot_splash/use_filter=false
+boot_splash/image="uid://b4rkl3u8i4j16"
+config/icon="uid://iud5lfp5pv3n"
 
 [autoload]
 
@@ -116,6 +120,10 @@ CloseSubMenus={
 "deadzone": 0.2,
 "events": []
 }
+Close={
+"deadzone": 0.2,
+"events": []
+}
 
 [physics]
 
@@ -127,5 +135,6 @@ textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true
 viewport/hdr_2d=true
 2d/snap/snap_2d_vertices_to_pixel=true

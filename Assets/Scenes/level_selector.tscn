@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://dodyq4d6gm02c"]
 
+[ext_resource type="Script" uid="uid://ciw0xbi4v5en3" path="res://Scripts/UI/MainMenuController.gd" id="1_574bu"]
 [ext_resource type="Texture2D" uid="uid://eysn5k18dkow" path="res://Textures/Castle/Castle-background.png" id="1_skq63"]
 [ext_resource type="Script" uid="uid://b56qifb45ldel" path="res://Scripts/UI/Buttons/SceneButton.gd" id="2_588t6"]
 [ext_resource type="Texture2D" uid="uid://dc1nxrlwy7mnj" path="res://Textures/Castle/Castle-Mist.png" id="2_f6mk6"]
@@ -33,6 +34,16 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="MainMenuController" type="Control" parent="." unique_id=486195980 node_paths=PackedStringArray("info", "settings", "credits")]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_574bu")
+info = NodePath("../TextureRect/InfoPanel/Welcome")
+settings = NodePath("../TextureRect/InfoPanel/Settings")
+credits = NodePath("../TextureRect/InfoPanel/Credits")
+metadata/_custom_type_script = "uid://ciw0xbi4v5en3"
 
 [node name="Background" type="TextureRect" parent="." unique_id=1474340105]
 layout_mode = 1
@@ -152,8 +163,46 @@ grow_horizontal = 2
 texture = ExtResource("9_vp1s6")
 stretch_mode = 5
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/InfoPanel" unique_id=560757978]
-visible = false
+[node name="Credits" type="TextureRect" parent="TextureRect/InfoPanel" unique_id=1797665092]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch_mode = 5
+
+[node name="ActionButton" type="TextureButton" parent="TextureRect/InfoPanel/Credits" unique_id=1570895523]
+z_index = 10
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -74.0
+offset_top = -37.0
+offset_right = -10.0
+offset_bottom = -5.0
+grow_horizontal = 0
+grow_vertical = 0
+action_mode = 0
+texture_normal = ExtResource("13_ju0jd")
+texture_pressed = ExtResource("14_574bu")
+stretch_mode = 5
+script = ExtResource("15_574bu")
+action = &"Close"
+metadata/_custom_type_script = "uid://ckxa08jbyvhv1"
+
+[node name="Settings" type="Control" parent="TextureRect/InfoPanel" unique_id=224668395]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/InfoPanel/Settings" unique_id=560757978]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -163,7 +212,7 @@ offset_right = 150.0
 offset_bottom = 140.0
 grow_vertical = 2
 
-[node name="Touch" type="TextureButton" parent="TextureRect/InfoPanel/VBoxContainer" unique_id=2067607823]
+[node name="Touch" type="TextureButton" parent="TextureRect/InfoPanel/Settings/VBoxContainer" unique_id=2067607823]
 custom_minimum_size = Vector2(96, 32)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -174,7 +223,8 @@ stretch_mode = 5
 script = ExtResource("12_4cxoh")
 metadata/_custom_type_script = "uid://cl48x0pr8we8o"
 
-[node name="SceneButton" type="TextureButton" parent="TextureRect/InfoPanel/VBoxContainer" unique_id=1188646787]
+[node name="SceneButton" type="TextureButton" parent="TextureRect/InfoPanel/Settings/VBoxContainer" unique_id=1188646787]
+visible = false
 layout_mode = 2
 texture_normal = ExtResource("13_ju0jd")
 texture_pressed = ExtResource("14_574bu")
@@ -182,6 +232,28 @@ script = ExtResource("2_588t6")
 level_path = "uid://bytx6t8qptvtd"
 player_scene = ExtResource("3_588t6")
 metadata/_custom_type_script = "uid://b56qifb45ldel"
+
+[node name="ActionButton2" type="TextureButton" parent="TextureRect/InfoPanel/Settings" unique_id=2088961122]
+z_index = 10
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -74.0
+offset_top = -37.0
+offset_right = -10.0
+offset_bottom = -5.0
+grow_horizontal = 0
+grow_vertical = 0
+action_mode = 0
+texture_normal = ExtResource("13_ju0jd")
+texture_pressed = ExtResource("14_574bu")
+stretch_mode = 5
+script = ExtResource("15_574bu")
+action = &"Close"
+metadata/_custom_type_script = "uid://ckxa08jbyvhv1"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TextureRect" unique_id=707653716]
 layout_mode = 1
