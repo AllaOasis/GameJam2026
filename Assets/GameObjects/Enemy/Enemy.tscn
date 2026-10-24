@@ -24,7 +24,6 @@ detect_area = NodePath("DetectArea")
 wall_check = NodePath("WallCheck")
 ground_check = NodePath("GroundCheck")
 attack_area = NodePath("AttackArea")
-damage_amount = 0
 stop_chasing_at_edges = false
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1974077383]

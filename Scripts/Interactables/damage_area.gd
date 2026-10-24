@@ -40,6 +40,6 @@ func _try_damage() -> void:
 		return
 	player_controller.hazard_system.take_damage(damage_amount)
 
-func _on_damage_cooldown_timeout() -> void:
+func _process(delta: float) -> void:
 	if player_in_range:
 		_try_damage()
