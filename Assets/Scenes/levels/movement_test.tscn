@@ -89,6 +89,7 @@ metadata/_custom_type_script = "uid://holnxpvfc4ir"
 
 [node name="Enemy" parent="World/Entities" unique_id=147339882 instance=ExtResource("12_ad3ke")]
 position = Vector2(606, 125)
+damage_amount = 4
 
 [node name="Enemy2" parent="World/Entities" unique_id=778196237 instance=ExtResource("12_ad3ke")]
 position = Vector2(504, 31)
