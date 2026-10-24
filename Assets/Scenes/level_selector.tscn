@@ -1,15 +1,28 @@
 [gd_scene format=3 uid="uid://dodyq4d6gm02c"]
 
-[ext_resource type="Texture2D" uid="uid://bpxvnnhdrthie" path="res://Textures/UI/Button/Menu-Button.png" id="1_tv448"]
+[ext_resource type="Texture2D" uid="uid://eysn5k18dkow" path="res://Textures/Castle/Castle-background.png" id="1_skq63"]
 [ext_resource type="Script" uid="uid://b56qifb45ldel" path="res://Scripts/UI/Buttons/SceneButton.gd" id="2_588t6"]
+[ext_resource type="Texture2D" uid="uid://dc1nxrlwy7mnj" path="res://Textures/Castle/Castle-Mist.png" id="2_f6mk6"]
 [ext_resource type="PackedScene" uid="uid://crda3a44g6mgj" path="res://Assets/GameObjects/Player/Player.tscn" id="3_588t6"]
-[ext_resource type="Texture2D" uid="uid://vjbwqmahoe50" path="res://Textures/UI/Button/Empty-Button.png" id="4_1j4yh"]
-[ext_resource type="FontFile" uid="uid://f4io8x4o2u53" path="res://Fonts/Pocketbit/Pocketbit.ttf" id="5_qd1sd"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_jctj4"]
-font = ExtResource("5_qd1sd")
-font_size = 22
-font_color = Color(0, 0, 0, 1)
+[ext_resource type="Texture2D" uid="uid://c4i60kh0ylpwp" path="res://Textures/Castle/Castle.png" id="3_madjv"]
+[ext_resource type="Texture2D" uid="uid://cnb2mna18lpu2" path="res://Textures/Castle/Castle-Q1.png" id="4_wmgh0"]
+[ext_resource type="Texture2D" uid="uid://b0tj4egb68f3q" path="res://Textures/Castle/Castle-Q2.png" id="5_tkmj6"]
+[ext_resource type="Texture2D" uid="uid://d1wyljqg7ypuc" path="res://Textures/Castle/Castle-Q3.png" id="6_7hxbj"]
+[ext_resource type="Texture2D" uid="uid://bi4apaiikhmbx" path="res://Textures/Castle/Castle-Q4.png" id="7_vp1s6"]
+[ext_resource type="Texture2D" uid="uid://cgbd5fxc2fu0n" path="res://Textures/UI/Intro-Text.png" id="8_7hxbj"]
+[ext_resource type="Texture2D" uid="uid://cr703sxj30jfi" path="res://Textures/UI/Button/Exit-Button.png" id="8_tkmj6"]
+[ext_resource type="Texture2D" uid="uid://mvgyblt5iygh" path="res://Textures/UI/Button/ButtonDown/Exit-Button-Clicked.png" id="9_7hxbj"]
+[ext_resource type="Texture2D" uid="uid://b4rkl3u8i4j16" path="res://Textures/UI/Toxicorp-Five-Logo.png" id="9_vp1s6"]
+[ext_resource type="Texture2D" uid="uid://cekfx1ohbjuqp" path="res://Textures/UI/touch-off.png" id="10_ai5nf"]
+[ext_resource type="Texture2D" uid="uid://1hvn1rlgetok" path="res://Textures/UI/Button/ButtonHover/Exit-Button-Hover.png" id="10_vp1s6"]
+[ext_resource type="Script" uid="uid://bo8jfphyk3ejk" path="res://Scripts/UI/Buttons/QuitButton.gd" id="11_7u3o2"]
+[ext_resource type="Texture2D" uid="uid://n5nba62lmomn" path="res://Textures/UI/touch-on.png" id="11_52eev"]
+[ext_resource type="Script" uid="uid://cl48x0pr8we8o" path="res://Scripts/UI/Buttons/SettingsToggleButton.gd" id="12_4cxoh"]
+[ext_resource type="Texture2D" uid="uid://c8f5c6a5vvif6" path="res://Textures/UI/Button/Settings-Button.png" id="13_vtfjb"]
+[ext_resource type="Texture2D" uid="uid://dkkpxlr2sdh7v" path="res://Textures/UI/Button/ButtonDown/Settings-Button-Clicked.png" id="14_ju0jd"]
+[ext_resource type="Script" uid="uid://ckxa08jbyvhv1" path="res://Scripts/UI/Buttons/ActionButton.gd" id="15_574bu"]
+[ext_resource type="Texture2D" uid="uid://0fo8gtmrnswc" path="res://Textures/UI/Button/Credits-Button.png" id="16_fpv2c"]
+[ext_resource type="Texture2D" uid="uid://bdtrrg1pxl5hk" path="res://Textures/UI/Button/ButtonDown/Credits-Button-Clicked.png" id="17_n1wsf"]
 
 [node name="LevelSelector" type="Control" unique_id=1028165528]
 layout_mode = 3
@@ -19,62 +32,229 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=640447312]
+[node name="Background" type="TextureRect" parent="." unique_id=1474340105]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("1_skq63")
+stretch_mode = 4
 
-[node name="SceneButton" type="TextureButton" parent="TextureRect" unique_id=1269047353]
+[node name="CastleMist" type="TextureRect" parent="Background" unique_id=500534169]
 layout_mode = 1
-anchors_preset = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_f6mk6")
+stretch_mode = 4
+
+[node name="Castle" type="TextureRect" parent="Background" unique_id=640447312]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_madjv")
+stretch_mode = 4
+
+[node name="CastleQ1" type="TextureRect" parent="Background" unique_id=1126856639]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_wmgh0")
+stretch_mode = 4
+
+[node name="CastleQ2" type="TextureRect" parent="Background" unique_id=302526235]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_tkmj6")
+stretch_mode = 4
+
+[node name="CastleQ3" type="TextureRect" parent="Background" unique_id=1959213741]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_7hxbj")
+stretch_mode = 4
+
+[node name="CastleQ4" type="TextureRect" parent="Background" unique_id=1498225627]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_vp1s6")
+stretch_mode = 4
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1316400664]
+layout_mode = 1
+anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -144.0
-offset_top = 16.0
-offset_right = -16.0
-offset_bottom = 80.0
+anchor_bottom = 1.0
+offset_left = -280.0
 grow_horizontal = 0
-texture_normal = ExtResource("1_tv448")
-stretch_mode = 5
-script = ExtResource("2_588t6")
-level_path = "uid://bw0bsrvbkhlv8"
-metadata/_custom_type_script = "uid://b56qifb45ldel"
+grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=505120357]
+[node name="ColorRect" type="ColorRect" parent="TextureRect" unique_id=481537373]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="InfoPanel" type="ColorRect" parent="TextureRect" unique_id=1210933949]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 300.0
+grow_horizontal = 2
+color = Color(0.06666667, 0.06666667, 0.06666667, 1)
+
+[node name="Welcome" type="TextureRect" parent="TextureRect/InfoPanel" unique_id=799690035]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_right = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_7hxbj")
+stretch_mode = 5
+
+[node name="Name" type="TextureRect" parent="TextureRect/InfoPanel/Welcome" unique_id=1638279993]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 64.0
+grow_horizontal = 2
+texture = ExtResource("9_vp1s6")
+stretch_mode = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/InfoPanel" unique_id=560757978]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 25.0
-offset_top = -210.0
-offset_right = 305.0
-offset_bottom = 210.0
+offset_top = -140.0
+offset_right = 150.0
+offset_bottom = 140.0
 grow_vertical = 2
 
-[node name="SceneButton" type="TextureButton" parent="VBoxContainer" unique_id=1362599648]
-custom_minimum_size = Vector2(0, 36)
+[node name="Touch" type="TextureButton" parent="TextureRect/InfoPanel/VBoxContainer" unique_id=2067607823]
+custom_minimum_size = Vector2(96, 32)
 layout_mode = 2
-offset_transform_enabled = true
-offset_transform_position = Vector2(24, 0)
-texture_normal = ExtResource("4_1j4yh")
-stretch_mode = 4
+size_flags_horizontal = 4
+toggle_mode = true
+texture_normal = ExtResource("10_ai5nf")
+texture_pressed = ExtResource("11_52eev")
+stretch_mode = 5
+script = ExtResource("12_4cxoh")
+metadata/_custom_type_script = "uid://cl48x0pr8we8o"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TextureRect" unique_id=707653716]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = -60.0
+offset_right = -5.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+
+[node name="Settings" type="TextureButton" parent="TextureRect/HBoxContainer" unique_id=700904020]
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("13_vtfjb")
+texture_pressed = ExtResource("14_ju0jd")
+stretch_mode = 5
+script = ExtResource("15_574bu")
+action = &"OpenSettings"
+metadata/_custom_type_script = "uid://ckxa08jbyvhv1"
+
+[node name="Credits" type="TextureButton" parent="TextureRect/HBoxContainer" unique_id=972588865]
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("16_fpv2c")
+texture_pressed = ExtResource("17_n1wsf")
+stretch_mode = 5
+script = ExtResource("15_574bu")
+action = &"OpenCredits"
+metadata/_custom_type_script = "uid://ckxa08jbyvhv1"
+
+[node name="Exit" type="TextureButton" parent="TextureRect/HBoxContainer" unique_id=1549515588]
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("8_tkmj6")
+texture_pressed = ExtResource("9_7hxbj")
+texture_hover = ExtResource("10_vp1s6")
+stretch_mode = 5
+script = ExtResource("11_7u3o2")
+metadata/_custom_type_script = "uid://bo8jfphyk3ejk"
+
+[node name="Q1Button" type="TextureButton" parent="." unique_id=1903077483]
+layout_mode = 0
+offset_left = 171.0
+offset_top = 31.0
+offset_right = 334.0
+offset_bottom = 178.0
 script = ExtResource("2_588t6")
-level_path = "uid://bytx6t8qptvtd"
+level_path = "uid://ctdt5jok78b7o"
 player_scene = ExtResource("3_588t6")
 metadata/_custom_type_script = "uid://b56qifb45ldel"
 
-[node name="Label" type="Label" parent="VBoxContainer/SceneButton" unique_id=225267435]
-layout_mode = 1
-anchors_preset = 9
-anchor_bottom = 1.0
-offset_left = 1.815
-offset_right = 114.0
-grow_vertical = 2
-offset_transform_enabled = true
-offset_transform_position = Vector2(24, 0)
-text = "LEVEL 1"
-label_settings = SubResource("LabelSettings_jctj4")
-vertical_alignment = 1
+[node name="Q2Button" type="TextureButton" parent="." unique_id=1328444774]
+layout_mode = 0
+offset_left = 69.0
+offset_top = 26.0
+offset_right = 170.0
+offset_bottom = 181.0
+script = ExtResource("2_588t6")
+level_path = "uid://d06nlmwxs37rf"
+player_scene = ExtResource("3_588t6")
+metadata/_custom_type_script = "uid://b56qifb45ldel"
+
+[node name="Q3Button" type="TextureButton" parent="." unique_id=270495887]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 182.0
+offset_right = 166.0
+offset_bottom = 334.0
+script = ExtResource("2_588t6")
+level_path = "uid://cvroh8icw7ctt"
+player_scene = ExtResource("3_588t6")
+metadata/_custom_type_script = "uid://b56qifb45ldel"
+
+[node name="Q4Button" type="TextureButton" parent="." unique_id=1061553439]
+layout_mode = 0
+offset_left = 182.0
+offset_top = 189.0
+offset_right = 352.0
+offset_bottom = 331.0
+script = ExtResource("2_588t6")
+level_path = "uid://fdy5r41ke8nw"
+player_scene = ExtResource("3_588t6")
+metadata/_custom_type_script = "uid://b56qifb45ldel"

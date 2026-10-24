@@ -6,12 +6,11 @@ var next_spawn_point: StringName = &"Default"
 func load_level(
 	level_path: String,
 	player_scene: PackedScene = null,
-	level_toxins: int = 0,
 	spawn_point: StringName = &"Default"
 ) -> void:
 	PauseManager.resume_game()
-	GameData.level_toxins = level_toxins
-	GameData.current_toxins = -1 if level_toxins == 0 else 0
+	GameData.level_toxins = 0
+	GameData.current_toxins = 0
 	GameData.game_won = false
 	
 	# Load the requested scene.

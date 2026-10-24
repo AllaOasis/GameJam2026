@@ -75,6 +75,8 @@ func _ready() -> void:
 
 	if attack_area:
 		attack_area.damage_amount = damage_amount
+		
+	GameData.level_toxins += 1
 
 
 func _physics_process(delta: float) -> void:
