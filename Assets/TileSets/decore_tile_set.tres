@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://dd8ydqp4fgbkf" path="res://Textures/Tiles/Candle-Cluster.png" id="5_rqgf3"]
 [ext_resource type="Texture2D" uid="uid://bvsvpoktwnda5" path="res://Textures/Tiles/Pillar-Medium-Brown.png" id="6_llehr"]
 [ext_resource type="Texture2D" uid="uid://cd5qm6cqbafjr" path="res://Textures/Tiles/Pillar-Short-Brown.png" id="7_rnruy"]
+[ext_resource type="Texture2D" uid="uid://dr6la6wvgb0g2" path="res://Textures/Tiles/Coffin-Open.png" id="8_rnruy"]
+[ext_resource type="Texture2D" uid="uid://bhj5e86ie1f6h" path="res://Textures/Tiles/Coffin-Closed.png" id="9_rsol4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yvqyr"]
 texture = ExtResource("1_fjnvr")
@@ -48,6 +50,18 @@ texture_region_size = Vector2i(16, 64)
 0:0/0 = 0
 0:0/0/texture_origin = Vector2i(0, 24)
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_623sk"]
+texture = ExtResource("8_rnruy")
+texture_region_size = Vector2i(16, 32)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, 8)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kval7"]
+texture = ExtResource("9_rsol4")
+texture_region_size = Vector2i(16, 32)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, 8)
+
 [resource]
 sources/0 = SubResource("TileSetAtlasSource_yvqyr")
 sources/1 = SubResource("TileSetAtlasSource_hooyx")
@@ -56,3 +70,5 @@ sources/3 = SubResource("TileSetAtlasSource_rqgf3")
 sources/4 = SubResource("TileSetAtlasSource_rsol4")
 sources/5 = SubResource("TileSetAtlasSource_xfdxb")
 sources/6 = SubResource("TileSetAtlasSource_fth5m")
+sources/7 = SubResource("TileSetAtlasSource_623sk")
+sources/8 = SubResource("TileSetAtlasSource_kval7")
