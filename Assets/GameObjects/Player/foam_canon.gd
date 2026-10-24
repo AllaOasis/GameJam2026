@@ -21,6 +21,9 @@ func _process(delta: float) -> void:
 
 
 func shoot() -> void:
+	if GameData.is_player_dead:
+		return
+	
 	if fire_timer > 0.0:
 		return
 		
