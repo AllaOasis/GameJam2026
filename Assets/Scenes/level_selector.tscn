@@ -18,7 +18,9 @@
 [ext_resource type="Script" uid="uid://bo8jfphyk3ejk" path="res://Scripts/UI/Buttons/QuitButton.gd" id="11_7u3o2"]
 [ext_resource type="Texture2D" uid="uid://n5nba62lmomn" path="res://Textures/UI/touch-on.png" id="11_52eev"]
 [ext_resource type="Script" uid="uid://cl48x0pr8we8o" path="res://Scripts/UI/Buttons/SettingsToggleButton.gd" id="12_4cxoh"]
+[ext_resource type="Texture2D" uid="uid://vjbwqmahoe50" path="res://Textures/UI/Button/Empty-Button.png" id="13_ju0jd"]
 [ext_resource type="Texture2D" uid="uid://c8f5c6a5vvif6" path="res://Textures/UI/Button/Settings-Button.png" id="13_vtfjb"]
+[ext_resource type="Texture2D" uid="uid://ds8dfs480es0a" path="res://Textures/UI/Button/ButtonDown/Empty-Button-Clicked.png" id="14_574bu"]
 [ext_resource type="Texture2D" uid="uid://dkkpxlr2sdh7v" path="res://Textures/UI/Button/ButtonDown/Settings-Button-Clicked.png" id="14_ju0jd"]
 [ext_resource type="Script" uid="uid://ckxa08jbyvhv1" path="res://Scripts/UI/Buttons/ActionButton.gd" id="15_574bu"]
 [ext_resource type="Texture2D" uid="uid://0fo8gtmrnswc" path="res://Textures/UI/Button/Credits-Button.png" id="16_fpv2c"]
@@ -130,7 +132,6 @@ grow_horizontal = 2
 color = Color(0.06666667, 0.06666667, 0.06666667, 1)
 
 [node name="Welcome" type="TextureRect" parent="TextureRect/InfoPanel" unique_id=799690035]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -152,6 +153,7 @@ texture = ExtResource("9_vp1s6")
 stretch_mode = 5
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/InfoPanel" unique_id=560757978]
+visible = false
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -171,6 +173,15 @@ texture_pressed = ExtResource("11_52eev")
 stretch_mode = 5
 script = ExtResource("12_4cxoh")
 metadata/_custom_type_script = "uid://cl48x0pr8we8o"
+
+[node name="SceneButton" type="TextureButton" parent="TextureRect/InfoPanel/VBoxContainer" unique_id=1188646787]
+layout_mode = 2
+texture_normal = ExtResource("13_ju0jd")
+texture_pressed = ExtResource("14_574bu")
+script = ExtResource("2_588t6")
+level_path = "uid://bytx6t8qptvtd"
+player_scene = ExtResource("3_588t6")
+metadata/_custom_type_script = "uid://b56qifb45ldel"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TextureRect" unique_id=707653716]
 layout_mode = 1

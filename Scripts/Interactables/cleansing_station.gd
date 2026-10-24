@@ -27,6 +27,8 @@ func _on_body_entered(body: Node2D) -> void:
 		
 	if player_controller:
 		player_in_range = true
+		if light:
+			light.visible = true
 		process_interact(0)
 		
 func _on_body_exited(body: Node2D) -> void:
