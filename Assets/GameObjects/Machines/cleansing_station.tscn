@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://ciagw0fvwgwj"]
+
+[ext_resource type="Script" uid="uid://bsp7sku86eqya" path="res://Scripts/Interactables/cleansing_station.gd" id="1_4v01i"]
+[ext_resource type="SpriteFrames" uid="uid://pj3d8c5fecf4" path="res://Assets/GameObjects/Machines/decontamination_machine_animations.tres" id="2_tux4h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_va72s"]
+size = Vector2(31, 32)
+
+[node name="CleansingStation" type="Area2D" unique_id=585487498 node_paths=PackedStringArray("sprite")]
+collision_mask = 3
+script = ExtResource("1_4v01i")
+sprite = NodePath("AnimatedSprite2D")
+processing_time = 3.0
+metadata/_custom_type_script = "uid://bsp7sku86eqya"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1210419549]
+sprite_frames = ExtResource("2_tux4h")
+animation = &"processing"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=225376207]
+position = Vector2(-1.5, 0)
+shape = SubResource("RectangleShape2D_va72s")

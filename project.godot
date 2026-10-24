@@ -19,7 +19,6 @@ config/icon="res://icon.svg"
 
 SceneManager="*uid://doaaig2tawmgc"
 PauseManager="*uid://8xfkrlw2u722"
-GameSettings="*uid://b474cdb82s2th"
 GameData="*uid://bd5nsbfhawa54"
 
 [display]

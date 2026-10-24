@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://wh1wwrkyrs7"]
+
+[ext_resource type="Script" uid="uid://conhb0adpql86" path="res://Scripts/Interactables/foam_machine.gd" id="1_5qcc7"]
+[ext_resource type="Texture2D" uid="uid://dkupm4mpqvq3" path="res://Textures/Tank-Restock.png" id="1_pqtsh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_np7a2"]
+size = Vector2(32, 32)
+
+[node name="FoamMachine" type="Area2D" unique_id=302395221]
+collision_mask = 3
+script = ExtResource("1_5qcc7")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=188569254]
+position = Vector2(32, 112)
+texture = ExtResource("1_pqtsh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=520500060]
+position = Vector2(32, 112)
+shape = SubResource("RectangleShape2D_np7a2")

@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bcgh2n0gfibwa" path="res://Assets/UI/android_interface.tscn" id="3_sdast"]
 [ext_resource type="Texture2D" uid="uid://dykxtcembdsuo" path="res://Textures/UI/Cooldown-Timer-Sheet.png" id="4_j8j7w"]
 [ext_resource type="Script" uid="uid://ckxa08jbyvhv1" path="res://Scripts/UI/Buttons/ActionButton.gd" id="4_mtxsc"]
+[ext_resource type="Texture2D" uid="uid://dppy5m5v6fxil" path="res://Textures/UI/Foam-Tank-Sheet.png" id="5_4x04t"]
 [ext_resource type="Texture2D" uid="uid://cwxnqkaqmwmdt" path="res://Textures/UI/Button/Resume-Button.png" id="5_7u4mn"]
 [ext_resource type="Texture2D" uid="uid://b4whxamvls0lp" path="res://Textures/UI/Button/ButtonDown/Menu-Square-Button-Clicked.png" id="5_mamnd"]
 [ext_resource type="Texture2D" uid="uid://bpxvnnhdrthie" path="res://Textures/UI/Button/Menu-Button.png" id="6_ytdsy"]
@@ -15,6 +16,10 @@
 [ext_resource type="Texture2D" uid="uid://cekfx1ohbjuqp" path="res://Textures/UI/touch-off.png" id="8_fojfy"]
 [ext_resource type="Script" uid="uid://cl48x0pr8we8o" path="res://Scripts/UI/Buttons/SettingsToggleButton.gd" id="9_xryph"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_np7a2"]
+atlas = ExtResource("5_4x04t")
+region = Rect2(0, 0, 48, 16)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_82yni"]
 atlas = ExtResource("4_j8j7w")
 region = Rect2(0, 0, 16, 16)
@@ -22,7 +27,7 @@ region = Rect2(0, 0, 16, 16)
 [node name="UserInterface" type="CanvasLayer" unique_id=392176404]
 script = ExtResource("1_oxvhq")
 
-[node name="UIHandler" type="Control" parent="." unique_id=1208962041 node_paths=PackedStringArray("hearts_container", "dash_cooldown", "pause_menu", "touch_controlls")]
+[node name="UIHandler" type="Control" parent="." unique_id=1208962041 node_paths=PackedStringArray("hearts_container", "dash_cooldown", "foam_tank", "pause_menu", "touch_controlls")]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -34,6 +39,7 @@ script = ExtResource("1_cp5ti")
 hearts_container = NodePath("HBoxContainer")
 heart_scene = ExtResource("2_m8ba5")
 dash_cooldown = NodePath("DashDisplay")
+foam_tank = NodePath("FoamDisplay")
 pause_menu = NodePath("PauseMenu")
 touch_controlls = NodePath("AndroidInterface")
 metadata/_custom_type_script = "uid://cqptqrjy58rko"
@@ -41,11 +47,20 @@ metadata/_custom_type_script = "uid://cqptqrjy58rko"
 [node name="AndroidInterface" parent="UIHandler" unique_id=1544986949 instance=ExtResource("3_sdast")]
 layout_mode = 1
 
-[node name="DashDisplay" type="TextureRect" parent="UIHandler" unique_id=471483632]
-layout_mode = 1
+[node name="FoamDisplay" type="TextureRect" parent="UIHandler" unique_id=846004174]
+layout_mode = 0
 offset_left = 9.0
 offset_top = 42.0
-offset_right = 41.0
+offset_right = 137.0
+offset_bottom = 74.0
+texture = SubResource("AtlasTexture_np7a2")
+stretch_mode = 4
+
+[node name="DashDisplay" type="TextureRect" parent="UIHandler" unique_id=471483632]
+layout_mode = 1
+offset_left = 117.0
+offset_top = 42.0
+offset_right = 149.0
 offset_bottom = 74.0
 texture = SubResource("AtlasTexture_82yni")
 

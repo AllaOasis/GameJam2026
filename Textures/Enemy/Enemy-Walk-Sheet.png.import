@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2xrry3ve2hve"
-path="res://.godot/imported/Hearts-Sheet2.png-6639dd468a06b69d5fb38bb705b56211.ctex"
+uid="uid://b2f7kg6hlrvnt"
+path="res://.godot/imported/Enemy-Walk-Sheet.png-cea8c879beec2d9b6264db22f9d8a6ba.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Hearts-Sheet2.png"
-dest_files=["res://.godot/imported/Hearts-Sheet2.png-6639dd468a06b69d5fb38bb705b56211.ctex"]
+source_file="res://Textures/Enemy/Enemy-Walk-Sheet.png"
+dest_files=["res://.godot/imported/Enemy-Walk-Sheet.png-cea8c879beec2d9b6264db22f9d8a6ba.ctex"]
 
 [params]
 

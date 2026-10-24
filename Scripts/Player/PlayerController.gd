@@ -4,6 +4,7 @@ class_name PlayerController
 
 @export var player: CharacterBody2D
 @export var hazard_system: HazardSystem
+@export var foam_canon: FoamCanon
 
 var ground_tile_map: TileMapLayer
 

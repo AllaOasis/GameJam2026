@@ -22,16 +22,17 @@ _limits = [0.0, 8.0, 0.0, 4.0]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(4, 8), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[node name="Player" type="CharacterBody2D" unique_id=444719791 node_paths=PackedStringArray("player", "hazard_system") groups=["player"]]
+[node name="Player" type="CharacterBody2D" unique_id=444719791 node_paths=PackedStringArray("player", "hazard_system", "foam_canon") groups=["player"]]
 collision_layer = 2
 collision_mask = 129
 script = ExtResource("1_t3fca")
 player = NodePath(".")
 hazard_system = NodePath("HazardSystem")
+foam_canon = NodePath("FoamCanon")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1358888923]
 sprite_frames = ExtResource("2_1eb5o")
-animation = &"idle"
+animation = &"jump"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2108177663]
 position = Vector2(0, 4)
@@ -75,7 +76,7 @@ script = ExtResource("10_8q4yl")
 metadata/_custom_type_script = "uid://ey1sa2psmrsu"
 
 [node name="FoamCanon" type="Marker2D" parent="." unique_id=1259515207]
-position = Vector2(7, 3)
+position = Vector2(0, 2)
 script = ExtResource("11_1eb5o")
 projectile_scene = ExtResource("12_xiq6a")
 fire_cooldown = 0.1

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://po04l8oly7fb"
-path="res://.godot/imported/Foam-Small.png-6b24650fad1018e03b0240f58175c49a.ctex"
+uid="uid://dutxgwvnk1a68"
+path="res://.godot/imported/Decontamination-Machine-Sheet.png-a4658288190b6bfdb7cae0d1c25138cd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Foam-Small.png"
-dest_files=["res://.godot/imported/Foam-Small.png-6b24650fad1018e03b0240f58175c49a.ctex"]
+source_file="res://Textures/Decontamination-Machine-Sheet.png"
+dest_files=["res://.godot/imported/Decontamination-Machine-Sheet.png-a4658288190b6bfdb7cae0d1c25138cd.ctex"]
 
 [params]
 

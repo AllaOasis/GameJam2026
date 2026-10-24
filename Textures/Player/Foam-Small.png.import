@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://biv3m2x34bu8g"
-path="res://.godot/imported/Foam-Medium.png-ba0a0074b47fb498e2bd07851539fbca.ctex"
+uid="uid://po04l8oly7fb"
+path="res://.godot/imported/Foam-Small.png-ad87f8d6212eaa61221dcd58bb878137.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Foam-Medium.png"
-dest_files=["res://.godot/imported/Foam-Medium.png-ba0a0074b47fb498e2bd07851539fbca.ctex"]
+source_file="res://Textures/Player/Foam-Small.png"
+dest_files=["res://.godot/imported/Foam-Small.png-ad87f8d6212eaa61221dcd58bb878137.ctex"]
 
 [params]
 

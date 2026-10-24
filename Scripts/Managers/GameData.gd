@@ -1,19 +1,24 @@
 extends Node
 
-# ============================================================
-# Player Data
-# ============================================================
+signal player_death
 
-var current_health: int = 8
-var max_health: int = 8
+var toxinImmunity := false
+var damageImunity := false
 
-var toxin_coins: int = 0
+var is_touch: bool = false
 
-# Future spendable currency.
-var coins: int = 0
+var is_player_dead: bool = false:
+	set(value):
+		is_player_dead = value
+		player_death.emit(is_player_dead)
+		
 
-
-func start_new_game() -> void:
-	current_health = max_health
-	toxin_coins = 0
-	coins = 0
+# Hopefully for saving the game
+func _ready() -> void:
+	pass
+	
+func load_data() -> void:
+	pass
+	
+func save_data() -> void:
+	pass

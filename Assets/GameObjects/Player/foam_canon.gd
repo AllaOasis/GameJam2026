@@ -1,12 +1,17 @@
-
 extends Marker2D
+class_name FoamCanon
 
 @export var projectile_scene: PackedScene
 @export var fire_cooldown: float = 0.4
 @export var hold_to_shoot: bool = true
 
+@export var max_foam: int = 100
+
+var current_foam: int
 var fire_timer: float = 0.0
 
+func _ready() -> void:
+	current_foam = max_foam
 
 func _process(delta: float) -> void:
 	fire_timer = maxf(fire_timer - delta, 0.0)
@@ -17,6 +22,9 @@ func _process(delta: float) -> void:
 
 func shoot() -> void:
 	if fire_timer > 0.0:
+		return
+		
+	if current_foam <= 0:
 		return
 
 	if projectile_scene == null:
@@ -29,6 +37,7 @@ func shoot() -> void:
 		push_error("FoamShooter: Projectile root must use FoamProjectile.")
 		return
 
+	current_foam = maxi(current_foam - 1, 0)
 	get_tree().current_scene.add_child(projectile)
 	projectile.global_position = global_position
 
@@ -43,3 +52,6 @@ func shoot() -> void:
 	projectile.launch(Vector2(direction, -0.6))
 
 	fire_timer = fire_cooldown
+
+func refill():
+	current_foam = max_foam

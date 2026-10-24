@@ -44,6 +44,9 @@ func _physics_process(delta: float) -> void:
 	if not is_landed:
 		velocity.y += gravity * delta
 		global_position += velocity * delta
+		
+	var percent = 1 - timer / lifetime;
+	
 
 
 func _on_body_entered(body: Node2D) -> void:

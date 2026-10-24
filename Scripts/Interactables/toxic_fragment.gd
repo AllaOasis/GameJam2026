@@ -1,5 +1,5 @@
 extends Area2D
-class_name ToxinCoin
+class_name ToxicFragment
 
 @export var coin_amount: int = 1
 
@@ -32,7 +32,7 @@ func _on_body_entered(body: Node2D) -> void:
 		return
 
 	# Grant Toxin Coins to HazardSystem™.
-	controller.hazard_system.collect_toxin_coins(coin_amount)
+	controller.hazard_system.collect_toxin_fragments(coin_amount)
 
 	# Remove the collected coin.
 	queue_free()

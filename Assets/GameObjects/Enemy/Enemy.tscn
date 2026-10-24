@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://dkddlmmoqlt8q"]
 
 [ext_resource type="Script" uid="uid://binvp6qtsmxfd" path="res://Assets/GameObjects/Enemy/enemy.gd" id="1_infww"]
-[ext_resource type="SpriteFrames" uid="uid://bryrdj7pwec2i" path="res://Assets/GameObjects/Player/player_frames.tres" id="1_ul1uk"]
-[ext_resource type="Texture2D" uid="uid://iud5lfp5pv3n" path="res://icon.svg" id="2_e744n"]
-[ext_resource type="Texture2D" uid="uid://biv3m2x34bu8g" path="res://Textures/Foam-Medium.png" id="4_nhg1w"]
+[ext_resource type="SpriteFrames" uid="uid://wm2hod0fcckg" path="res://Assets/GameObjects/Enemy/enemy_animations.tres" id="2_nhg1w"]
+[ext_resource type="Script" uid="uid://piqfjnv0n5jv" path="res://Scripts/Interactables/damage_area.gd" id="4_j13n1"]
+[ext_resource type="Texture2D" uid="uid://biv3m2x34bu8g" path="res://Textures/Player/Foam-Medium.png" id="4_nhg1w"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jctj4"]
 radius = 6.0
@@ -15,24 +15,21 @@ size = Vector2(302, 108)
 [sub_resource type="CircleShape2D" id="CircleShape2D_infww"]
 radius = 32.0
 
-[node name="Enemy" type="CharacterBody2D" unique_id=147339882 node_paths=PackedStringArray("detect_area", "wall_check", "ground_check")]
+[node name="Enemy" type="CharacterBody2D" unique_id=147339882 node_paths=PackedStringArray("sprite", "detect_area", "wall_check", "ground_check", "attack_area")]
 collision_layer = 4
 collision_mask = 129
 script = ExtResource("1_infww")
+sprite = NodePath("AnimatedSprite2D")
 detect_area = NodePath("DetectArea")
 wall_check = NodePath("WallCheck")
 ground_check = NodePath("GroundCheck")
+attack_area = NodePath("AttackArea")
+damage_amount = 0
 stop_chasing_at_edges = false
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1974077383]
-sprite_frames = ExtResource("1_ul1uk")
-animation = &"idle"
-
-[node name="Sprite2D" type="Sprite2D" parent="AnimatedSprite2D" unique_id=618959240]
-modulate = Color(0.74346054, 0.28458428, 0.009122414, 1)
-position = Vector2(3.8146973e-06, -3.0000014)
-scale = Vector2(0.078125, 0.078125)
-texture = ExtResource("2_e744n")
+sprite_frames = ExtResource("2_nhg1w")
+animation = &"death"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=332074212]
 position = Vector2(0, 4)
@@ -47,6 +44,8 @@ shape = SubResource("RectangleShape2D_jctj4")
 
 [node name="AttackArea" type="Area2D" parent="." unique_id=604775888]
 collision_layer = 0
+collision_mask = 3
+script = ExtResource("4_j13n1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea" unique_id=1992039945]
 position = Vector2(0, 4)

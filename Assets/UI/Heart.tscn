@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://ckpjv8qyfetob"]
 
 [ext_resource type="Script" uid="uid://dy0c58ohcmnv0" path="res://Scripts/Player/Heart.gd" id="1_gct37"]
-[ext_resource type="Texture2D" uid="uid://c2xrry3ve2hve" path="res://Textures/Hearts-Sheet2.png" id="2_l8c6q"]
+[ext_resource type="Texture2D" uid="uid://c2xrry3ve2hve" path="res://Textures/Player/Hearts-Sheet2.png" id="2_l8c6q"]
 
 [node name="Heart" type="Control" unique_id=1126544248]
 layout_mode = 3

@@ -1,7 +1,10 @@
 extends CharacterBody2D
 
+@export var sprite: AnimatedSprite2D
+
+@export_subgroup("Stats")
 @export var move_speed: float = 40.0
-@export var max_health: int = 100
+@export var max_health: int = 10
 
 @export_subgroup("Player Detection")
 @export var detect_area: Area2D
@@ -16,7 +19,11 @@ extends CharacterBody2D
 @export var ground_check: RayCast2D
 @export var turn_cooldown: float = 0.2
 
-@export_subgroup("Bug")
+@export_subgroup("Damage Area")
+@export var attack_area: DamageArea
+@export var damage_amount: int = 1
+
+@export_subgroup("Bugfix")
 @export var stop_chasing_at_edges: bool = true
 
 var direction: int = 1
@@ -26,6 +33,9 @@ var health: int
 var detected_players: Array[Node2D] = []
 var chase_target: Node2D = null
 var behind_check_timer: float = 0.0
+
+var is_dead: bool = false
+var death_timer: float = 1.5
 
 
 func _ready() -> void:
@@ -42,15 +52,18 @@ func _ready() -> void:
 	if detect_area:
 		detect_area.body_entered.connect(_on_detection_body_entered)
 		detect_area.body_exited.connect(_on_detection_body_exited)
-
-
-
+		
+	if attack_area:
+		attack_area.damage_amount = damage_amount
 
 func _physics_process(delta: float) -> void:
-	# ============================================================
+	if is_dead:
+		if death_timer <= 0:
+			queue_free()
+		death_timer -= delta
+		return
+	
 	# Gravity
-	# ============================================================
-
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	else:
@@ -58,10 +71,7 @@ func _physics_process(delta: float) -> void:
 
 	turn_timer = maxf(turn_timer - delta, 0.0)
 
-	# ============================================================
 	# Choose Movement Direction
-	# ============================================================
-
 	var chasing: bool = is_instance_valid(chase_target)
 
 	if chasing:
@@ -72,13 +82,10 @@ func _physics_process(delta: float) -> void:
 		if not is_zero_approx(distance_x):
 			var new_direction: int = 1 if distance_x > 0.0 else -1
 
-			if new_direction != direction:
+			if new_direction != direction and turn_timer <= 0.0:
 				_turn_around()
 
-	# ============================================================
 	# Wall & Edge Detection
-	# ============================================================
-
 	var blocked: bool = false
 
 	if wall_check and ground_check:
@@ -98,27 +105,18 @@ func _physics_process(delta: float) -> void:
 		elif turn_timer <= 0.0:
 			_turn_around()
 
-	# ============================================================
 	# Horizontal Movement
-	# ============================================================
-
 	velocity.x = direction * move_speed
 	move_and_slide()
 
-	# ============================================================
 	# Collision Safety
-	# ============================================================
-
 	if is_on_wall():
 		if chasing:
 			velocity.x = 0.0
 		elif turn_timer <= 0.0:
 			_turn_around()
 
-	# ============================================================
 	# Player Detection
-	# ============================================================
-
 	behind_check_timer -= delta
 
 	if behind_check_timer > 0.0:
@@ -144,12 +142,11 @@ func _turn_around() -> void:
 
 	# Update the raycasts to face the new direction.
 	_update_raycasts()
-	
+
 func _flip_sprite():
 	# Flip the visual to face the walking direction.
 	if has_node("AnimatedSprite2D"):
 		$AnimatedSprite2D.flip_h = direction < 0
-
 
 func _update_raycasts() -> void:
 	# Keep the raycasts pointing in the walking direction.
@@ -160,22 +157,11 @@ func _update_raycasts() -> void:
 	if ground_check:
 		ground_check.position.x = absf(ground_check.position.x) * direction
 		ground_check.target_position.x = 0.0
-		
-		
-func take_damage(damage: int):
-	if damage <= 0: return
-	
-	health = maxi(health - damage, 0)
-	
-	if(health == 0):
-		print("Enemy DEATH")
-
 
 
 func _on_detection_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player") and not detected_players.has(body):
 		detected_players.append(body)
-
 
 func _on_detection_body_exited(body: Node2D) -> void:
 	detected_players.erase(body)
@@ -183,7 +169,6 @@ func _on_detection_body_exited(body: Node2D) -> void:
 	if body == chase_target:
 		chase_target = null
 		print("Player lost. Returning to patrol.")
-
 
 func _is_player_in_front(player: Node2D) -> bool:
 	var horizontal_distance: float = player.global_position.x - global_position.x
@@ -193,10 +178,19 @@ func _is_player_in_front(player: Node2D) -> bool:
 		or (direction < 0 and horizontal_distance <= 0.0)
 	)
 
-
 func _detect_player(player: Node2D) -> void:
 	if chase_target == player:
 		return
 
 	chase_target = player
 	print("Player detected! Chasing!")
+	
+func take_damage(damage: int):
+	if damage <= 0: return
+	
+	health = maxi(health - damage, 0)
+	
+	if(health == 0):
+		set_collision_layer_value(3, false)
+		is_dead = true
+		sprite.play("death")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cgnqvpuhnl0td"
-path="res://.godot/imported/Temporary.png-cc7b0b19a92606f7c6c7f4d1a62b9239.ctex"
+uid="uid://u1p54hpp770m"
+path="res://.godot/imported/Radioactive-Mist-Sheet.png-ba13e0ac41e0997a210e85a8e7c12329.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Temporary.png"
-dest_files=["res://.godot/imported/Temporary.png-cc7b0b19a92606f7c6c7f4d1a62b9239.ctex"]
+source_file="res://Textures/Radioactive-Mist-Sheet.png"
+dest_files=["res://.godot/imported/Radioactive-Mist-Sheet.png-ba13e0ac41e0997a210e85a8e7c12329.ctex"]
 
 [params]
 

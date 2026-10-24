@@ -11,6 +11,9 @@ var hearts: Array[Heart] = []
 @export_subgroup("Dash")
 @export var dash_cooldown: TextureRect
 
+@export_subgroup("Foam")
+@export var foam_tank: TextureRect
+
 @export_subgroup("Menus")
 @export var pause_menu: Node
 
@@ -19,35 +22,16 @@ var hearts: Array[Heart] = []
 
 
 
-
 func _ready() -> void:
-	# ============================================================
 	# Android & Touch
-	# ============================================================
-	
 	if !touch_controlls:
 		push_warning("UIHandler: Assign TouchControlls.")
 
-	# ============================================================
 	# Health & Toxins
-	# ============================================================
-
-	# Find the PlayerController if it hasn't been assigned.
 	while player_controller == null:
 		var player_node: Node = get_tree().get_first_node_in_group("player")
-
 		if player_node != null:
-			# Check whether the Player root is the controller.
 			player_controller = player_node as PlayerController
-
-			# Otherwise, look for PlayerController among its children.
-			if player_controller == null:
-				player_controller = player_node.find_child(
-					"PlayerController",
-					true,
-					false
-				) as PlayerController
-
 		if player_controller == null:
 			await get_tree().process_frame
 
@@ -61,6 +45,14 @@ func _ready() -> void:
 
 	if heart_scene == null:
 		push_warning("UIHandler: Assign Heart Scene.")
+		return
+	
+	if dash_cooldown == null:
+		push_warning("UIHandler: Assign Dash Cooldown.")
+		return
+	
+	if foam_tank == null:
+		push_warning("UIHandler: Assign Foam Tank.")
 		return
 
 	# Connect to HazardSystem™ signals.
@@ -132,12 +124,9 @@ func _on_toxin_level_changed(_toxin_level: int) -> void:
 		player_controller.hazard_system.max_health
 	)
 	
-func process_dash(frame_count: int) -> void:
-	if !dash_cooldown:
+func process_texture(rect: TextureRect, frame_count: int, maximum: float, current: float, sizeX: int, sizeY: int):
+	if !rect:
 		return
-
-	var current: float = player_controller.dash_cooldown_timer
-	var maximum: float = player_controller.dash_cooldown_time
 
 	if maximum <= 0.0:
 		return
@@ -145,15 +134,14 @@ func process_dash(frame_count: int) -> void:
 	var progress: float = clampf(current / maximum, 0.0, 1.0)
 	var frame: int = (frame_count - 1) - roundi(progress * (frame_count - 1))
 
-	var atlas := dash_cooldown.texture as AtlasTexture
+	var atlas := rect.texture as AtlasTexture
 	if atlas == null:
 		return
 
 	atlas.region = Rect2(
-		Vector2(frame * 16, 0),
-		Vector2(16,16)
+		Vector2(frame * sizeX, 0),
+		Vector2(sizeX,sizeY)
 	)
-	
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("Pause"):
@@ -167,10 +155,11 @@ func _process(_delta: float) -> void:
 			
 	
 	if is_instance_valid(touch_controlls):
-		if GameSettings.is_touch and not touch_controlls.visible:
+		if GameData.is_touch and not touch_controlls.visible:
 			touch_controlls.show()
-		elif not GameSettings.is_touch and touch_controlls.visible:
+		elif not GameData.is_touch and touch_controlls.visible:
 			touch_controlls.hide()
 	
-	process_dash(21)
+	process_texture(dash_cooldown, 21, player_controller.dash_cooldown_time, player_controller.dash_cooldown_timer, 16, 16)
+	process_texture(foam_tank, 31, player_controller.foam_canon.max_foam, player_controller.foam_canon.current_foam, 48, 16)
 	

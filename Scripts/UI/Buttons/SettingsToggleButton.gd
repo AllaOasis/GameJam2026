@@ -11,7 +11,7 @@ func _ready() -> void:
 	# Initialize the button from the current global setting.
 	match setting_name:
 		&"is_touch":
-			button_pressed = GameSettings.is_touch
+			button_pressed = GameData.is_touch
 
 		_:
 			push_warning(
@@ -26,7 +26,7 @@ func _ready() -> void:
 func _on_toggled(enabled: bool) -> void:
 	match setting_name:
 		&"is_touch":
-			GameSettings.is_touch = enabled
+			GameData.is_touch = enabled
 
 		_:
 			push_warning(
