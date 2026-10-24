@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://u1p54hpp770m"
-path="res://.godot/imported/Radioactive-Mist-Sheet.png-ba13e0ac41e0997a210e85a8e7c12329.ctex"
+uid="uid://dnkur6rdcgp8l"
+path="res://.godot/imported/Decontamination-Airlock-BACK.png-abdaffeedef78d06aa6e687b977187a2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Radioactive-Mist-Sheet.png"
-dest_files=["res://.godot/imported/Radioactive-Mist-Sheet.png-ba13e0ac41e0997a210e85a8e7c12329.ctex"]
+source_file="res://Textures/Interactables/Decontamination-Airlock-BACK.png"
+dest_files=["res://.godot/imported/Decontamination-Airlock-BACK.png-abdaffeedef78d06aa6e687b977187a2.ctex"]
 
 [params]
 

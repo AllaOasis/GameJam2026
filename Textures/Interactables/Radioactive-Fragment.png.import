@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://drplx4rc8rk2a"
-path="res://.godot/imported/Radioactive-Pool-Small.png-b682729d910f207a26111935a8bc1e92.ctex"
+uid="uid://bp5lfr4n72sun"
+path="res://.godot/imported/Radioactive-Fragment.png-0145881cd223ca2131d0f6651f6fb6e9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Radioactive-Pool-Small.png"
-dest_files=["res://.godot/imported/Radioactive-Pool-Small.png-b682729d910f207a26111935a8bc1e92.ctex"]
+source_file="res://Textures/Interactables/Radioactive-Fragment.png"
+dest_files=["res://.godot/imported/Radioactive-Fragment.png-0145881cd223ca2131d0f6651f6fb6e9.ctex"]
 
 [params]
 

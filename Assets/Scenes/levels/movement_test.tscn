@@ -72,7 +72,12 @@ metadata/_custom_type_script = "uid://holnxpvfc4ir"
 [node name="Entities" type="Node" parent="World" unique_id=1516273730]
 
 [node name="Enemy" parent="World/Entities" unique_id=147339882 instance=ExtResource("12_ad3ke")]
+visible = false
 position = Vector2(606, 125)
+
+[node name="Enemy2" parent="World/Entities" unique_id=778196237 instance=ExtResource("12_ad3ke")]
+visible = false
+position = Vector2(504, 31)
 
 [node name="DecoreFront" type="TileMapLayer" parent="World" unique_id=1868352746]
 z_index = 10

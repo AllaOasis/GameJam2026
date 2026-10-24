@@ -40,6 +40,6 @@ func _try_damage() -> void:
 		return
 	player_controller.hazard_system.take_damage(damage_amount)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if player_in_range:
 		_try_damage()

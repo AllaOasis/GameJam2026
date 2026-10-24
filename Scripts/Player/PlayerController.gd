@@ -8,7 +8,98 @@ class_name PlayerController
 
 var ground_tile_map: TileMapLayer
 
+# ============================================================
+# Config Data
+# ============================================================
+
+@export_category("Movement Controller")
+@export_subgroup("Movement")
+
+@export_range(0, 1000, 0.01, "hide_slider")
+var speed: float = 100.0
+
+@export_range(0, 10000, 0.01, "hide_slider")
+var acceleration: float = 1000.0
+
+@export_range(0, 10000, 0.01, "hide_slider")
+var deceleration: float = 800.0
+
+
+@export_subgroup("Jumping")
+
+@export_range(0, 1000, 0.01, "hide_slider")
+var jump_velocity: float = 200.0
+
+@export_range(0, 1, 0.01, "prefer_slider")
+var jump_buffer_time: float = 0.1
+
+@export_range(0, 1, 0.01, "prefer_slider")
+var coyote_time: float = 0.1
+
+@export_range(0, 1, 0.01, "prefer_slider")
+var jump_cut_multiplier: float = 0.5
+
+@export var double_jump: bool = true
+
+@export var wall_jump: bool = true
+
+@export var allow_double_and_wall_jump: bool = true
+
+@export var infinite_wall_jump: bool = false
+
+@export var infinite_double_jump: bool = false
+
+
+@export_subgroup("Dash")
+
+@export_range(0, 2000, 0.01, "hide_slider")
+var dash_speed: float = 250.0
+
+@export_range(0, 1, 0.01, "prefer_slider")
+var dash_time: float = 0.15
+
+@export_range(0, 60, 0.01, "prefer_slider")
+var dash_cooldown_time: float = 2.0
+
+@export_range(0, 1, 0.01, "prefer_slider")
+var dash_gravity_damping: float = 0.33
+
+@export var dash: bool = true
+
+
+@export_subgroup("Drop Through")
+
+@export var drop_through: bool = true
+@export var drop_through_time: float = 0.2
+
+
+# ============================================================
+# Runtime Data
+# ============================================================
+
+var jump_buffer_timer: float = 0.0
+var coyote_timer: float = 0.0
+
+var can_double_jump: bool = false
+var can_wall_jump: bool = false
+
+var can_dash: bool = true
+var dash_timer: float = 0.0
+var dash_cooldown_timer: float = 0.0
+
+var drop_through_timer: float = 0.0
+
+var current_ground_type: String = ""
+var current_ground_drop_through: bool = false
+
+# 1.0 = facing right
+# -1.0 = facing left
+var orientation: float = 1.0
+
+
 func _ready() -> void:
+	GameData.is_player_dead = false
+	
 	if !player:
 		push_error("PlayerController: Missing Player Reference!")
 		push_warning("PlayerController: Disabling Movement Controller.")
@@ -149,91 +240,3 @@ func can_drop_through_current_ground() -> bool:
 		and current_ground_drop_through
 		and player.is_on_floor()
 	)
-
-# ============================================================
-# Config Data
-# ============================================================
-
-@export_category("Movement Controller")
-@export_subgroup("Movement")
-
-@export_range(0, 1000, 0.01, "hide_slider")
-var speed: float = 100.0
-
-@export_range(0, 10000, 0.01, "hide_slider")
-var acceleration: float = 1000.0
-
-@export_range(0, 10000, 0.01, "hide_slider")
-var deceleration: float = 800.0
-
-
-@export_subgroup("Jumping")
-
-@export_range(0, 1000, 0.01, "hide_slider")
-var jump_velocity: float = 200.0
-
-@export_range(0, 1, 0.01, "prefer_slider")
-var jump_buffer_time: float = 0.1
-
-@export_range(0, 1, 0.01, "prefer_slider")
-var coyote_time: float = 0.1
-
-@export_range(0, 1, 0.01, "prefer_slider")
-var jump_cut_multiplier: float = 0.5
-
-@export var double_jump: bool = true
-
-@export var wall_jump: bool = true
-
-@export var allow_double_and_wall_jump: bool = true
-
-@export var infinite_wall_jump: bool = false
-
-@export var infinite_double_jump: bool = false
-
-
-@export_subgroup("Dash")
-
-@export_range(0, 2000, 0.01, "hide_slider")
-var dash_speed: float = 250.0
-
-@export_range(0, 1, 0.01, "prefer_slider")
-var dash_time: float = 0.15
-
-@export_range(0, 60, 0.01, "prefer_slider")
-var dash_cooldown_time: float = 2.0
-
-@export_range(0, 1, 0.01, "prefer_slider")
-var dash_gravity_damping: float = 0.33
-
-@export var dash: bool = true
-
-
-@export_subgroup("Drop Through")
-
-@export var drop_through: bool = true
-@export var drop_through_time: float = 0.2
-
-
-# ============================================================
-# Runtime Data
-# ============================================================
-
-var jump_buffer_timer: float = 0.0
-var coyote_timer: float = 0.0
-
-var can_double_jump: bool = false
-var can_wall_jump: bool = false
-
-var can_dash: bool = true
-var dash_timer: float = 0.0
-var dash_cooldown_timer: float = 0.0
-
-var drop_through_timer: float = 0.0
-
-var current_ground_type: String = ""
-var current_ground_drop_through: bool = false
-
-# 1.0 = facing right
-# -1.0 = facing left
-var orientation: float = 1.0

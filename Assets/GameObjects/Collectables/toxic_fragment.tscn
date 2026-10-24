@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cnmvu644aiehk"]
 
 [ext_resource type="Script" uid="uid://dwqygjyj3gaif" path="res://Scripts/Interactables/toxic_fragment.gd" id="1_w7xsn"]
-[ext_resource type="Texture2D" uid="uid://bp5lfr4n72sun" path="res://Textures/Enemy/Radioactive-Fragment.png" id="2_owlge"]
+[ext_resource type="Texture2D" uid="uid://bp5lfr4n72sun" path="res://Textures/Interactables/Radioactive-Fragment.png" id="2_owlge"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_45v3f"]
 size = Vector2(12, 12)

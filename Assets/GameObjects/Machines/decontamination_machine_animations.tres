@@ -1,6 +1,6 @@
 [gd_resource type="SpriteFrames" format=3 uid="uid://pj3d8c5fecf4"]
 
-[ext_resource type="Texture2D" uid="uid://dutxgwvnk1a68" path="res://Textures/Decontamination-Machine-Sheet.png" id="1_83o64"]
+[ext_resource type="Texture2D" uid="uid://dutxgwvnk1a68" path="res://Textures/Interactables/Decontamination-Machine-Sheet.png" id="1_83o64"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x03o1"]
 atlas = ExtResource("1_83o64")

@@ -17,8 +17,20 @@ var hearts: Array[Heart] = []
 @export_subgroup("Menus")
 @export var pause_menu: Node
 
+@export_subgroup("Death Animation")
+@export var death_background: CanvasItem
+@export var death_text: CanvasItem
+@export var death_button: CanvasItem
+@export var animation_duration: float = 2
+@export var initial_delay: float = 1.5
+
 @export_subgroup("Android & Touch")
+@export var pause_button: Node
 @export var touch_controlls: Node;
+
+var death_background_timer: float = 0
+var death_text_timer: float = 0
+var death_button_timer: float = 0
 
 
 
@@ -63,12 +75,15 @@ func _ready() -> void:
 		player_controller.hazard_system.toxin_level_changed.connect(_on_toxin_level_changed)
 
 	create_hearts()
+	call_deferred("update_hearts", player_controller.hazard_system.current_health, player_controller.hazard_system.max_health)
+	
+	GameData.player_death.connect(player_death)
+	
+	death_background.modulate.a = 0
+	death_button.modulate.a = 0
+	death_text.modulate.a = 0
 
-	call_deferred(
-		"update_hearts",
-		player_controller.hazard_system.current_health,
-		player_controller.hazard_system.max_health
-	)
+
 
 func create_hearts() -> void:
 	# Remove existing hearts.
@@ -123,7 +138,7 @@ func _on_toxin_level_changed(_toxin_level: int) -> void:
 		player_controller.hazard_system.current_health,
 		player_controller.hazard_system.max_health
 	)
-	
+
 func process_texture(rect: TextureRect, frame_count: int, maximum: float, current: float, sizeX: int, sizeY: int):
 	if !rect:
 		return
@@ -144,13 +159,27 @@ func process_texture(rect: TextureRect, frame_count: int, maximum: float, curren
 	)
 
 func _process(_delta: float) -> void:
+	if GameData.is_player_dead:
+		if initial_delay <= 0:
+			if death_background_timer > 0:
+				death_background.modulate.a = clampf(1.0 - death_background_timer / (animation_duration / 3.0), 0.0, 1.0)
+				death_background_timer -= _delta
+			elif death_text_timer > 0:
+				death_text.modulate.a = clampf(1.0 - death_text_timer / (animation_duration / 3.0), 0.0, 1.0)
+				death_text_timer -= _delta
+			elif death_button_timer > 0:
+				death_button.modulate.a = clampf(1.0 - death_button_timer / (animation_duration / 3.0), 0.0, 1.0)
+				death_button_timer -= _delta
+		initial_delay -= _delta
+		return
+	
 	if Input.is_action_just_pressed("Pause"):
 		PauseManager.toggle_pause()
 	
 	if pause_menu:
 		if PauseManager.is_paused: 
 			pause_menu.show()
-		else: 
+		else:
 			pause_menu.hide()
 			
 	
@@ -162,4 +191,16 @@ func _process(_delta: float) -> void:
 	
 	process_texture(dash_cooldown, 21, player_controller.dash_cooldown_time, player_controller.dash_cooldown_timer, 16, 16)
 	process_texture(foam_tank, 31, player_controller.foam_canon.max_foam, player_controller.foam_canon.current_foam, 48, 16)
-	
+
+func player_death(death: bool) -> void:
+	if death:
+		pause_button.hide()
+		pause_menu.hide()
+		death_background.show()
+		death_button.show()
+		death_text.show()
+		
+		death_background_timer = animation_duration / 3
+		death_button_timer = animation_duration / 3
+		death_text_timer = animation_duration / 3
+		

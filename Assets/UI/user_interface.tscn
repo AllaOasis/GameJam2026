@@ -15,6 +15,9 @@
 [ext_resource type="Texture2D" uid="uid://n5nba62lmomn" path="res://Textures/UI/touch-on.png" id="7_xryph"]
 [ext_resource type="Texture2D" uid="uid://cekfx1ohbjuqp" path="res://Textures/UI/touch-off.png" id="8_fojfy"]
 [ext_resource type="Script" uid="uid://cl48x0pr8we8o" path="res://Scripts/UI/Buttons/SettingsToggleButton.gd" id="9_xryph"]
+[ext_resource type="Texture2D" uid="uid://daajrocfxsr7k" path="res://Textures/UI/Game-Over-Text.png" id="16_xdasw"]
+[ext_resource type="Texture2D" uid="uid://8qgjlvos5b6b" path="res://Textures/UI/Button/ButtonDown/Continue-Button.png" id="17_x3n41"]
+[ext_resource type="Texture2D" uid="uid://dfnf3gwnst7hk" path="res://Textures/UI/Button/Continue-Button-Clicked.png" id="18_kuv2s"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_np7a2"]
 atlas = ExtResource("5_4x04t")
@@ -27,7 +30,7 @@ region = Rect2(0, 0, 16, 16)
 [node name="UserInterface" type="CanvasLayer" unique_id=392176404]
 script = ExtResource("1_oxvhq")
 
-[node name="UIHandler" type="Control" parent="." unique_id=1208962041 node_paths=PackedStringArray("hearts_container", "dash_cooldown", "foam_tank", "pause_menu", "touch_controlls")]
+[node name="UIHandler" type="Control" parent="." unique_id=1208962041 node_paths=PackedStringArray("hearts_container", "dash_cooldown", "foam_tank", "pause_menu", "death_background", "death_text", "death_button", "pause_button", "touch_controlls")]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -41,6 +44,12 @@ heart_scene = ExtResource("2_m8ba5")
 dash_cooldown = NodePath("DashDisplay")
 foam_tank = NodePath("FoamDisplay")
 pause_menu = NodePath("PauseMenu")
+death_background = NodePath("DeathBackground")
+death_text = NodePath("DeathBackground/DeathText")
+death_button = NodePath("DeathBackground/DeathButton")
+animation_duration = 3.0
+initial_delay = 1.0
+pause_button = NodePath("PauseButton")
 touch_controlls = NodePath("AndroidInterface")
 metadata/_custom_type_script = "uid://cqptqrjy58rko"
 
@@ -64,7 +73,7 @@ offset_right = 149.0
 offset_bottom = 74.0
 texture = SubResource("AtlasTexture_82yni")
 
-[node name="ActionButton" type="TextureButton" parent="UIHandler" unique_id=1479259250]
+[node name="PauseButton" type="TextureButton" parent="UIHandler" unique_id=1479259250]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -163,4 +172,43 @@ texture_normal = ExtResource("6_ytdsy")
 stretch_mode = 5
 script = ExtResource("7_fojfy")
 level_path = "uid://bw0bsrvbkhlv8"
+metadata/_custom_type_script = "uid://b56qifb45ldel"
+
+[node name="DeathBackground" type="ColorRect" parent="UIHandler" unique_id=320039154]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="DeathText" type="TextureRect" parent="UIHandler/DeathBackground" unique_id=581673313]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -240.0
+offset_top = 100.0
+offset_right = 240.0
+offset_bottom = 300.0
+grow_horizontal = 2
+texture = ExtResource("16_xdasw")
+stretch_mode = 5
+
+[node name="DeathButton" type="TextureButton" parent="UIHandler/DeathBackground" unique_id=1262847932]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -100.0
+offset_top = 250.0
+offset_right = 100.0
+offset_bottom = 370.0
+grow_horizontal = 2
+texture_normal = ExtResource("17_x3n41")
+texture_pressed = ExtResource("18_kuv2s")
+stretch_mode = 5
+script = ExtResource("7_fojfy")
+level_path = "uid://dodyq4d6gm02c"
 metadata/_custom_type_script = "uid://b56qifb45ldel"

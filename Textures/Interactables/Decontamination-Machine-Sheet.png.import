@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dutxgwvnk1a68"
-path="res://.godot/imported/Decontamination-Machine-Sheet.png-a4658288190b6bfdb7cae0d1c25138cd.ctex"
+path="res://.godot/imported/Decontamination-Machine-Sheet.png-80c3b2373be77f0a34e65e2bb5b16093.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Decontamination-Machine-Sheet.png"
-dest_files=["res://.godot/imported/Decontamination-Machine-Sheet.png-a4658288190b6bfdb7cae0d1c25138cd.ctex"]
+source_file="res://Textures/Interactables/Decontamination-Machine-Sheet.png"
+dest_files=["res://.godot/imported/Decontamination-Machine-Sheet.png-80c3b2373be77f0a34e65e2bb5b16093.ctex"]
 
 [params]
 

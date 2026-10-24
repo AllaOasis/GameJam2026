@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dkupm4mpqvq3"
-path="res://.godot/imported/Tank-Restock.png-9c26b634640f1097d73bcd1e8dbef2a8.ctex"
+uid="uid://u1p54hpp770m"
+path="res://.godot/imported/Radioactive-Mist-Sheet.png-4a64bc30e2d480c3a3a0567a0969e519.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Tank-Restock.png"
-dest_files=["res://.godot/imported/Tank-Restock.png-9c26b634640f1097d73bcd1e8dbef2a8.ctex"]
+source_file="res://Textures/Interactables/Radioactive-Mist-Sheet.png"
+dest_files=["res://.godot/imported/Radioactive-Mist-Sheet.png-4a64bc30e2d480c3a3a0567a0969e519.ctex"]
 
 [params]
 

@@ -46,7 +46,7 @@ func _physics_process(delta: float) -> void:
 		global_position += velocity * delta
 		
 	var percent = 1 - timer / lifetime;
-	
+	sprite.modulate.a = percent
 
 
 func _on_body_entered(body: Node2D) -> void:

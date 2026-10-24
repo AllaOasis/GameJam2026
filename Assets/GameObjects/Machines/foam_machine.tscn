@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://wh1wwrkyrs7"]
 
 [ext_resource type="Script" uid="uid://conhb0adpql86" path="res://Scripts/Interactables/foam_machine.gd" id="1_5qcc7"]
-[ext_resource type="Texture2D" uid="uid://dkupm4mpqvq3" path="res://Textures/Tank-Restock.png" id="1_pqtsh"]
+[ext_resource type="Texture2D" uid="uid://dkupm4mpqvq3" path="res://Textures/Interactables/Tank-Restock.png" id="1_pqtsh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_np7a2"]
 size = Vector2(32, 32)

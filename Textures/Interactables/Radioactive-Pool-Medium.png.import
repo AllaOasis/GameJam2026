@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dnkur6rdcgp8l"
-path="res://.godot/imported/Decontamination-Airlock-BACK.png-0e8cb8deb70ec0db5954fd03a16246e9.ctex"
+uid="uid://cqv8gi71vlkf8"
+path="res://.godot/imported/Radioactive-Pool-Medium.png-2198009ee5d31fa9d64a33e6147a383e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Decontamination-Airlock-BACK.png"
-dest_files=["res://.godot/imported/Decontamination-Airlock-BACK.png-0e8cb8deb70ec0db5954fd03a16246e9.ctex"]
+source_file="res://Textures/Interactables/Radioactive-Pool-Medium.png"
+dest_files=["res://.godot/imported/Radioactive-Pool-Medium.png-2198009ee5d31fa9d64a33e6147a383e.ctex"]
 
 [params]
 

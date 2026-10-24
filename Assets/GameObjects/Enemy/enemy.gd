@@ -72,7 +72,7 @@ func _physics_process(delta: float) -> void:
 	turn_timer = maxf(turn_timer - delta, 0.0)
 
 	# Choose Movement Direction
-	var chasing: bool = is_instance_valid(chase_target)
+	var chasing: bool = is_instance_valid(chase_target) and !GameData.is_player_dead
 
 	if chasing:
 		var distance_x: float = (

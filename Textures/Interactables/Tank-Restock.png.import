@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bpqcj35yeqkga"
-path="res://.godot/imported/Decontamination-Airlock-FRONT.png-a51bc8f20c7fec9ba72a9409c363f9d2.ctex"
+uid="uid://dkupm4mpqvq3"
+path="res://.godot/imported/Tank-Restock.png-4ff90f151e29a5d5ee125f194fabfd1f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Decontamination-Airlock-FRONT.png"
-dest_files=["res://.godot/imported/Decontamination-Airlock-FRONT.png-a51bc8f20c7fec9ba72a9409c363f9d2.ctex"]
+source_file="res://Textures/Interactables/Tank-Restock.png"
+dest_files=["res://.godot/imported/Tank-Restock.png-4ff90f151e29a5d5ee125f194fabfd1f.ctex"]
 
 [params]
 

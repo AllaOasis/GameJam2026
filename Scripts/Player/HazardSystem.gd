@@ -97,16 +97,15 @@ func restore_health(amount: int) -> void:
 		health_changed.emit(current_health, max_health)
 
 func take_damage(amount: int) -> void:
-	print("Damage Attempt")
-	if damageImunity or amount <= 0 or damage_imunity_timer > 0:
+	if damageImunity or amount <= 0 or damage_imunity_timer > 0 or GameData.is_player_dead:
 		return
 
 	var previous_health: int = current_health
 
 	current_health = maxi(current_health - amount, 0)
-	
 
 	if current_health < previous_health:
+		damage_imunity_timer = damage_imunity_time
 		health_regen_timer = health_regen_delay
 		health_regen_accumulator = 0.0
 		health_changed.emit(current_health, max_health)
