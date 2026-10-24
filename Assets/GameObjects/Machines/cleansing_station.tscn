@@ -2,14 +2,16 @@
 
 [ext_resource type="Script" uid="uid://bsp7sku86eqya" path="res://Scripts/Interactables/cleansing_station.gd" id="1_4v01i"]
 [ext_resource type="SpriteFrames" uid="uid://pj3d8c5fecf4" path="res://Assets/GameObjects/Machines/decontamination_machine_animations.tres" id="2_tux4h"]
+[ext_resource type="Texture2D" uid="uid://bgtfiauwuqwmk" path="res://Textures/Interactables/Decontamination-Machine.png" id="3_tux4h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_va72s"]
 size = Vector2(31, 32)
 
-[node name="CleansingStation" type="Area2D" unique_id=585487498 node_paths=PackedStringArray("sprite")]
+[node name="CleansingStation" type="Area2D" unique_id=585487498 node_paths=PackedStringArray("sprite", "light")]
 collision_mask = 3
 script = ExtResource("1_4v01i")
 sprite = NodePath("AnimatedSprite2D")
+light = NodePath("PointLight2D")
 processing_time = 3.0
 metadata/_custom_type_script = "uid://bsp7sku86eqya"
 
@@ -20,3 +22,6 @@ animation = &"processing"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=225376207]
 position = Vector2(-1.5, 0)
 shape = SubResource("RectangleShape2D_va72s")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=418321661]
+texture = ExtResource("3_tux4h")

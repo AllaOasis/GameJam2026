@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://bw5a7kw2e6fnt"]
+
+[ext_resource type="Texture2D" uid="uid://bp5lfr4n72sun" path="res://Textures/Interactables/Radioactive-Fragment.png" id="2_4fddb"]
+
+[node name="Toxin" type="Control" unique_id=1297628154]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=93658390]
+scale = Vector2(3, 3)
+texture = ExtResource("2_4fddb")

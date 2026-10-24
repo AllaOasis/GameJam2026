@@ -1,6 +1,7 @@
 extends Area2D
 class_name FoamMachine
 
+@export var light: PointLight2D
 var player_controller: PlayerController
 var player_in_range: bool = false
 
@@ -8,6 +9,9 @@ var player_in_range: bool = false
 func _ready() -> void:
 	body_entered.connect(_on_body_entered)
 	body_exited.connect(_on_body_exited)
+	
+	if light:
+		light.visible = false
 
 func _on_body_entered(body: Node2D) -> void:
 	if not body is PlayerController:
@@ -18,6 +22,8 @@ func _on_body_entered(body: Node2D) -> void:
 		
 	if player_controller:
 		player_in_range = true
+		if light:
+			light.visible = true
 		process_interact(0)
 
 func _on_body_exited(body: Node2D) -> void:
@@ -25,6 +31,9 @@ func _on_body_exited(body: Node2D) -> void:
 		return
 
 	player_in_range = false
+	
+	if light:
+		light.visible = false
 	
 func process_interact(_delta):
 	if Input.is_action_just_pressed("Interact"):

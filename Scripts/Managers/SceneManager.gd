@@ -1,18 +1,18 @@
 extends Node
 
-# ============================================================
-# Scene Loading
-# ============================================================
-
 var next_spawn_point: StringName = &"Default"
 
 
 func load_level(
 	level_path: String,
 	player_scene: PackedScene = null,
+	level_toxins: int = 0,
 	spawn_point: StringName = &"Default"
 ) -> void:
 	PauseManager.resume_game()
+	GameData.level_toxins = level_toxins
+	GameData.current_toxins = -1 if level_toxins == 0 else 0
+	GameData.game_won = false
 	
 	# Load the requested scene.
 	var error: Error = get_tree().change_scene_to_file(level_path)
@@ -24,7 +24,6 @@ func load_level(
 		)
 		return
 
-	# Only spawn a Player if a Player Scene was provided.
 	if player_scene == null:
 		return
 
@@ -50,11 +49,7 @@ func _spawn_player_at_spawn(player_scene: PackedScene) -> void:
 		push_error("SceneManager: No SpawnPoint found in the current scene.")
 		return
 		
-	# ==============================
 	# Tri-Point spawn system
-	# ==============================
-
-	# 1. Find the requested SpawnPoint by name.
 	var spawn: SpawnPoint = null
 
 	for point in spawn_points:
@@ -62,36 +57,26 @@ func _spawn_player_at_spawn(player_scene: PackedScene) -> void:
 			spawn = point
 			break
 
-	# 2. Fall back to the SpawnPoint named Default.
 	if spawn == null:
 		for point in spawn_points:
 			if point.name == "Default":
 				spawn = point
 				break
 
-	# 3. Fall back to the first SpawnPoint found.
 	if spawn == null:
 		spawn = spawn_points[0]
 		
-	# ==============================
-	# Spawn Player
-	# ==============================
-
-	# Create a fresh Player instance.
 	var player: Node = player_scene.instantiate()
 
 	if not player is Node2D:
 		push_error("SceneManager: Player scene root must inherit Node2D.")
 		player.free()
 		return
-
-	# Ensure the Player can be found by other scripts.
+		
 	player.add_to_group("player")
-
-	# Add the Player to the level and position it at the spawn.
+	
 	current_scene.add_child(player)
 	(player as Node2D).global_position = spawn.global_position
-
 
 func _collect_spawn_points(node: Node,spawn_points: Array[SpawnPoint]) -> void:
 	if node is SpawnPoint:

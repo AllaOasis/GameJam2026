@@ -1,9 +1,15 @@
 [gd_scene format=3 uid="uid://dkddlmmoqlt8q"]
 
 [ext_resource type="Script" uid="uid://binvp6qtsmxfd" path="res://Assets/GameObjects/Enemy/enemy.gd" id="1_infww"]
+[ext_resource type="PackedScene" uid="uid://cnmvu644aiehk" path="res://Assets/GameObjects/Collectables/toxic_fragment.tscn" id="2_j13n1"]
 [ext_resource type="SpriteFrames" uid="uid://wm2hod0fcckg" path="res://Assets/GameObjects/Enemy/enemy_animations.tres" id="2_nhg1w"]
 [ext_resource type="Script" uid="uid://piqfjnv0n5jv" path="res://Scripts/Interactables/damage_area.gd" id="4_j13n1"]
 [ext_resource type="Texture2D" uid="uid://biv3m2x34bu8g" path="res://Textures/Player/Foam-Medium.png" id="4_nhg1w"]
+[ext_resource type="Script" uid="uid://cdl5eh4jfwh83" path="res://Scripts/Interactables/ToxicLight2D.gd" id="6_5y1no"]
+[ext_resource type="Texture2D" uid="uid://cuu3xlm5svsf7" path="res://Textures/Enemy/Mist-Animation1.png" id="7_44imt"]
+[ext_resource type="Texture2D" uid="uid://btq1kc7r0iuii" path="res://Textures/Enemy/Mist-Animation2.png" id="8_ly1ur"]
+[ext_resource type="Texture2D" uid="uid://bs5otpyhc3crn" path="res://Textures/Enemy/Mist-Animation3.png" id="9_jn12d"]
+[ext_resource type="Texture2D" uid="uid://0u37mcn2tg0m" path="res://Textures/Enemy/Mist-Animation4.png" id="10_80r1b"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jctj4"]
 radius = 6.0
@@ -15,20 +21,23 @@ size = Vector2(302, 108)
 [sub_resource type="CircleShape2D" id="CircleShape2D_infww"]
 radius = 32.0
 
-[node name="Enemy" type="CharacterBody2D" unique_id=147339882 node_paths=PackedStringArray("sprite", "detect_area", "wall_check", "ground_check", "attack_area")]
+[node name="Enemy" type="CharacterBody2D" unique_id=147339882 node_paths=PackedStringArray("sprite", "detect_area", "wall_check", "ground_check", "vision_ray", "attack_area")]
 collision_layer = 4
 collision_mask = 145
 script = ExtResource("1_infww")
 sprite = NodePath("AnimatedSprite2D")
 detect_area = NodePath("DetectArea")
+behind_detection_chance = 0.4
 wall_check = NodePath("WallCheck")
 ground_check = NodePath("GroundCheck")
+vision_ray = NodePath("Sight")
 attack_area = NodePath("AttackArea")
-stop_chasing_at_edges = false
+drop = ExtResource("2_j13n1")
+stop_chasing_at_edges = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1974077383]
 sprite_frames = ExtResource("2_nhg1w")
-animation = &"death"
+animation = &"walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=332074212]
 position = Vector2(0, 4)
@@ -50,11 +59,19 @@ script = ExtResource("4_j13n1")
 position = Vector2(0, 4)
 shape = SubResource("CircleShape2D_infww")
 
-[node name="PointLight2D" type="PointLight2D" parent="AttackArea/CollisionShape2D" unique_id=1925944659]
-position = Vector2(0.49999928, -2.5000038)
-scale = Vector2(5.4166665, 6.416667)
+[node name="PointLight2D" type="PointLight2D" parent="AttackArea" unique_id=1518449974]
 color = Color(0, 1, 0, 1)
 texture = ExtResource("4_nhg1w")
+offset = Vector2(0, 2)
+texture_scale = 5.0
+
+[node name="ToxicLight2D" type="PointLight2D" parent="AttackArea" unique_id=1323162358]
+energy = 5.0
+texture = ExtResource("7_44imt")
+script = ExtResource("6_5y1no")
+textures = Array[Texture2D]([ExtResource("7_44imt"), ExtResource("8_ly1ur"), ExtResource("9_jn12d"), ExtResource("10_80r1b")])
+max_interval = 0.3
+metadata/_custom_type_script = "uid://cdl5eh4jfwh83"
 
 [node name="WallCheck" type="RayCast2D" parent="." unique_id=30319618]
 target_position = Vector2(12, 0)
@@ -62,3 +79,6 @@ target_position = Vector2(12, 0)
 [node name="GroundCheck" type="RayCast2D" parent="." unique_id=1664399107]
 target_position = Vector2(-8, 32)
 collision_mask = 129
+
+[node name="Sight" type="RayCast2D" parent="." unique_id=2089876581]
+collision_mask = 19

@@ -6,14 +6,16 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_np7a2"]
 size = Vector2(32, 32)
 
-[node name="FoamMachine" type="Area2D" unique_id=302395221]
+[node name="FoamMachine" type="Area2D" unique_id=302395221 node_paths=PackedStringArray("light")]
 collision_mask = 3
 script = ExtResource("1_5qcc7")
+light = NodePath("PointLight2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=188569254]
-position = Vector2(32, 112)
 texture = ExtResource("1_pqtsh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=520500060]
-position = Vector2(32, 112)
 shape = SubResource("RectangleShape2D_np7a2")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1548994654]
+texture = ExtResource("1_pqtsh")

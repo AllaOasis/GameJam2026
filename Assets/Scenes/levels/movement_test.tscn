@@ -9,9 +9,12 @@
 [ext_resource type="Script" uid="uid://holnxpvfc4ir" path="res://Assets/GameObjects/SpawnPoint.gd" id="5_ko8ew"]
 [ext_resource type="TileSet" uid="uid://dar55l57n2spv" path="res://Assets/TileSets/front_background.tres" id="6_scka8"]
 [ext_resource type="PackedScene" uid="uid://cnmvu644aiehk" path="res://Assets/GameObjects/Collectables/toxic_fragment.tscn" id="7_cufsn"]
+[ext_resource type="PackedScene" uid="uid://dq76jm186u3tt" path="res://Assets/GameObjects/Machines/Airlock.tscn" id="10_il0va"]
 [ext_resource type="PackedScene" uid="uid://ciagw0fvwgwj" path="res://Assets/GameObjects/Machines/cleansing_station.tscn" id="11_1pqfr"]
+[ext_resource type="PackedScene" uid="uid://sot280dael8y" path="res://Assets/GameObjects/DamageAreas/pool-small.tscn" id="11_f8wop"]
 [ext_resource type="PackedScene" uid="uid://wh1wwrkyrs7" path="res://Assets/GameObjects/Machines/foam_machine.tscn" id="12_1pqfr"]
 [ext_resource type="PackedScene" uid="uid://dkddlmmoqlt8q" path="res://Assets/GameObjects/Enemy/Enemy.tscn" id="12_ad3ke"]
+[ext_resource type="PackedScene" uid="uid://biquhn7dsy865" path="res://Assets/GameObjects/DamageAreas/pool-midium.tscn" id="12_rfd8b"]
 [ext_resource type="Texture2D" uid="uid://biv3m2x34bu8g" path="res://Textures/Player/Foam-Medium.png" id="14_il0va"]
 
 [node name="MovementTest" type="Node2D" unique_id=1838863765]
@@ -52,13 +55,26 @@ tile_set = ExtResource("6_scka8")
 z_index = -1
 
 [node name="ToxicFragment" parent="World/Interactables" unique_id=434236995 instance=ExtResource("7_cufsn")]
-position = Vector2(665, 212)
+position = Vector2(89, 229)
 
 [node name="CleansingStation" parent="World/Interactables" unique_id=585487498 instance=ExtResource("11_1pqfr")]
 position = Vector2(81, 112)
 run_empty = true
 
 [node name="FoamMachine" parent="World/Interactables" unique_id=302395221 instance=ExtResource("12_1pqfr")]
+position = Vector2(32, 112)
+
+[node name="Airlock" parent="World/Interactables" unique_id=287543538 instance=ExtResource("10_il0va")]
+position = Vector2(601, 16)
+
+[node name="Airlock2" parent="World/Interactables" unique_id=5716174 instance=ExtResource("10_il0va")]
+position = Vector2(386, 17)
+
+[node name="PoolSmall" parent="World/Interactables" unique_id=1520482152 instance=ExtResource("11_f8wop")]
+position = Vector2(290, 88)
+
+[node name="PoolMidium" parent="World/Interactables" unique_id=808974576 instance=ExtResource("12_rfd8b")]
+position = Vector2(485, 296)
 
 [node name="SpawnPoints" type="Node" parent="World" unique_id=1494261849]
 
@@ -72,11 +88,9 @@ metadata/_custom_type_script = "uid://holnxpvfc4ir"
 [node name="Entities" type="Node" parent="World" unique_id=1516273730]
 
 [node name="Enemy" parent="World/Entities" unique_id=147339882 instance=ExtResource("12_ad3ke")]
-visible = false
 position = Vector2(606, 125)
 
 [node name="Enemy2" parent="World/Entities" unique_id=778196237 instance=ExtResource("12_ad3ke")]
-visible = false
 position = Vector2(504, 31)
 
 [node name="DecoreFront" type="TileMapLayer" parent="World" unique_id=1868352746]

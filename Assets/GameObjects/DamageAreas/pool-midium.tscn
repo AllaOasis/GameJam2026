@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://biquhn7dsy865"]
+
+[ext_resource type="Script" uid="uid://piqfjnv0n5jv" path="res://Scripts/Interactables/damage_area.gd" id="1_2momv"]
+[ext_resource type="Texture2D" uid="uid://cqv8gi71vlkf8" path="res://Textures/Interactables/Radioactive-Pool-Medium.png" id="1_ho7ch"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5w5hr"]
+size = Vector2(48, 19)
+
+[node name="PoolMidium" type="Area2D" unique_id=808974576]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_2momv")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1109000447]
+texture = ExtResource("1_ho7ch")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1865889674]
+position = Vector2(0, -2.5)
+shape = SubResource("RectangleShape2D_5w5hr")

@@ -17,7 +17,7 @@
 radius = 6.0
 height = 24.0
 
-[sub_resource type="Curve" id="Curve_1fhr0"]
+[sub_resource type="Curve" id="Curve_xiq6a"]
 _limits = [0.0, 8.0, 0.0, 4.0]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(4, 8), 0.0, 0.0, 0, 0]
 point_count = 2
@@ -40,7 +40,8 @@ shape = SubResource("CapsuleShape2D_i2024")
 
 [node name="HazardSystem" type="Node" parent="." unique_id=351905984]
 script = ExtResource("3_xiq6a")
-toxin_tween = SubResource("Curve_1fhr0")
+toxin_tween = SubResource("Curve_xiq6a")
+health_regen_rate = 1.0
 metadata/_custom_type_script = "uid://cnk40ouldcobd"
 
 [node name="StateMachine" type="Node" parent="." unique_id=1820705594 node_paths=PackedStringArray("player", "animated_sprite", "player_controller")]

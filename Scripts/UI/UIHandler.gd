@@ -5,6 +5,10 @@ class_name UIHandler
 @export var hearts_container: HBoxContainer
 @export var heart_scene: PackedScene
 
+@export_subgroup("Health & Toxins")
+@export var toxins_container: HBoxContainer
+@export var toxins_scene: PackedScene
+
 var player_controller: PlayerController
 var hearts: Array[Heart] = []
 
@@ -24,6 +28,16 @@ var hearts: Array[Heart] = []
 @export var animation_duration: float = 2
 @export var initial_delay: float = 1.5
 
+@export_subgroup("Win Animation")
+@export var win_screen: CanvasItem
+@export var win_text: CanvasItem
+@export var win_button: CanvasItem
+@export var win_animation_duration: float = 2.0
+@export var win_initial_delay: float = 2
+
+var win_text_timer: float = 0.0
+var win_button_timer: float = 0.0
+
 @export_subgroup("Android & Touch")
 @export var pause_button: Node
 @export var touch_controlls: Node;
@@ -40,30 +54,38 @@ func _ready() -> void:
 		push_warning("UIHandler: Assign TouchControlls.")
 
 	# Health & Toxins
-	while player_controller == null:
+	while !player_controller:
 		var player_node: Node = get_tree().get_first_node_in_group("player")
 		if player_node != null:
 			player_controller = player_node as PlayerController
-		if player_controller == null:
+		if !player_controller:
 			await get_tree().process_frame
 
-	if player_controller.hazard_system == null:
+	if !player_controller.hazard_system:
 		push_warning("UIHandler: PlayerController has no HazardSystem.")
 		return
 
-	if hearts_container == null:
+	if !hearts_container:
 		push_warning("UIHandler: Assign HeartsContainer.")
 		return
 
-	if heart_scene == null:
+	if !heart_scene:
+		push_warning("UIHandler: Assign Heart Scene.")
+		return
+		
+	if !toxins_container:
+		push_warning("UIHandler: Assign HeartsContainer.")
+		return
+
+	if !toxins_scene:
 		push_warning("UIHandler: Assign Heart Scene.")
 		return
 	
-	if dash_cooldown == null:
+	if !dash_cooldown:
 		push_warning("UIHandler: Assign Dash Cooldown.")
 		return
 	
-	if foam_tank == null:
+	if !foam_tank:
 		push_warning("UIHandler: Assign Foam Tank.")
 		return
 
@@ -77,13 +99,37 @@ func _ready() -> void:
 	create_hearts()
 	call_deferred("update_hearts", player_controller.hazard_system.current_health, player_controller.hazard_system.max_health)
 	
+	update_toxins()
+	
 	GameData.player_death.connect(player_death)
 	
 	death_background.modulate.a = 0
 	death_button.modulate.a = 0
 	death_text.modulate.a = 0
+	
+	death_background.visible = false
+	death_button.visible = false
+	death_text.visible = false
+	
+	# Win screen
+	win_text.modulate.a = 0.0
+	win_button.modulate.a = 0.0
 
+	win_screen.visible = false
+	win_text.visible = false
+	win_button.visible = false
 
+func update_toxins() -> void:
+	for child in toxins_container.get_children():
+		child.queue_free()
+	
+	var toxins = player_controller.hazard_system.toxin_coins
+	
+	for i in range(toxins):
+		var toxin = toxins_scene.instantiate()
+		toxins_container.add_child(toxin)
+		
+	
 
 func create_hearts() -> void:
 	# Remove existing hearts.
@@ -100,7 +146,7 @@ func create_hearts() -> void:
 	for i in range(heart_count):
 		var heart: Heart = heart_scene.instantiate() as Heart
 
-		if heart == null:
+		if !heart:
 			push_error("UIHandler: Heart Scene root must use Heart.gd.")
 			return
 
@@ -138,6 +184,8 @@ func _on_toxin_level_changed(_toxin_level: int) -> void:
 		player_controller.hazard_system.current_health,
 		player_controller.hazard_system.max_health
 	)
+	
+	update_toxins()
 
 func process_texture(rect: TextureRect, frame_count: int, maximum: float, current: float, sizeX: int, sizeY: int):
 	if !rect:
@@ -150,7 +198,7 @@ func process_texture(rect: TextureRect, frame_count: int, maximum: float, curren
 	var frame: int = (frame_count - 1) - roundi(progress * (frame_count - 1))
 
 	var atlas := rect.texture as AtlasTexture
-	if atlas == null:
+	if !atlas:
 		return
 
 	atlas.region = Rect2(
@@ -171,6 +219,28 @@ func _process(_delta: float) -> void:
 				death_button.modulate.a = clampf(1.0 - death_button_timer / (animation_duration / 3.0), 0.0, 1.0)
 				death_button_timer -= _delta
 		initial_delay -= _delta
+		return
+		
+	# Win condition.
+	check_win_condition()
+
+	# Win animation.
+	if GameData.game_won:
+		if win_initial_delay > 0.0:
+			win_initial_delay -= _delta
+			return
+		
+		# Hide pause controls and menu.
+		pause_button.hide()
+		pause_menu.hide()
+		PauseManager.pause_game()
+		
+		if win_text_timer > 0.0:
+			win_text.modulate.a = clampf(1.0 - win_text_timer / (win_animation_duration / 3.0), 0.0, 1.0)
+			win_text_timer -= _delta
+		elif win_button_timer > 0.0:
+			win_button.modulate.a = clampf(1.0 - win_button_timer / (win_animation_duration / 3.0), 0.0, 1.0)
+			win_button_timer -= _delta
 		return
 	
 	if Input.is_action_just_pressed("Pause"):
@@ -194,13 +264,38 @@ func _process(_delta: float) -> void:
 
 func player_death(death: bool) -> void:
 	if death:
-		pause_button.hide()
-		pause_menu.hide()
-		death_background.show()
-		death_button.show()
-		death_text.show()
+		pause_button.visible = false
+		pause_menu.visible = false
+		death_background.visible = true
+		death_button.visible = true
+		death_text.visible = true
 		
 		death_background_timer = animation_duration / 3
 		death_button_timer = animation_duration / 3
 		death_text_timer = animation_duration / 3
-		
+
+func check_win_condition() -> void:
+	if GameData.game_won or GameData.is_player_dead:
+		return
+
+	if GameData.current_toxins >= GameData.level_toxins:
+		player_win()
+
+func player_win() -> void:
+	if GameData.game_won or GameData.is_player_dead:
+		return
+
+	GameData.game_won = true
+
+	# Show win screen.
+	win_screen.visible = true
+	win_text.visible = true
+	win_button.visible = true
+
+	# Reset opacity.
+	win_text.modulate.a = 0.0
+	win_button.modulate.a = 0.0
+
+	# Start sequential fade timers.
+	win_text_timer = win_animation_duration / 2.0
+	win_button_timer = win_animation_duration / 2.0

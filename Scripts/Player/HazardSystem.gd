@@ -131,6 +131,7 @@ func purify_toxin_fragments() -> int:
 		toxin_coins_changed.emit(toxin_coins)
 		toxin_level_changed.emit(toxin_level())
 
+	GameData.current_toxins += purified_amount
 	return purified_amount
 	
 func collect_toxin_fragments(amount: int) -> void:
@@ -139,11 +140,7 @@ func collect_toxin_fragments(amount: int) -> void:
 
 	var previous_coins: int = toxin_coins
 
-	toxin_coins = clampi(
-		toxin_coins + amount,
-		min_toxins,
-		max_toxins
-	)
+	toxin_coins += amount
 
 	if toxin_coins != previous_coins:
 		toxin_coins_changed.emit(toxin_coins)

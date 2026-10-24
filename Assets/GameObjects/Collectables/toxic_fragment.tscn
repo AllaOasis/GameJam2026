@@ -15,4 +15,11 @@ metadata/_custom_type_script = "uid://dwqygjyj3gaif"
 texture = ExtResource("2_owlge")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1838959359]
+visible = false
 shape = SubResource("RectangleShape2D_45v3f")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=731534960]
+color = Color(0, 1, 0, 1)
+energy = 0.75
+texture = ExtResource("2_owlge")
+texture_scale = 2.0

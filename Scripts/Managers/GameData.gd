@@ -2,8 +2,13 @@ extends Node
 
 signal player_death
 
-var toxinImmunity := false
-var damageImunity := false
+# Cheats - Future Update
+var toxinImmunity: bool = false
+var damageImunity: bool = false
+
+var level_toxins: int = 0
+var current_toxins: int = 0
+var game_won: bool = false
 
 var is_touch: bool = false
 

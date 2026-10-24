@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bcgh2n0gfibwa" path="res://Assets/UI/android_interface.tscn" id="3_sdast"]
 [ext_resource type="Texture2D" uid="uid://dykxtcembdsuo" path="res://Textures/UI/Cooldown-Timer-Sheet.png" id="4_j8j7w"]
 [ext_resource type="Script" uid="uid://ckxa08jbyvhv1" path="res://Scripts/UI/Buttons/ActionButton.gd" id="4_mtxsc"]
+[ext_resource type="PackedScene" uid="uid://bw5a7kw2e6fnt" path="res://Assets/UI/Toxin.tscn" id="4_x3n41"]
 [ext_resource type="Texture2D" uid="uid://dppy5m5v6fxil" path="res://Textures/UI/Foam-Tank-Sheet.png" id="5_4x04t"]
 [ext_resource type="Texture2D" uid="uid://cwxnqkaqmwmdt" path="res://Textures/UI/Button/Resume-Button.png" id="5_7u4mn"]
 [ext_resource type="Texture2D" uid="uid://b4whxamvls0lp" path="res://Textures/UI/Button/ButtonDown/Menu-Square-Button-Clicked.png" id="5_mamnd"]
@@ -18,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://daajrocfxsr7k" path="res://Textures/UI/Game-Over-Text.png" id="16_xdasw"]
 [ext_resource type="Texture2D" uid="uid://8qgjlvos5b6b" path="res://Textures/UI/Button/ButtonDown/Continue-Button.png" id="17_x3n41"]
 [ext_resource type="Texture2D" uid="uid://dfnf3gwnst7hk" path="res://Textures/UI/Button/Continue-Button-Clicked.png" id="18_kuv2s"]
+[ext_resource type="Texture2D" uid="uid://beixjj8vusbm1" path="res://Textures/UI/Level-Decontaminated-Text.png" id="20_kuv2s"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_np7a2"]
 atlas = ExtResource("5_4x04t")
@@ -30,7 +32,7 @@ region = Rect2(0, 0, 16, 16)
 [node name="UserInterface" type="CanvasLayer" unique_id=392176404]
 script = ExtResource("1_oxvhq")
 
-[node name="UIHandler" type="Control" parent="." unique_id=1208962041 node_paths=PackedStringArray("hearts_container", "dash_cooldown", "foam_tank", "pause_menu", "death_background", "death_text", "death_button", "pause_button", "touch_controlls")]
+[node name="UIHandler" type="Control" parent="." unique_id=1208962041 node_paths=PackedStringArray("hearts_container", "toxins_container", "dash_cooldown", "foam_tank", "pause_menu", "death_background", "death_text", "death_button", "win_screen", "win_text", "win_button", "pause_button", "touch_controlls")]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -39,8 +41,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_cp5ti")
-hearts_container = NodePath("HBoxContainer")
+hearts_container = NodePath("HeartsContainer")
 heart_scene = ExtResource("2_m8ba5")
+toxins_container = NodePath("ToxinContainer")
+toxins_scene = ExtResource("4_x3n41")
 dash_cooldown = NodePath("DashDisplay")
 foam_tank = NodePath("FoamDisplay")
 pause_menu = NodePath("PauseMenu")
@@ -49,6 +53,9 @@ death_text = NodePath("DeathBackground/DeathText")
 death_button = NodePath("DeathBackground/DeathButton")
 animation_duration = 3.0
 initial_delay = 1.0
+win_screen = NodePath("WinScreen")
+win_text = NodePath("WinScreen/WinText")
+win_button = NodePath("WinScreen/WinButton")
 pause_button = NodePath("PauseButton")
 touch_controlls = NodePath("AndroidInterface")
 metadata/_custom_type_script = "uid://cqptqrjy58rko"
@@ -90,7 +97,7 @@ script = ExtResource("4_mtxsc")
 action = &"Pause"
 metadata/_custom_type_script = "uid://ckxa08jbyvhv1"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UIHandler" unique_id=1816315318]
+[node name="HeartsContainer" type="HBoxContainer" parent="UIHandler" unique_id=1816315318]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 1
 offset_right = 120.0
@@ -99,13 +106,32 @@ offset_transform_enabled = true
 offset_transform_position = Vector2(25, 25)
 theme_override_constants/separation = 36
 
-[node name="Heart" parent="UIHandler/HBoxContainer" unique_id=1126544248 instance=ExtResource("2_m8ba5")]
+[node name="Heart" parent="UIHandler/HeartsContainer" unique_id=1126544248 instance=ExtResource("2_m8ba5")]
 layout_mode = 2
 
-[node name="Heart2" parent="UIHandler/HBoxContainer" unique_id=505868577 instance=ExtResource("2_m8ba5")]
+[node name="Heart2" parent="UIHandler/HeartsContainer" unique_id=505868577 instance=ExtResource("2_m8ba5")]
 layout_mode = 2
 
-[node name="Heart3" parent="UIHandler/HBoxContainer" unique_id=1423692447 instance=ExtResource("2_m8ba5")]
+[node name="Heart3" parent="UIHandler/HeartsContainer" unique_id=1423692447 instance=ExtResource("2_m8ba5")]
+layout_mode = 2
+
+[node name="ToxinContainer" type="HBoxContainer" parent="UIHandler" unique_id=1217769846]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 0
+offset_top = 77.0
+offset_right = 192.0
+offset_bottom = 101.0
+offset_transform_enabled = true
+offset_transform_position = Vector2(25, 12)
+theme_override_constants/separation = 28
+
+[node name="Toxin" parent="UIHandler/ToxinContainer" unique_id=1297628154 instance=ExtResource("4_x3n41")]
+layout_mode = 2
+
+[node name="Toxin2" parent="UIHandler/ToxinContainer" unique_id=1523628788 instance=ExtResource("4_x3n41")]
+layout_mode = 2
+
+[node name="Toxin3" parent="UIHandler/ToxinContainer" unique_id=202969893 instance=ExtResource("4_x3n41")]
 layout_mode = 2
 
 [node name="PauseMenu" type="TextureRect" parent="UIHandler" unique_id=439671612]
@@ -175,6 +201,7 @@ level_path = "uid://bw0bsrvbkhlv8"
 metadata/_custom_type_script = "uid://b56qifb45ldel"
 
 [node name="DeathBackground" type="ColorRect" parent="UIHandler" unique_id=320039154]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -197,6 +224,46 @@ texture = ExtResource("16_xdasw")
 stretch_mode = 5
 
 [node name="DeathButton" type="TextureButton" parent="UIHandler/DeathBackground" unique_id=1262847932]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -100.0
+offset_top = 250.0
+offset_right = 100.0
+offset_bottom = 370.0
+grow_horizontal = 2
+texture_normal = ExtResource("17_x3n41")
+texture_pressed = ExtResource("18_kuv2s")
+stretch_mode = 5
+script = ExtResource("7_fojfy")
+level_path = "uid://dodyq4d6gm02c"
+metadata/_custom_type_script = "uid://b56qifb45ldel"
+
+[node name="WinScreen" type="Control" parent="UIHandler" unique_id=1112446741]
+process_mode = 3
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WinText" type="TextureRect" parent="UIHandler/WinScreen" unique_id=2038269918]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -240.0
+offset_top = 100.0
+offset_right = 240.0
+offset_bottom = 300.0
+grow_horizontal = 2
+texture = ExtResource("20_kuv2s")
+stretch_mode = 5
+
+[node name="WinButton" type="TextureButton" parent="UIHandler/WinScreen" unique_id=1988777014]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
