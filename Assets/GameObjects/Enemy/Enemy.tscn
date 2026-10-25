@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://btq1kc7r0iuii" path="res://Textures/Enemy/Mist-Animation2.png" id="8_ly1ur"]
 [ext_resource type="Texture2D" uid="uid://bs5otpyhc3crn" path="res://Textures/Enemy/Mist-Animation3.png" id="9_jn12d"]
 [ext_resource type="Texture2D" uid="uid://0u37mcn2tg0m" path="res://Textures/Enemy/Mist-Animation4.png" id="10_80r1b"]
+[ext_resource type="AudioStream" uid="uid://5d8nqsfsvtde" path="res://GameSound/enemy_death.ogg" id="11_44imt"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jctj4"]
 radius = 6.0
@@ -21,7 +22,7 @@ size = Vector2(302, 108)
 [sub_resource type="CircleShape2D" id="CircleShape2D_infww"]
 radius = 32.0
 
-[node name="Enemy" type="CharacterBody2D" unique_id=147339882 node_paths=PackedStringArray("sprite", "detect_area", "wall_check", "ground_check", "vision_ray", "attack_area")]
+[node name="Enemy" type="CharacterBody2D" unique_id=147339882 node_paths=PackedStringArray("sprite", "detect_area", "wall_check", "ground_check", "vision_ray", "attack_area", "death_sound")]
 collision_layer = 4
 collision_mask = 145
 script = ExtResource("1_infww")
@@ -33,6 +34,7 @@ ground_check = NodePath("GroundCheck")
 vision_ray = NodePath("Sight")
 attack_area = NodePath("AttackArea")
 drop = ExtResource("2_j13n1")
+death_sound = NodePath("AudioStreamPlayer2D")
 stop_chasing_at_edges = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1974077383]
@@ -82,3 +84,6 @@ collision_mask = 129
 
 [node name="Sight" type="RayCast2D" parent="." unique_id=2089876581]
 collision_mask = 19
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=791309152]
+stream = ExtResource("11_44imt")

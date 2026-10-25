@@ -1,0 +1,18 @@
+https://kenney.nl/assets/sci-fi-sounds:
+Jetpack sound
+
+https://kenney.nl/assets/interface-sounds:
+Button Sounds
+
+https://opengameart.org/content/5-chiptunes-action:
+Main Menu Music
+Level Music
+
+https://opengameart.org/content/overworld-theme-0:
+Win Music
+
+https://opengameart.org/content/40-cc0-water-splash-slime-sfx
+Enemy Death
+
+https://opengameart.org/content/8bit-death-whirl
+Player Death

@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://ey1sa2psmrsu" path="res://Scripts/Player/StateMachine/walk_state.gd" id="10_8q4yl"]
 [ext_resource type="Script" uid="uid://cfh2xkdke4gt3" path="res://Assets/GameObjects/Player/foam_canon.gd" id="11_1eb5o"]
 [ext_resource type="PackedScene" uid="uid://bagj0jsj05fyk" path="res://Assets/GameObjects/Foam/Foam.tscn" id="12_xiq6a"]
+[ext_resource type="AudioStream" uid="uid://b3o6whmovru44" path="res://GameSound/player_death.wav" id="13_pcw4a"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i2024"]
 radius = 6.0
@@ -44,12 +45,13 @@ toxin_tween = SubResource("Curve_xiq6a")
 health_regen_rate = 1.0
 metadata/_custom_type_script = "uid://cnk40ouldcobd"
 
-[node name="StateMachine" type="Node" parent="." unique_id=1820705594 node_paths=PackedStringArray("player", "animated_sprite", "player_controller")]
+[node name="StateMachine" type="Node" parent="." unique_id=1820705594 node_paths=PackedStringArray("player", "animated_sprite", "player_controller", "death_sound")]
 script = ExtResource("4_pcw4a")
 player = NodePath("..")
 animated_sprite = NodePath("../AnimatedSprite2D")
 player_controller = NodePath("..")
 default_state = &"IdleState"
+death_sound = NodePath("../DeathSound")
 metadata/_custom_type_script = "uid://b0386ews8ryxl"
 
 [node name="DashState" type="Node" parent="StateMachine" unique_id=1521766489]
@@ -81,3 +83,6 @@ position = Vector2(0, 2)
 script = ExtResource("11_1eb5o")
 projectile_scene = ExtResource("12_xiq6a")
 fire_cooldown = 0.1
+
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="." unique_id=1073796699]
+stream = ExtResource("13_pcw4a")

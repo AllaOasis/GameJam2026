@@ -28,6 +28,9 @@
 [ext_resource type="Texture2D" uid="uid://dm1y4jcskatcg" path="res://Textures/UI/Button/Reset-Button.png" id="17_2tbof"]
 [ext_resource type="Texture2D" uid="uid://bdtrrg1pxl5hk" path="res://Textures/UI/Button/ButtonDown/Credits-Button-Clicked.png" id="17_n1wsf"]
 [ext_resource type="Texture2D" uid="uid://28j553y5w4b3" path="res://Textures/UI/Button/ButtonDown/Reset-Button-Clicked.png" id="18_cit0y"]
+[ext_resource type="AudioStream" uid="uid://cef508hcllr4o" path="res://GameSound/button_click.ogg" id="29_2tbof"]
+[ext_resource type="AudioStream" uid="uid://dgipag4vwf5eh" path="res://GameSound/main_menu_music.wav" id="30_irrxp"]
+[ext_resource type="AudioStream" uid="uid://cy48nxydkfdfc" path="res://GameSound/win_music.ogg" id="31_w7r7u"]
 
 [node name="LevelSelector" type="Control" unique_id=1028165528]
 layout_mode = 3
@@ -37,7 +40,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MainMenuController" type="Control" parent="." unique_id=486195980 node_paths=PackedStringArray("castle_q1", "castle_q2", "castle_q3", "castle_q4", "castle_mist", "info", "settings", "credits")]
+[node name="MainMenuController" type="Control" parent="." unique_id=486195980 node_paths=PackedStringArray("castle_q1", "castle_q2", "castle_q3", "castle_q4", "castle_mist", "info", "settings", "credits", "main_theme", "win_theme")]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -50,6 +53,8 @@ castle_mist = NodePath("../Background/CastleMist")
 info = NodePath("../SideBoard/InfoPanel/Welcome")
 settings = NodePath("../SideBoard/InfoPanel/Settings")
 credits = NodePath("../SideBoard/InfoPanel/Credits")
+main_theme = NodePath("../Node/MainTheme")
+win_theme = NodePath("../Node/WinTheme")
 metadata/_custom_type_script = "uid://ciw0xbi4v5en3"
 
 [node name="Background" type="TextureRect" parent="." unique_id=1474340105]
@@ -233,7 +238,7 @@ grow_horizontal = 2
 grow_vertical = 2
 stretch_mode = 5
 
-[node name="Close" type="TextureButton" parent="SideBoard/InfoPanel/Credits" unique_id=1570895523]
+[node name="Close" type="TextureButton" parent="SideBoard/InfoPanel/Credits" unique_id=1570895523 node_paths=PackedStringArray("click_sound")]
 z_index = 10
 layout_mode = 1
 anchors_preset = 3
@@ -253,6 +258,7 @@ texture_pressed = ExtResource("12_fpv2c")
 stretch_mode = 5
 script = ExtResource("15_574bu")
 action = &"Close"
+click_sound = NodePath("../../../../Node/ButtonClick")
 metadata/_custom_type_script = "uid://ckxa08jbyvhv1"
 
 [node name="Settings" type="Control" parent="SideBoard/InfoPanel" unique_id=224668395]
@@ -273,7 +279,7 @@ offset_right = 150.0
 offset_bottom = 140.0
 grow_vertical = 2
 
-[node name="Touch" type="TextureButton" parent="SideBoard/InfoPanel/Settings/VBoxContainer" unique_id=2067607823]
+[node name="Touch" type="TextureButton" parent="SideBoard/InfoPanel/Settings/VBoxContainer" unique_id=2067607823 node_paths=PackedStringArray("click_sound")]
 custom_minimum_size = Vector2(96, 32)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -282,9 +288,10 @@ texture_normal = ExtResource("10_ai5nf")
 texture_pressed = ExtResource("11_52eev")
 stretch_mode = 5
 script = ExtResource("12_4cxoh")
+click_sound = NodePath("../../../../../Node/ButtonClick")
 metadata/_custom_type_script = "uid://cl48x0pr8we8o"
 
-[node name="Reset" type="TextureButton" parent="SideBoard/InfoPanel/Settings/VBoxContainer" unique_id=495789941]
+[node name="Reset" type="TextureButton" parent="SideBoard/InfoPanel/Settings/VBoxContainer" unique_id=495789941 node_paths=PackedStringArray("click_sound")]
 custom_minimum_size = Vector2(96, 32)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -292,11 +299,12 @@ texture_normal = ExtResource("17_2tbof")
 texture_pressed = ExtResource("18_cit0y")
 stretch_mode = 5
 script = ExtResource("12_4cxoh")
+click_sound = NodePath("../../../../../Node/ButtonClick")
 setting_name = &"reset_data"
 is_toggle = false
 metadata/_custom_type_script = "uid://cl48x0pr8we8o"
 
-[node name="Close" type="TextureButton" parent="SideBoard/InfoPanel/Settings" unique_id=2088961122]
+[node name="Close" type="TextureButton" parent="SideBoard/InfoPanel/Settings" unique_id=2088961122 node_paths=PackedStringArray("click_sound")]
 z_index = 10
 layout_mode = 1
 anchors_preset = 3
@@ -316,6 +324,7 @@ texture_pressed = ExtResource("12_fpv2c")
 stretch_mode = 5
 script = ExtResource("15_574bu")
 action = &"Close"
+click_sound = NodePath("../../../../Node/ButtonClick")
 metadata/_custom_type_script = "uid://ckxa08jbyvhv1"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="SideBoard" unique_id=707653716]
@@ -331,7 +340,7 @@ grow_horizontal = 2
 grow_vertical = 0
 alignment = 1
 
-[node name="Settings" type="TextureButton" parent="SideBoard/HBoxContainer" unique_id=700904020]
+[node name="Settings" type="TextureButton" parent="SideBoard/HBoxContainer" unique_id=700904020 node_paths=PackedStringArray("click_sound")]
 layout_mode = 2
 size_flags_horizontal = 3
 texture_normal = ExtResource("13_vtfjb")
@@ -339,9 +348,10 @@ texture_pressed = ExtResource("14_ju0jd")
 stretch_mode = 5
 script = ExtResource("15_574bu")
 action = &"OpenSettings"
+click_sound = NodePath("../../../Node/ButtonClick")
 metadata/_custom_type_script = "uid://ckxa08jbyvhv1"
 
-[node name="Credits" type="TextureButton" parent="SideBoard/HBoxContainer" unique_id=972588865]
+[node name="Credits" type="TextureButton" parent="SideBoard/HBoxContainer" unique_id=972588865 node_paths=PackedStringArray("click_sound")]
 layout_mode = 2
 size_flags_horizontal = 3
 texture_normal = ExtResource("16_fpv2c")
@@ -349,9 +359,10 @@ texture_pressed = ExtResource("17_n1wsf")
 stretch_mode = 5
 script = ExtResource("15_574bu")
 action = &"OpenCredits"
+click_sound = NodePath("../../../Node/ButtonClick")
 metadata/_custom_type_script = "uid://ckxa08jbyvhv1"
 
-[node name="Exit" type="TextureButton" parent="SideBoard/HBoxContainer" unique_id=1549515588]
+[node name="Exit" type="TextureButton" parent="SideBoard/HBoxContainer" unique_id=1549515588 node_paths=PackedStringArray("click_sound")]
 layout_mode = 2
 size_flags_horizontal = 3
 texture_normal = ExtResource("8_tkmj6")
@@ -359,9 +370,10 @@ texture_pressed = ExtResource("9_7hxbj")
 texture_hover = ExtResource("10_vp1s6")
 stretch_mode = 5
 script = ExtResource("11_7u3o2")
+click_sound = NodePath("../../../Node/ButtonClick")
 metadata/_custom_type_script = "uid://bo8jfphyk3ejk"
 
-[node name="Q1Button" type="TextureButton" parent="." unique_id=1903077483 node_paths=PackedStringArray("enable_on_hover")]
+[node name="Q1Button" type="TextureButton" parent="." unique_id=1903077483 node_paths=PackedStringArray("click_sound", "enable_on_hover")]
 layout_mode = 0
 offset_left = 171.0
 offset_top = 31.0
@@ -370,10 +382,11 @@ offset_bottom = 178.0
 script = ExtResource("2_588t6")
 level_path = "uid://ctdt5jok78b7o"
 player_scene = ExtResource("3_588t6")
+click_sound = NodePath("../Node/ButtonClick")
 enable_on_hover = NodePath("../Background/CastleQ1H")
 metadata/_custom_type_script = "uid://b56qifb45ldel"
 
-[node name="Q2Button" type="TextureButton" parent="." unique_id=1328444774 node_paths=PackedStringArray("enable_on_hover")]
+[node name="Q2Button" type="TextureButton" parent="." unique_id=1328444774 node_paths=PackedStringArray("click_sound", "enable_on_hover")]
 layout_mode = 0
 offset_left = 69.0
 offset_top = 26.0
@@ -382,10 +395,11 @@ offset_bottom = 181.0
 script = ExtResource("2_588t6")
 level_path = "uid://d06nlmwxs37rf"
 player_scene = ExtResource("3_588t6")
+click_sound = NodePath("../Node/ButtonClick")
 enable_on_hover = NodePath("../Background/CastleQ2H")
 metadata/_custom_type_script = "uid://b56qifb45ldel"
 
-[node name="Q3Button" type="TextureButton" parent="." unique_id=270495887 node_paths=PackedStringArray("enable_on_hover")]
+[node name="Q3Button" type="TextureButton" parent="." unique_id=270495887 node_paths=PackedStringArray("click_sound", "enable_on_hover")]
 layout_mode = 0
 offset_left = -1.0
 offset_top = 182.0
@@ -394,10 +408,11 @@ offset_bottom = 334.0
 script = ExtResource("2_588t6")
 level_path = "uid://cvroh8icw7ctt"
 player_scene = ExtResource("3_588t6")
+click_sound = NodePath("../Node/ButtonClick")
 enable_on_hover = NodePath("../Background/CastleQ3H")
 metadata/_custom_type_script = "uid://b56qifb45ldel"
 
-[node name="Q4Button" type="TextureButton" parent="." unique_id=1061553439 node_paths=PackedStringArray("enable_on_hover")]
+[node name="Q4Button" type="TextureButton" parent="." unique_id=1061553439 node_paths=PackedStringArray("click_sound", "enable_on_hover")]
 layout_mode = 0
 offset_left = 182.0
 offset_top = 189.0
@@ -406,5 +421,20 @@ offset_bottom = 331.0
 script = ExtResource("2_588t6")
 level_path = "uid://fdy5r41ke8nw"
 player_scene = ExtResource("3_588t6")
+click_sound = NodePath("../Node/ButtonClick")
 enable_on_hover = NodePath("../Background/CastleQ4H")
 metadata/_custom_type_script = "uid://b56qifb45ldel"
+
+[node name="Node" type="Node" parent="." unique_id=1897652076]
+
+[node name="ButtonClick" type="AudioStreamPlayer2D" parent="Node" unique_id=2023508632]
+stream = ExtResource("29_2tbof")
+pitch_scale = 4.0
+
+[node name="MainTheme" type="AudioStreamPlayer2D" parent="Node" unique_id=2079573222]
+stream = ExtResource("30_irrxp")
+volume_db = -5.0
+
+[node name="WinTheme" type="AudioStreamPlayer2D" parent="Node" unique_id=1252153753]
+stream = ExtResource("31_w7r7u")
+volume_db = 3.0

@@ -30,6 +30,9 @@ var behind_detection_chance: float = 0.25
 @export_subgroup("Drop")
 @export var drop: PackedScene
 
+@export_subgroup("Sound")
+@export var death_sound: AudioStreamPlayer2D
+
 @export_subgroup("Bugfix")
 @export var stop_chasing_at_edges: bool = false
 
@@ -325,4 +328,5 @@ func take_damage(damage: int) -> void:
 		set_collision_mask_value(3, false)
 
 		if sprite:
+			if death_sound: death_sound.play()
 			sprite.play("death")

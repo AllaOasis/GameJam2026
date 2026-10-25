@@ -13,10 +13,21 @@ class_name MainMenuController
 @export var settings: CanvasItem
 @export var credits: CanvasItem
 
+@export_subgroup("Sound")
+@export var main_theme: AudioStreamPlayer2D
+@export var win_theme: AudioStreamPlayer2D
+
 func _ready() -> void: 
 	open(true, false, false)
 	_reload_map()
 	GameData.data_changed.connect(_reload_map)
+	
+	if main_theme: 
+		main_theme.play()
+		main_theme.autoplay = true
+	if win_theme: 
+		win_theme.stop()
+		main_theme.autoplay = false
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("OpenSettings"): open(false, true, false)
@@ -41,3 +52,9 @@ func _reload_map() -> void:
 
 func _full_unlock():
 	if castle_mist: castle_mist.visible = false;
+	if main_theme: 
+		main_theme.stop()
+		main_theme.autoplay = false
+	if win_theme: 
+		win_theme.play()
+		main_theme.autoplay = true

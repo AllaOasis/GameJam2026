@@ -20,6 +20,8 @@
 [ext_resource type="Texture2D" uid="uid://8qgjlvos5b6b" path="res://Textures/UI/Button/ButtonDown/Continue-Button.png" id="17_x3n41"]
 [ext_resource type="Texture2D" uid="uid://dfnf3gwnst7hk" path="res://Textures/UI/Button/Continue-Button-Clicked.png" id="18_kuv2s"]
 [ext_resource type="Texture2D" uid="uid://beixjj8vusbm1" path="res://Textures/UI/Level-Decontaminated-Text.png" id="20_kuv2s"]
+[ext_resource type="AudioStream" uid="uid://ciu703xarvyp6" path="res://GameSound/level_music.wav" id="21_lpdd2"]
+[ext_resource type="AudioStream" uid="uid://cef508hcllr4o" path="res://GameSound/button_click.ogg" id="22_e4in3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_np7a2"]
 atlas = ExtResource("5_4x04t")
@@ -32,7 +34,7 @@ region = Rect2(0, 0, 16, 16)
 [node name="UserInterface" type="CanvasLayer" unique_id=392176404]
 script = ExtResource("1_oxvhq")
 
-[node name="UIHandler" type="Control" parent="." unique_id=1208962041 node_paths=PackedStringArray("hearts_container", "toxins_container", "dash_cooldown", "foam_tank", "pause_menu", "death_background", "death_text", "death_button", "win_screen", "win_text", "win_button", "pause_button", "touch_controlls")]
+[node name="UIHandler" type="Control" parent="." unique_id=1208962041 node_paths=PackedStringArray("hearts_container", "toxins_container", "dash_cooldown", "foam_tank", "pause_menu", "death_background", "death_text", "death_button", "win_screen", "win_text", "win_button", "pause_button", "touch_controlls", "Level_theme")]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -62,6 +64,7 @@ LevelQ1 = "uid://ctdt5jok78b7o"
 LevelQ2 = "uid://d06nlmwxs37rf"
 LevelQ3 = "uid://cvroh8icw7ctt"
 LevelQ4 = "uid://fdy5r41ke8nw"
+Level_theme = NodePath("../LevelTheme")
 metadata/_custom_type_script = "uid://cqptqrjy58rko"
 
 [node name="AndroidInterface" parent="UIHandler" unique_id=1544986949 instance=ExtResource("3_sdast")]
@@ -84,7 +87,7 @@ offset_right = 149.0
 offset_bottom = 74.0
 texture = SubResource("AtlasTexture_82yni")
 
-[node name="PauseButton" type="TextureButton" parent="UIHandler" unique_id=1479259250]
+[node name="PauseButton" type="TextureButton" parent="UIHandler" unique_id=1479259250 node_paths=PackedStringArray("click_sound")]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -99,6 +102,7 @@ texture_pressed = ExtResource("5_mamnd")
 stretch_mode = 5
 script = ExtResource("4_mtxsc")
 action = &"Pause"
+click_sound = NodePath("../../ButtonClick")
 metadata/_custom_type_script = "uid://ckxa08jbyvhv1"
 
 [node name="HeartsContainer" type="HBoxContainer" parent="UIHandler" unique_id=1816315318]
@@ -176,16 +180,17 @@ offset_bottom = 58.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ResumeButton" type="TextureButton" parent="UIHandler/PauseMenu/VBoxContainer" unique_id=1293292897]
+[node name="ResumeButton" type="TextureButton" parent="UIHandler/PauseMenu/VBoxContainer" unique_id=1293292897 node_paths=PackedStringArray("click_sound")]
 custom_minimum_size = Vector2(0, 36)
 layout_mode = 2
 texture_normal = ExtResource("5_7u4mn")
 stretch_mode = 5
 script = ExtResource("4_mtxsc")
 action = &"Pause"
+click_sound = NodePath("../../../../ButtonClick")
 metadata/_custom_type_script = "uid://ckxa08jbyvhv1"
 
-[node name="SettingsToggleButton" type="TextureButton" parent="UIHandler/PauseMenu/VBoxContainer" unique_id=1815234767]
+[node name="SettingsToggleButton" type="TextureButton" parent="UIHandler/PauseMenu/VBoxContainer" unique_id=1815234767 node_paths=PackedStringArray("click_sound")]
 custom_minimum_size = Vector2(0, 36)
 layout_mode = 2
 toggle_mode = true
@@ -193,15 +198,17 @@ texture_normal = ExtResource("8_fojfy")
 texture_pressed = ExtResource("7_xryph")
 stretch_mode = 5
 script = ExtResource("9_xryph")
+click_sound = NodePath("../../../../ButtonClick")
 metadata/_custom_type_script = "uid://cl48x0pr8we8o"
 
-[node name="MainMenu" type="TextureButton" parent="UIHandler/PauseMenu/VBoxContainer" unique_id=1655622720]
+[node name="MainMenu" type="TextureButton" parent="UIHandler/PauseMenu/VBoxContainer" unique_id=1655622720 node_paths=PackedStringArray("click_sound")]
 custom_minimum_size = Vector2(0, 36)
 layout_mode = 2
 texture_normal = ExtResource("6_ytdsy")
 stretch_mode = 5
 script = ExtResource("7_fojfy")
 level_path = "uid://dodyq4d6gm02c"
+click_sound = NodePath("../../../../ButtonClick")
 metadata/_custom_type_script = "uid://b56qifb45ldel"
 
 [node name="DeathBackground" type="ColorRect" parent="UIHandler" unique_id=320039154]
@@ -226,7 +233,7 @@ grow_horizontal = 2
 texture = ExtResource("16_xdasw")
 stretch_mode = 5
 
-[node name="DeathButton" type="TextureButton" parent="UIHandler/DeathBackground" unique_id=1262847932]
+[node name="DeathButton" type="TextureButton" parent="UIHandler/DeathBackground" unique_id=1262847932 node_paths=PackedStringArray("click_sound")]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -241,6 +248,7 @@ texture_pressed = ExtResource("18_kuv2s")
 stretch_mode = 5
 script = ExtResource("7_fojfy")
 level_path = "uid://dodyq4d6gm02c"
+click_sound = NodePath("../../../ButtonClick")
 metadata/_custom_type_script = "uid://b56qifb45ldel"
 
 [node name="WinScreen" type="Control" parent="UIHandler" unique_id=1112446741]
@@ -265,7 +273,7 @@ grow_horizontal = 2
 texture = ExtResource("20_kuv2s")
 stretch_mode = 5
 
-[node name="WinButton" type="TextureButton" parent="UIHandler/WinScreen" unique_id=1988777014]
+[node name="WinButton" type="TextureButton" parent="UIHandler/WinScreen" unique_id=1988777014 node_paths=PackedStringArray("click_sound")]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -280,4 +288,16 @@ texture_pressed = ExtResource("18_kuv2s")
 stretch_mode = 5
 script = ExtResource("7_fojfy")
 level_path = "uid://dodyq4d6gm02c"
+click_sound = NodePath("../../../ButtonClick")
 metadata/_custom_type_script = "uid://b56qifb45ldel"
+
+[node name="LevelTheme" type="AudioStreamPlayer2D" parent="." unique_id=817590094]
+process_mode = 3
+stream = ExtResource("21_lpdd2")
+volume_db = -3.0
+autoplay = true
+
+[node name="ButtonClick" type="AudioStreamPlayer2D" parent="." unique_id=952415448]
+process_mode = 3
+stream = ExtResource("22_e4in3")
+pitch_scale = 4.0

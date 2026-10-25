@@ -6,6 +6,9 @@ class_name StateMachine
 @export var player_controller: PlayerController
 @export var default_state: StringName
 
+@export_subgroup("Sound")
+@export var death_sound: AudioStreamPlayer2D
+
 var current_state: State
 var states: Dictionary[StringName, State] = {}
 
@@ -74,5 +77,6 @@ func change_to_jump(jump_type: JumpState.JumpType) -> void:
 
 func _player_death(dead: bool):
 	if dead:
+		if death_sound: death_sound.play()
 		animated_sprite.play("death")
 	

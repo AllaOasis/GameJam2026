@@ -1,6 +1,7 @@
 extends TextureButton
 class_name SettingsToggleButton
 
+@export var click_sound: AudioStreamPlayer2D
 @export_subgroup("Setting")
 @export var setting_name: StringName = &"is_touch"
 @export var is_toggle: bool = true
@@ -26,6 +27,7 @@ func _set_toggleables() -> void:
 				)
 
 func _on_pressed() -> void:
+	if click_sound: click_sound.play()
 	if is_toggle:
 		match setting_name:
 			&"is_touch":

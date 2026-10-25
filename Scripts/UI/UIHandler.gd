@@ -48,6 +48,9 @@ var win_button_timer: float = 0.0
 @export_file("*.tscn") var LevelQ3: String
 @export_file("*.tscn") var LevelQ4: String
 
+@export_subgroup("Sound")
+@export var Level_theme: AudioStreamPlayer2D
+
 var death_background_timer: float = 0
 var death_text_timer: float = 0
 var death_button_timer: float = 0
@@ -219,6 +222,7 @@ func _process(_delta: float) -> void:
 				death_background.modulate.a = clampf(1.0 - death_background_timer / (animation_duration / 3.0), 0.0, 1.0)
 				death_background_timer -= _delta
 			elif death_text_timer > 0:
+				if Level_theme: Level_theme.stop()
 				death_text.modulate.a = clampf(1.0 - death_text_timer / (animation_duration / 3.0), 0.0, 1.0)
 				death_text_timer -= _delta
 			elif death_button_timer > 0:
