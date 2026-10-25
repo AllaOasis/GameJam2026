@@ -300,11 +300,11 @@ func player_win() -> void:
 		var current_id = ResourceUID.id_to_text(scene_uid)
 
 		if current_id == LevelQ1:
-			GameData.q4 = true
+			GameData.q1 = true
 		elif current_id == LevelQ2:
-			GameData.q4 = true
+			GameData.q2 = true
 		elif current_id == LevelQ3:
-			GameData.q4 = true
+			GameData.q3 = true
 		elif current_id == LevelQ4:
 			GameData.q4 = true
 	

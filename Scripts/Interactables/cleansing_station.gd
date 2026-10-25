@@ -25,6 +25,10 @@ func _on_body_entered(body: Node2D) -> void:
 	if !player_controller:
 		player_controller = body as PlayerController
 		
+	if player_controller == null:
+		var player_node: Node = get_tree().get_first_node_in_group("player")
+		player_controller = player_node as PlayerController
+		
 	if player_controller:
 		player_in_range = true
 		if light:
@@ -43,7 +47,7 @@ func process_interact(delta):
 	if processing_timer <= 0:
 		if light and !light.visible:
 			light.visible = true
-		if Input.is_action_just_pressed("Interact"):
+		if Input.is_action_just_pressed("Interact") or Input.is_action_pressed("Interact"):
 			if player_controller == null or player_controller.hazard_system == null:
 				return
 				
