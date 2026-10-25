@@ -32,7 +32,7 @@ func _on_body_entered(body: Node2D) -> void:
 		process_interact(0)
 		
 func _on_body_exited(body: Node2D) -> void:
-	if not body is CharacterBody2D:
+	if not body == player_controller:
 		return
 
 	player_in_range = false
@@ -56,8 +56,6 @@ func process_interact(delta):
 				if sprite:
 					sprite.play("processing")
 	else:
-		if light and light.visible:
-			light.visible = false
 		processing_timer = maxf(processing_timer - delta, 0)
 			
 			

@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_np7a2"]
 size = Vector2(20, 63)
 
-[node name="Node2D" type="StaticBody2D" unique_id=287543538]
+[node name="Airlock" type="StaticBody2D" unique_id=287543538]
 collision_layer = 16
 collision_mask = 23
 
