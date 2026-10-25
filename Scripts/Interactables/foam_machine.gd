@@ -2,6 +2,7 @@ extends Area2D
 class_name FoamMachine
 
 @export var light: PointLight2D
+@export var sound: AudioStreamPlayer2D
 var player_controller: PlayerController
 var player_in_range: bool = false
 
@@ -39,6 +40,7 @@ func process_interact(_delta):
 	if Input.is_action_just_pressed("Interact"):
 		if player_controller == null or player_controller.foam_canon == null:
 			return
+		if sound: sound.play()
 		player_controller.foam_canon.refill()
 	
 func _process(delta: float) -> void:

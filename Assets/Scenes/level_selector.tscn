@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://cr703sxj30jfi" path="res://Textures/UI/Button/Exit-Button.png" id="8_tkmj6"]
 [ext_resource type="Texture2D" uid="uid://mvgyblt5iygh" path="res://Textures/UI/Button/ButtonDown/Exit-Button-Clicked.png" id="9_7hxbj"]
 [ext_resource type="Texture2D" uid="uid://b4rkl3u8i4j16" path="res://Textures/UI/Toxicorp-Five-Logo.png" id="9_vp1s6"]
+[ext_resource type="Texture2D" uid="uid://yfmhyg8jd41h" path="res://Textures/UI/The-End-Text.png" id="9_w7r7u"]
 [ext_resource type="Texture2D" uid="uid://cekfx1ohbjuqp" path="res://Textures/UI/touch-off.png" id="10_ai5nf"]
 [ext_resource type="Texture2D" uid="uid://1hvn1rlgetok" path="res://Textures/UI/Button/ButtonHover/Exit-Button-Hover.png" id="10_vp1s6"]
 [ext_resource type="Script" uid="uid://bo8jfphyk3ejk" path="res://Scripts/UI/Buttons/QuitButton.gd" id="11_7u3o2"]
@@ -27,8 +28,20 @@
 [ext_resource type="Texture2D" uid="uid://0fo8gtmrnswc" path="res://Textures/UI/Button/Credits-Button.png" id="16_fpv2c"]
 [ext_resource type="Texture2D" uid="uid://dm1y4jcskatcg" path="res://Textures/UI/Button/Reset-Button.png" id="17_2tbof"]
 [ext_resource type="Texture2D" uid="uid://bdtrrg1pxl5hk" path="res://Textures/UI/Button/ButtonDown/Credits-Button-Clicked.png" id="17_n1wsf"]
+[ext_resource type="Texture2D" uid="uid://ba6p05cd72q08" path="res://Textures/UI/Button/CheatButtons/Cheat1-Button.png" id="18_8r7i1"]
 [ext_resource type="Texture2D" uid="uid://28j553y5w4b3" path="res://Textures/UI/Button/ButtonDown/Reset-Button-Clicked.png" id="18_cit0y"]
+[ext_resource type="Texture2D" uid="uid://bb7i33ta0dn6c" path="res://Textures/UI/Button/CheatButtons/Cheat1-Button-Clicked.png" id="19_dw08o"]
+[ext_resource type="Texture2D" uid="uid://cmgm1owx34c4b" path="res://Textures/UI/Button/CheatButtons/Cheat2-Button.png" id="20_rpxdv"]
+[ext_resource type="Texture2D" uid="uid://y0kq7rajqs6y" path="res://Textures/UI/Button/CheatButtons/Cheat2-Button-Clicked.png" id="21_xieoc"]
+[ext_resource type="Texture2D" uid="uid://dqn4u857l4bsj" path="res://Textures/UI/Button/CheatButtons/Cheat3-Button.png" id="22_l1ul4"]
+[ext_resource type="Texture2D" uid="uid://dvpmoaldes5hs" path="res://Textures/UI/Button/CheatButtons/Cheat3-Button-Clicked.png" id="23_d3sff"]
+[ext_resource type="Texture2D" uid="uid://7hyieiq3v66c" path="res://Textures/UI/Button/CheatButtons/Cheat4-Button.png" id="24_8nlh4"]
+[ext_resource type="Texture2D" uid="uid://7vsbvjcgdpqs" path="res://Textures/UI/Button/CheatButtons/Cheat4-Button-Clicked.png" id="25_4i4g7"]
+[ext_resource type="Texture2D" uid="uid://csn8uwr75tppv" path="res://Textures/UI/Button/CheatButtons/Cheat5-Button.png" id="26_quyqc"]
+[ext_resource type="Texture2D" uid="uid://doay7xsnyj0fa" path="res://Textures/UI/Button/CheatButtons/Cheat5-Button-Clicked.png" id="27_bck5n"]
+[ext_resource type="Texture2D" uid="uid://com7jccs755vf" path="res://Textures/UI/Button/CheatButtons/Cheat6-Button.png" id="28_rpxdv"]
 [ext_resource type="AudioStream" uid="uid://cef508hcllr4o" path="res://GameSound/button_click.ogg" id="29_2tbof"]
+[ext_resource type="Texture2D" uid="uid://dcsa27ufrlub6" path="res://Textures/UI/Button/CheatButtons/Cheat6-Button-Clicked.png" id="29_xieoc"]
 [ext_resource type="AudioStream" uid="uid://dgipag4vwf5eh" path="res://GameSound/main_menu_music.wav" id="30_irrxp"]
 [ext_resource type="AudioStream" uid="uid://cy48nxydkfdfc" path="res://GameSound/win_music.ogg" id="31_w7r7u"]
 
@@ -40,7 +53,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MainMenuController" type="Control" parent="." unique_id=486195980 node_paths=PackedStringArray("castle_q1", "castle_q2", "castle_q3", "castle_q4", "castle_mist", "info", "settings", "credits", "main_theme", "win_theme")]
+[node name="MainMenuController" type="Control" parent="." unique_id=486195980 node_paths=PackedStringArray("castle_q1", "castle_q2", "castle_q3", "castle_q4", "castle_mist", "the_end", "info", "settings", "credits", "cheat1", "cheat2", "cheat3", "cheat4", "cheat5", "cheat6", "main_theme", "win_theme")]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -50,9 +63,16 @@ castle_q2 = NodePath("../Background/CastleQ2")
 castle_q3 = NodePath("../Background/CastleQ3")
 castle_q4 = NodePath("../Background/CastleQ4")
 castle_mist = NodePath("../Background/CastleMist")
+the_end = NodePath("../Background/TextureRect")
 info = NodePath("../SideBoard/InfoPanel/Welcome")
 settings = NodePath("../SideBoard/InfoPanel/Settings")
 credits = NodePath("../SideBoard/InfoPanel/Credits")
+cheat1 = NodePath("../SideBoard/InfoPanel/Settings/VBoxContainer/Cheat1")
+cheat2 = NodePath("../SideBoard/InfoPanel/Settings/VBoxContainer/Cheat2")
+cheat3 = NodePath("../SideBoard/InfoPanel/Settings/VBoxContainer/Cheat3")
+cheat4 = NodePath("../SideBoard/InfoPanel/Settings/VBoxContainer/Cheat4")
+cheat5 = NodePath("../SideBoard/InfoPanel/Settings/VBoxContainer/Cheat5")
+cheat6 = NodePath("../SideBoard/InfoPanel/Settings/VBoxContainer/Cheat6")
 main_theme = NodePath("../Node/MainTheme")
 win_theme = NodePath("../Node/WinTheme")
 metadata/_custom_type_script = "uid://ciw0xbi4v5en3"
@@ -179,6 +199,18 @@ grow_vertical = 2
 texture = ExtResource("7_vp1s6")
 stretch_mode = 4
 
+[node name="TextureRect" type="TextureRect" parent="Background" unique_id=563742127]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -32.0
+offset_right = 360.0
+offset_bottom = 32.0
+grow_vertical = 2
+texture = ExtResource("9_w7r7u")
+stretch_mode = 5
+
 [node name="SideBoard" type="TextureRect" parent="." unique_id=1316400664]
 layout_mode = 1
 anchors_preset = 11
@@ -207,7 +239,6 @@ grow_horizontal = 2
 color = Color(0.06666667, 0.06666667, 0.06666667, 1)
 
 [node name="Welcome" type="TextureRect" parent="SideBoard/InfoPanel" unique_id=799690035]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -229,7 +260,6 @@ texture = ExtResource("9_vp1s6")
 stretch_mode = 5
 
 [node name="Credits" type="TextureRect" parent="SideBoard/InfoPanel" unique_id=1797665092]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -289,6 +319,84 @@ texture_pressed = ExtResource("11_52eev")
 stretch_mode = 5
 script = ExtResource("12_4cxoh")
 click_sound = NodePath("../../../../../Node/ButtonClick")
+metadata/_custom_type_script = "uid://cl48x0pr8we8o"
+
+[node name="Cheat1" type="TextureButton" parent="SideBoard/InfoPanel/Settings/VBoxContainer" unique_id=521169210 node_paths=PackedStringArray("click_sound")]
+custom_minimum_size = Vector2(96, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+toggle_mode = true
+texture_normal = ExtResource("18_8r7i1")
+texture_pressed = ExtResource("19_dw08o")
+stretch_mode = 5
+script = ExtResource("12_4cxoh")
+click_sound = NodePath("../../../../../Node/ButtonClick")
+setting_name = &"toxinImmunity"
+metadata/_custom_type_script = "uid://cl48x0pr8we8o"
+
+[node name="Cheat2" type="TextureButton" parent="SideBoard/InfoPanel/Settings/VBoxContainer" unique_id=1683136453 node_paths=PackedStringArray("click_sound")]
+custom_minimum_size = Vector2(96, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+toggle_mode = true
+texture_normal = ExtResource("20_rpxdv")
+texture_pressed = ExtResource("21_xieoc")
+stretch_mode = 5
+script = ExtResource("12_4cxoh")
+click_sound = NodePath("../../../../../Node/ButtonClick")
+setting_name = &"damageImunity"
+metadata/_custom_type_script = "uid://cl48x0pr8we8o"
+
+[node name="Cheat3" type="TextureButton" parent="SideBoard/InfoPanel/Settings/VBoxContainer" unique_id=818344298 node_paths=PackedStringArray("click_sound")]
+custom_minimum_size = Vector2(96, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+toggle_mode = true
+texture_normal = ExtResource("22_l1ul4")
+texture_pressed = ExtResource("23_d3sff")
+stretch_mode = 5
+script = ExtResource("12_4cxoh")
+click_sound = NodePath("../../../../../Node/ButtonClick")
+setting_name = &"infiniteJump"
+metadata/_custom_type_script = "uid://cl48x0pr8we8o"
+
+[node name="Cheat4" type="TextureButton" parent="SideBoard/InfoPanel/Settings/VBoxContainer" unique_id=1631525346 node_paths=PackedStringArray("click_sound")]
+custom_minimum_size = Vector2(96, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+toggle_mode = true
+texture_normal = ExtResource("24_8nlh4")
+texture_pressed = ExtResource("25_4i4g7")
+stretch_mode = 5
+script = ExtResource("12_4cxoh")
+click_sound = NodePath("../../../../../Node/ButtonClick")
+setting_name = &"infiniteWallJump"
+metadata/_custom_type_script = "uid://cl48x0pr8we8o"
+
+[node name="Cheat5" type="TextureButton" parent="SideBoard/InfoPanel/Settings/VBoxContainer" unique_id=719685156 node_paths=PackedStringArray("click_sound")]
+custom_minimum_size = Vector2(96, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+toggle_mode = true
+texture_normal = ExtResource("26_quyqc")
+texture_pressed = ExtResource("27_bck5n")
+stretch_mode = 5
+script = ExtResource("12_4cxoh")
+click_sound = NodePath("../../../../../Node/ButtonClick")
+setting_name = &"infiniteDash"
+metadata/_custom_type_script = "uid://cl48x0pr8we8o"
+
+[node name="Cheat6" type="TextureButton" parent="SideBoard/InfoPanel/Settings/VBoxContainer" unique_id=121379446 node_paths=PackedStringArray("click_sound")]
+custom_minimum_size = Vector2(96, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+toggle_mode = true
+texture_normal = ExtResource("28_rpxdv")
+texture_pressed = ExtResource("29_xieoc")
+stretch_mode = 5
+script = ExtResource("12_4cxoh")
+click_sound = NodePath("../../../../../Node/ButtonClick")
+setting_name = &"infiniteFoam"
 metadata/_custom_type_script = "uid://cl48x0pr8we8o"
 
 [node name="Reset" type="TextureButton" parent="SideBoard/InfoPanel/Settings/VBoxContainer" unique_id=495789941 node_paths=PackedStringArray("click_sound")]
@@ -437,4 +545,4 @@ volume_db = -5.0
 
 [node name="WinTheme" type="AudioStreamPlayer2D" parent="Node" unique_id=1252153753]
 stream = ExtResource("31_w7r7u")
-volume_db = 3.0
+volume_db = 6.0

@@ -6,6 +6,7 @@ class_name FoamCanon
 @export var hold_to_shoot: bool = true
 
 @export var max_foam: int = 100
+@export var sound: AudioStreamPlayer2D
 
 var current_foam: int
 var fire_timer: float = 0.0
@@ -40,7 +41,12 @@ func shoot() -> void:
 		push_error("FoamShooter: Projectile root must use FoamProjectile.")
 		return
 
-	current_foam = maxi(current_foam - 1, 0)
+	if sound:
+		sound.pitch_scale = 0.8 + randf_range(-0.1,0.1)
+		sound.play()
+		pass
+
+	if !GameData.infiniteFoam: current_foam = maxi(current_foam - 1, 0)
 	get_tree().current_scene.add_child(projectile)
 	projectile.global_position = global_position
 

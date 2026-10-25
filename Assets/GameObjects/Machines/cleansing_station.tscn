@@ -17,7 +17,7 @@ metadata/_custom_type_script = "uid://bsp7sku86eqya"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1210419549]
 sprite_frames = ExtResource("2_tux4h")
-animation = &"processing"
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=225376207]
 position = Vector2(-1.5, 0)

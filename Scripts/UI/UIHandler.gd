@@ -61,6 +61,9 @@ func _ready() -> void:
 	# Android & Touch
 	if !touch_controlls:
 		push_warning("UIHandler: Assign TouchControlls.")
+		
+	if pause_menu: pause_menu.hide()
+	if touch_controlls: touch_controlls.hide()
 
 	# Health & Toxins
 	while !player_controller:

@@ -8,6 +8,10 @@ signal data_changed
 # Cheats - Future Update
 var toxinImmunity: bool = false
 var damageImunity: bool = false
+var infiniteJump: bool = false
+var infiniteWallJump: bool = false
+var infiniteDash: bool = false
+var infiniteFoam: bool = false
 
 # Level Data
 var level_toxins: int = 0

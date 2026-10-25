@@ -16,3 +16,9 @@ Enemy Death
 
 https://opengameart.org/content/8bit-death-whirl
 Player Death
+
+https://opengameart.org/content/squish-sounds-effects:
+Shoot
+
+https://opengameart.org/content/40-cc0-water-splash-slime-sfx:
+Refill

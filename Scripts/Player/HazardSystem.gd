@@ -30,8 +30,13 @@ class_name HazardSystem
 @export var can_regenerate_health := true
 
 @export_subgroup("Cheats")
-@export var toxinImmunity := false
-@export var damageImunity := false
+@export var toxinImmunity := false:
+	get():
+		return toxinImmunity or (!Engine.is_editor_hint() and GameData.toxinImmunity)
+		
+@export var damageImunity := false:
+	get():
+		return damageImunity or (!Engine.is_editor_hint() and GameData.damageImunity)
 
 # ============================================================
 # Signals

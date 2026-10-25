@@ -45,9 +45,13 @@ var jump_cut_multiplier: float = 0.5
 
 @export var allow_double_and_wall_jump: bool = true
 
-@export var infinite_wall_jump: bool = false
+@export var infinite_wall_jump: bool = false:
+	get():
+		return infinite_wall_jump or GameData.infiniteWallJump
 
-@export var infinite_double_jump: bool = false
+@export var infinite_double_jump: bool = false:
+	get():
+		return infinite_double_jump or GameData.infiniteJump
 
 
 @export_subgroup("Dash")
@@ -65,6 +69,10 @@ var dash_cooldown_time: float = 2.0
 var dash_gravity_damping: float = 0.33
 
 @export var dash: bool = true
+
+@export var infinite_dash: bool = false:
+	get():
+		return infinite_dash or GameData.infiniteDash
 
 
 @export_subgroup("Drop Through")
@@ -130,40 +138,28 @@ func apply_gravity(delta: float) -> void:
 func update_timers(delta: float) -> void:
 	# Jump buffer
 	if jump_buffer_timer > 0.0:
-		jump_buffer_timer = maxf(
-			jump_buffer_timer - delta,
-			0.0
-		)
+		jump_buffer_timer = maxf(jump_buffer_timer - delta, 0.0)
 
 	# Dash cooldown
 	if dash_cooldown_timer > 0.0:
-		dash_cooldown_timer = maxf(
-			dash_cooldown_timer - delta,
-			0.0
-		)
+		if infinite_dash:
+			dash_cooldown_timer = 0.0
+		else:
+			dash_cooldown_timer = maxf(dash_cooldown_timer - delta, 0.0)
 
 	if drop_through_timer > 0.0:
-		drop_through_timer = maxf(
-			drop_through_timer - delta,
-			0.0
-		)
+		drop_through_timer = maxf(drop_through_timer - delta, 0.0)
 
 
 func update_ground_state(delta: float) -> void:
 	if player.is_on_floor():
-		# Restore abilities when landing.
 		can_double_jump = double_jump
 		can_wall_jump = wall_jump
 		can_dash = dash
 
-		# Start / refresh coyote timer.
 		coyote_timer = coyote_time
 	else:
-		# Count down coyote time while airborne.
-		coyote_timer = maxf(
-			coyote_timer - delta,
-			0.0
-		)
+		coyote_timer = maxf(coyote_timer - delta, 0.0)
 
 
 # ============================================================

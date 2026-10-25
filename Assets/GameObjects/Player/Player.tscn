@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://cfh2xkdke4gt3" path="res://Assets/GameObjects/Player/foam_canon.gd" id="11_1eb5o"]
 [ext_resource type="PackedScene" uid="uid://bagj0jsj05fyk" path="res://Assets/GameObjects/Foam/Foam.tscn" id="12_xiq6a"]
 [ext_resource type="AudioStream" uid="uid://b3o6whmovru44" path="res://GameSound/player_death.wav" id="13_pcw4a"]
+[ext_resource type="AudioStream" uid="uid://bxkrmlat6lv4x" path="res://GameSound/shoot.mp3" id="14_8tnkg"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i2024"]
 radius = 6.0
@@ -78,11 +79,16 @@ metadata/_custom_type_script = "uid://bse72i81wv1yk"
 script = ExtResource("10_8q4yl")
 metadata/_custom_type_script = "uid://ey1sa2psmrsu"
 
-[node name="FoamCanon" type="Marker2D" parent="." unique_id=1259515207]
+[node name="FoamCanon" type="Marker2D" parent="." unique_id=1259515207 node_paths=PackedStringArray("sound")]
 position = Vector2(0, 2)
 script = ExtResource("11_1eb5o")
 projectile_scene = ExtResource("12_xiq6a")
 fire_cooldown = 0.1
+sound = NodePath("../ShootSound")
 
 [node name="DeathSound" type="AudioStreamPlayer2D" parent="." unique_id=1073796699]
 stream = ExtResource("13_pcw4a")
+
+[node name="ShootSound" type="AudioStreamPlayer2D" parent="." unique_id=1190569032]
+stream = ExtResource("14_8tnkg")
+pitch_scale = 0.8
