@@ -211,7 +211,22 @@ position = Vector2(32, -96)
 position = Vector2(-872, 32)
 
 [node name="Enemy15" parent="World/Entities" unique_id=129054502 instance=ExtResource("14_mdywq")]
-position = Vector2(272, -96)
+position = Vector2(352, -80)
+
+[node name="Enemy16" parent="World/Entities" unique_id=797542402 instance=ExtResource("14_mdywq")]
+position = Vector2(288, 144)
+
+[node name="Enemy17" parent="World/Entities" unique_id=117313174 instance=ExtResource("14_mdywq")]
+position = Vector2(-744, 0)
+
+[node name="Enemy18" parent="World/Entities" unique_id=1438116148 instance=ExtResource("14_mdywq")]
+position = Vector2(-464, 384)
+
+[node name="Enemy19" parent="World/Entities" unique_id=97890682 instance=ExtResource("14_mdywq")]
+position = Vector2(216, -96)
+
+[node name="Enemy20" parent="World/Entities" unique_id=1679592032 instance=ExtResource("14_mdywq")]
+position = Vector2(288, 384)
 
 [node name="DecoreFront" type="TileMapLayer" parent="World" unique_id=1868352746]
 z_index = 10

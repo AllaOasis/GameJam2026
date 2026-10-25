@@ -42,7 +42,7 @@
 [ext_resource type="Texture2D" uid="uid://com7jccs755vf" path="res://Textures/UI/Button/CheatButtons/Cheat6-Button.png" id="28_rpxdv"]
 [ext_resource type="AudioStream" uid="uid://cef508hcllr4o" path="res://GameSound/button_click.ogg" id="29_2tbof"]
 [ext_resource type="Texture2D" uid="uid://dcsa27ufrlub6" path="res://Textures/UI/Button/CheatButtons/Cheat6-Button-Clicked.png" id="29_xieoc"]
-[ext_resource type="AudioStream" uid="uid://dgipag4vwf5eh" path="res://GameSound/main_menu_music.wav" id="30_irrxp"]
+[ext_resource type="AudioStream" uid="uid://dyrrtvameyqax" path="res://GameSound/main_menu_music.wav" id="30_irrxp"]
 [ext_resource type="AudioStream" uid="uid://cy48nxydkfdfc" path="res://GameSound/win_music.ogg" id="31_w7r7u"]
 
 [node name="LevelSelector" type="Control" unique_id=1028165528]

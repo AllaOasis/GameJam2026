@@ -127,7 +127,7 @@ metadata/_custom_type_script = "uid://holnxpvfc4ir"
 [node name="Entities" type="Node" parent="World" unique_id=1516273730]
 
 [node name="Enemy" parent="World/Entities" unique_id=147339882 instance=ExtResource("14_gui1c")]
-position = Vector2(-296, 368)
+position = Vector2(-200, 368)
 
 [node name="Enemy2" parent="World/Entities" unique_id=1286721306 instance=ExtResource("14_gui1c")]
 position = Vector2(-392, 368)
