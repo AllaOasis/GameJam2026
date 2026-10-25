@@ -20,7 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://8qgjlvos5b6b" path="res://Textures/UI/Button/ButtonDown/Continue-Button.png" id="17_x3n41"]
 [ext_resource type="Texture2D" uid="uid://dfnf3gwnst7hk" path="res://Textures/UI/Button/Continue-Button-Clicked.png" id="18_kuv2s"]
 [ext_resource type="Texture2D" uid="uid://beixjj8vusbm1" path="res://Textures/UI/Level-Decontaminated-Text.png" id="20_kuv2s"]
-[ext_resource type="AudioStream" uid="uid://ciu703xarvyp6" path="res://GameSound/level_music.wav" id="21_lpdd2"]
+[ext_resource type="AudioStream" uid="uid://bs53q2tq6yj2i" path="res://GameSound/level_music.wav" id="21_lpdd2"]
 [ext_resource type="AudioStream" uid="uid://cef508hcllr4o" path="res://GameSound/button_click.ogg" id="22_e4in3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_np7a2"]
