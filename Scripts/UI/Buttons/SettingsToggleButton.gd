@@ -3,34 +3,44 @@ class_name SettingsToggleButton
 
 @export_subgroup("Setting")
 @export var setting_name: StringName = &"is_touch"
-@export var display_name: String = "Touch Controls"
+@export var is_toggle: bool = true
+
 
 func _ready() -> void:
-	toggle_mode = true
+	toggle_mode = is_toggle
+
+	_set_toggleables()
 	
-	# Initialize the button from the current global setting.
-	match setting_name:
-		&"is_touch":
-			button_pressed = GameData.is_touch
+	pressed.connect(_on_pressed)
+	GameData.data_changed.connect(_set_toggleables)
 
-		_:
-			push_warning(
-			"SettingsToggleButton: Unknown setting: "
-			+ String(setting_name)
-		)
+func _set_toggleables() -> void:
+	if is_toggle:
+		match setting_name:
+			&"is_touch":
+				button_pressed = GameData.is_touch
+			_:
+				push_warning(
+					"SettingsToggleButton: Unknown toggle setting: "
+					+ String(setting_name)
+				)
 
-	# Update the global setting when toggled.
-	toggled.connect(_on_toggled)
-
-
-func _on_toggled(enabled: bool) -> void:
-	match setting_name:
-		&"is_touch":
-			GameData.is_touch = enabled
-
-		_:
-			push_warning(
-				"SettingsToggleButton: Unknown setting: "
-				+ String(setting_name)
-			)
-			return
+func _on_pressed() -> void:
+	if is_toggle:
+		match setting_name:
+			&"is_touch":
+				GameData.is_touch = button_pressed
+			_:
+				push_warning(
+					"SettingsToggleButton: Unknown toggle setting: "
+					+ String(setting_name)
+				)
+	else:
+		match setting_name:
+			&"reset_data":
+				GameData.reset_data()
+			_:
+				push_warning(
+					"SettingsToggleButton: Unknown action: "
+					+ String(setting_name)
+				)

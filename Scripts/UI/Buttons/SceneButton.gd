@@ -5,10 +5,15 @@ class_name SceneButton
 @export var player_scene: PackedScene
 @export var spawn_point: StringName = &"Default"
 
+@export_subgroup("On Hover")
+@export var enable_on_hover: CanvasItem
+
 
 func _ready() -> void:
 	pressed.connect(_on_pressed)
-
+	mouse_entered.connect(_on_hover)
+	mouse_exited.connect(_on_hover_exit)
+	if enable_on_hover: enable_on_hover.visible = false
 
 func _on_pressed() -> void:
 	if level_path.is_empty():
@@ -20,3 +25,9 @@ func _on_pressed() -> void:
 		player_scene,
 		spawn_point
 	)
+
+func _on_hover() -> void:
+	if enable_on_hover: enable_on_hover.visible = true
+
+func _on_hover_exit() -> void:
+	if enable_on_hover: enable_on_hover.visible = false

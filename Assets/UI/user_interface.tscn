@@ -58,6 +58,10 @@ win_text = NodePath("WinScreen/WinText")
 win_button = NodePath("WinScreen/WinButton")
 pause_button = NodePath("PauseButton")
 touch_controlls = NodePath("AndroidInterface")
+LevelQ1 = "uid://ctdt5jok78b7o"
+LevelQ2 = "uid://d06nlmwxs37rf"
+LevelQ3 = "uid://cvroh8icw7ctt"
+LevelQ4 = "uid://fdy5r41ke8nw"
 metadata/_custom_type_script = "uid://cqptqrjy58rko"
 
 [node name="AndroidInterface" parent="UIHandler" unique_id=1544986949 instance=ExtResource("3_sdast")]

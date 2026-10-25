@@ -18,14 +18,16 @@
 [ext_resource type="Texture2D" uid="uid://1hvn1rlgetok" path="res://Textures/UI/Button/ButtonHover/Exit-Button-Hover.png" id="10_vp1s6"]
 [ext_resource type="Script" uid="uid://bo8jfphyk3ejk" path="res://Scripts/UI/Buttons/QuitButton.gd" id="11_7u3o2"]
 [ext_resource type="Texture2D" uid="uid://n5nba62lmomn" path="res://Textures/UI/touch-on.png" id="11_52eev"]
+[ext_resource type="Texture2D" uid="uid://8dhsc8aqndjf" path="res://Textures/UI/Button/Close-Button.png" id="11_574bu"]
 [ext_resource type="Script" uid="uid://cl48x0pr8we8o" path="res://Scripts/UI/Buttons/SettingsToggleButton.gd" id="12_4cxoh"]
-[ext_resource type="Texture2D" uid="uid://vjbwqmahoe50" path="res://Textures/UI/Button/Empty-Button.png" id="13_ju0jd"]
+[ext_resource type="Texture2D" uid="uid://bhj5e86ie1f6h" path="res://Textures/Tiles/Coffin-Closed.png" id="12_fpv2c"]
 [ext_resource type="Texture2D" uid="uid://c8f5c6a5vvif6" path="res://Textures/UI/Button/Settings-Button.png" id="13_vtfjb"]
-[ext_resource type="Texture2D" uid="uid://ds8dfs480es0a" path="res://Textures/UI/Button/ButtonDown/Empty-Button-Clicked.png" id="14_574bu"]
 [ext_resource type="Texture2D" uid="uid://dkkpxlr2sdh7v" path="res://Textures/UI/Button/ButtonDown/Settings-Button-Clicked.png" id="14_ju0jd"]
 [ext_resource type="Script" uid="uid://ckxa08jbyvhv1" path="res://Scripts/UI/Buttons/ActionButton.gd" id="15_574bu"]
 [ext_resource type="Texture2D" uid="uid://0fo8gtmrnswc" path="res://Textures/UI/Button/Credits-Button.png" id="16_fpv2c"]
+[ext_resource type="Texture2D" uid="uid://dm1y4jcskatcg" path="res://Textures/UI/Button/Reset-Button.png" id="17_2tbof"]
 [ext_resource type="Texture2D" uid="uid://bdtrrg1pxl5hk" path="res://Textures/UI/Button/ButtonDown/Credits-Button-Clicked.png" id="17_n1wsf"]
+[ext_resource type="Texture2D" uid="uid://28j553y5w4b3" path="res://Textures/UI/Button/ButtonDown/Reset-Button-Clicked.png" id="18_cit0y"]
 
 [node name="LevelSelector" type="Control" unique_id=1028165528]
 layout_mode = 3
@@ -35,14 +37,19 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MainMenuController" type="Control" parent="." unique_id=486195980 node_paths=PackedStringArray("info", "settings", "credits")]
+[node name="MainMenuController" type="Control" parent="." unique_id=486195980 node_paths=PackedStringArray("castle_q1", "castle_q2", "castle_q3", "castle_q4", "castle_mist", "info", "settings", "credits")]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_574bu")
-info = NodePath("../TextureRect/InfoPanel/Welcome")
-settings = NodePath("../TextureRect/InfoPanel/Settings")
-credits = NodePath("../TextureRect/InfoPanel/Credits")
+castle_q1 = NodePath("../Background/CastleQ1")
+castle_q2 = NodePath("../Background/CastleQ2")
+castle_q3 = NodePath("../Background/CastleQ3")
+castle_q4 = NodePath("../Background/CastleQ4")
+castle_mist = NodePath("../Background/CastleMist")
+info = NodePath("../SideBoard/InfoPanel/Welcome")
+settings = NodePath("../SideBoard/InfoPanel/Settings")
+credits = NodePath("../SideBoard/InfoPanel/Credits")
 metadata/_custom_type_script = "uid://ciw0xbi4v5en3"
 
 [node name="Background" type="TextureRect" parent="." unique_id=1474340105]
@@ -115,7 +122,59 @@ grow_vertical = 2
 texture = ExtResource("7_vp1s6")
 stretch_mode = 4
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=1316400664]
+[node name="CastleQ1H" type="TextureRect" parent="Background" unique_id=505792437]
+visible = false
+modulate = Color(1, 1, 1, 0.6862745)
+self_modulate = Color(0.47058824, 1, 0.4627451, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_wmgh0")
+stretch_mode = 4
+
+[node name="CastleQ2H" type="TextureRect" parent="Background" unique_id=666078972]
+visible = false
+modulate = Color(1, 1, 1, 0.6862745)
+self_modulate = Color(0.47058824, 1, 0.4627451, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_tkmj6")
+stretch_mode = 4
+
+[node name="CastleQ3H" type="TextureRect" parent="Background" unique_id=498178584]
+visible = false
+modulate = Color(1, 1, 1, 0.6862745)
+self_modulate = Color(0.47058824, 1, 0.4627451, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_7hxbj")
+stretch_mode = 4
+
+[node name="CastleQ4H" type="TextureRect" parent="Background" unique_id=1565230712]
+visible = false
+modulate = Color(1, 1, 1, 0.6862745)
+self_modulate = Color(0.47058824, 1, 0.4627451, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_vp1s6")
+stretch_mode = 4
+
+[node name="SideBoard" type="TextureRect" parent="." unique_id=1316400664]
 layout_mode = 1
 anchors_preset = 11
 anchor_left = 1.0
@@ -125,7 +184,7 @@ offset_left = -280.0
 grow_horizontal = 0
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="TextureRect" unique_id=481537373]
+[node name="ColorRect" type="ColorRect" parent="SideBoard" unique_id=481537373]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -134,7 +193,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="InfoPanel" type="ColorRect" parent="TextureRect" unique_id=1210933949]
+[node name="InfoPanel" type="ColorRect" parent="SideBoard" unique_id=1210933949]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -142,7 +201,8 @@ offset_bottom = 300.0
 grow_horizontal = 2
 color = Color(0.06666667, 0.06666667, 0.06666667, 1)
 
-[node name="Welcome" type="TextureRect" parent="TextureRect/InfoPanel" unique_id=799690035]
+[node name="Welcome" type="TextureRect" parent="SideBoard/InfoPanel" unique_id=799690035]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -154,7 +214,7 @@ grow_vertical = 2
 texture = ExtResource("8_7hxbj")
 stretch_mode = 5
 
-[node name="Name" type="TextureRect" parent="TextureRect/InfoPanel/Welcome" unique_id=1638279993]
+[node name="Name" type="TextureRect" parent="SideBoard/InfoPanel/Welcome" unique_id=1638279993]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -163,7 +223,8 @@ grow_horizontal = 2
 texture = ExtResource("9_vp1s6")
 stretch_mode = 5
 
-[node name="Credits" type="TextureRect" parent="TextureRect/InfoPanel" unique_id=1797665092]
+[node name="Credits" type="TextureRect" parent="SideBoard/InfoPanel" unique_id=1797665092]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -172,7 +233,7 @@ grow_horizontal = 2
 grow_vertical = 2
 stretch_mode = 5
 
-[node name="ActionButton" type="TextureButton" parent="TextureRect/InfoPanel/Credits" unique_id=1570895523]
+[node name="Close" type="TextureButton" parent="SideBoard/InfoPanel/Credits" unique_id=1570895523]
 z_index = 10
 layout_mode = 1
 anchors_preset = 3
@@ -187,14 +248,14 @@ offset_bottom = -5.0
 grow_horizontal = 0
 grow_vertical = 0
 action_mode = 0
-texture_normal = ExtResource("13_ju0jd")
-texture_pressed = ExtResource("14_574bu")
+texture_normal = ExtResource("11_574bu")
+texture_pressed = ExtResource("12_fpv2c")
 stretch_mode = 5
 script = ExtResource("15_574bu")
 action = &"Close"
 metadata/_custom_type_script = "uid://ckxa08jbyvhv1"
 
-[node name="Settings" type="Control" parent="TextureRect/InfoPanel" unique_id=224668395]
+[node name="Settings" type="Control" parent="SideBoard/InfoPanel" unique_id=224668395]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -202,7 +263,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/InfoPanel/Settings" unique_id=560757978]
+[node name="VBoxContainer" type="VBoxContainer" parent="SideBoard/InfoPanel/Settings" unique_id=560757978]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -212,7 +273,7 @@ offset_right = 150.0
 offset_bottom = 140.0
 grow_vertical = 2
 
-[node name="Touch" type="TextureButton" parent="TextureRect/InfoPanel/Settings/VBoxContainer" unique_id=2067607823]
+[node name="Touch" type="TextureButton" parent="SideBoard/InfoPanel/Settings/VBoxContainer" unique_id=2067607823]
 custom_minimum_size = Vector2(96, 32)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -223,17 +284,19 @@ stretch_mode = 5
 script = ExtResource("12_4cxoh")
 metadata/_custom_type_script = "uid://cl48x0pr8we8o"
 
-[node name="SceneButton" type="TextureButton" parent="TextureRect/InfoPanel/Settings/VBoxContainer" unique_id=1188646787]
-visible = false
+[node name="Reset" type="TextureButton" parent="SideBoard/InfoPanel/Settings/VBoxContainer" unique_id=495789941]
+custom_minimum_size = Vector2(96, 32)
 layout_mode = 2
-texture_normal = ExtResource("13_ju0jd")
-texture_pressed = ExtResource("14_574bu")
-script = ExtResource("2_588t6")
-level_path = "uid://bytx6t8qptvtd"
-player_scene = ExtResource("3_588t6")
-metadata/_custom_type_script = "uid://b56qifb45ldel"
+size_flags_horizontal = 4
+texture_normal = ExtResource("17_2tbof")
+texture_pressed = ExtResource("18_cit0y")
+stretch_mode = 5
+script = ExtResource("12_4cxoh")
+setting_name = &"reset_data"
+is_toggle = false
+metadata/_custom_type_script = "uid://cl48x0pr8we8o"
 
-[node name="ActionButton2" type="TextureButton" parent="TextureRect/InfoPanel/Settings" unique_id=2088961122]
+[node name="Close" type="TextureButton" parent="SideBoard/InfoPanel/Settings" unique_id=2088961122]
 z_index = 10
 layout_mode = 1
 anchors_preset = 3
@@ -248,14 +311,14 @@ offset_bottom = -5.0
 grow_horizontal = 0
 grow_vertical = 0
 action_mode = 0
-texture_normal = ExtResource("13_ju0jd")
-texture_pressed = ExtResource("14_574bu")
+texture_normal = ExtResource("11_574bu")
+texture_pressed = ExtResource("12_fpv2c")
 stretch_mode = 5
 script = ExtResource("15_574bu")
 action = &"Close"
 metadata/_custom_type_script = "uid://ckxa08jbyvhv1"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="TextureRect" unique_id=707653716]
+[node name="HBoxContainer" type="HBoxContainer" parent="SideBoard" unique_id=707653716]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -268,7 +331,7 @@ grow_horizontal = 2
 grow_vertical = 0
 alignment = 1
 
-[node name="Settings" type="TextureButton" parent="TextureRect/HBoxContainer" unique_id=700904020]
+[node name="Settings" type="TextureButton" parent="SideBoard/HBoxContainer" unique_id=700904020]
 layout_mode = 2
 size_flags_horizontal = 3
 texture_normal = ExtResource("13_vtfjb")
@@ -278,7 +341,7 @@ script = ExtResource("15_574bu")
 action = &"OpenSettings"
 metadata/_custom_type_script = "uid://ckxa08jbyvhv1"
 
-[node name="Credits" type="TextureButton" parent="TextureRect/HBoxContainer" unique_id=972588865]
+[node name="Credits" type="TextureButton" parent="SideBoard/HBoxContainer" unique_id=972588865]
 layout_mode = 2
 size_flags_horizontal = 3
 texture_normal = ExtResource("16_fpv2c")
@@ -288,7 +351,7 @@ script = ExtResource("15_574bu")
 action = &"OpenCredits"
 metadata/_custom_type_script = "uid://ckxa08jbyvhv1"
 
-[node name="Exit" type="TextureButton" parent="TextureRect/HBoxContainer" unique_id=1549515588]
+[node name="Exit" type="TextureButton" parent="SideBoard/HBoxContainer" unique_id=1549515588]
 layout_mode = 2
 size_flags_horizontal = 3
 texture_normal = ExtResource("8_tkmj6")
@@ -298,7 +361,7 @@ stretch_mode = 5
 script = ExtResource("11_7u3o2")
 metadata/_custom_type_script = "uid://bo8jfphyk3ejk"
 
-[node name="Q1Button" type="TextureButton" parent="." unique_id=1903077483]
+[node name="Q1Button" type="TextureButton" parent="." unique_id=1903077483 node_paths=PackedStringArray("enable_on_hover")]
 layout_mode = 0
 offset_left = 171.0
 offset_top = 31.0
@@ -307,9 +370,10 @@ offset_bottom = 178.0
 script = ExtResource("2_588t6")
 level_path = "uid://ctdt5jok78b7o"
 player_scene = ExtResource("3_588t6")
+enable_on_hover = NodePath("../Background/CastleQ1H")
 metadata/_custom_type_script = "uid://b56qifb45ldel"
 
-[node name="Q2Button" type="TextureButton" parent="." unique_id=1328444774]
+[node name="Q2Button" type="TextureButton" parent="." unique_id=1328444774 node_paths=PackedStringArray("enable_on_hover")]
 layout_mode = 0
 offset_left = 69.0
 offset_top = 26.0
@@ -318,9 +382,10 @@ offset_bottom = 181.0
 script = ExtResource("2_588t6")
 level_path = "uid://d06nlmwxs37rf"
 player_scene = ExtResource("3_588t6")
+enable_on_hover = NodePath("../Background/CastleQ2H")
 metadata/_custom_type_script = "uid://b56qifb45ldel"
 
-[node name="Q3Button" type="TextureButton" parent="." unique_id=270495887]
+[node name="Q3Button" type="TextureButton" parent="." unique_id=270495887 node_paths=PackedStringArray("enable_on_hover")]
 layout_mode = 0
 offset_left = -1.0
 offset_top = 182.0
@@ -329,9 +394,10 @@ offset_bottom = 334.0
 script = ExtResource("2_588t6")
 level_path = "uid://cvroh8icw7ctt"
 player_scene = ExtResource("3_588t6")
+enable_on_hover = NodePath("../Background/CastleQ3H")
 metadata/_custom_type_script = "uid://b56qifb45ldel"
 
-[node name="Q4Button" type="TextureButton" parent="." unique_id=1061553439]
+[node name="Q4Button" type="TextureButton" parent="." unique_id=1061553439 node_paths=PackedStringArray("enable_on_hover")]
 layout_mode = 0
 offset_left = 182.0
 offset_top = 189.0
@@ -340,4 +406,5 @@ offset_bottom = 331.0
 script = ExtResource("2_588t6")
 level_path = "uid://fdy5r41ke8nw"
 player_scene = ExtResource("3_588t6")
+enable_on_hover = NodePath("../Background/CastleQ4H")
 metadata/_custom_type_script = "uid://b56qifb45ldel"

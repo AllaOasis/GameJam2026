@@ -42,6 +42,12 @@ var win_button_timer: float = 0.0
 @export var pause_button: Node
 @export var touch_controlls: Node;
 
+@export_subgroup("Levels")
+@export_file("*.tscn") var LevelQ1: String
+@export_file("*.tscn") var LevelQ2: String
+@export_file("*.tscn") var LevelQ3: String
+@export_file("*.tscn") var LevelQ4: String
+
 var death_background_timer: float = 0
 var death_text_timer: float = 0
 var death_button_timer: float = 0
@@ -286,7 +292,22 @@ func player_win() -> void:
 		return
 
 	GameData.game_won = true
+	
+	var current_scene := get_tree().current_scene
 
+	if current_scene:
+		var scene_uid := ResourceLoader.get_resource_uid(current_scene.scene_file_path)
+		var current_id = ResourceUID.id_to_text(scene_uid)
+
+		if current_id == LevelQ1:
+			GameData.q4 = true
+		elif current_id == LevelQ2:
+			GameData.q4 = true
+		elif current_id == LevelQ3:
+			GameData.q4 = true
+		elif current_id == LevelQ4:
+			GameData.q4 = true
+	
 	# Show win screen.
 	win_screen.visible = true
 	win_text.visible = true
