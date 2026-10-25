@@ -3,11 +3,13 @@
 ## How to Run
 
 ### Windows
-1. Open the `Build` folder.
+1. Open the `Build/ToxicorpFive-Windows` folder.
 2. Run `ToxicorpFive-Windows.exe`.
 
+WARNING: When copying copy the whole `ToxicorpFive-Windows` not just the .exe file.
+
 ### Linux
-1. Open the `Build` folder.
+1. Open the `BuildToxicorpFive-Linux` folder.
 2. Run `ToxicorpFive-Linux.x86_64`.
 3. If needed, give the file permission to execute.
 
