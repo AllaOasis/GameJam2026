@@ -14,7 +14,7 @@ config/name="Toxicorp Five"
 config/description="Alright, team Five.
 
 Count Dracula himself has sought us out for this one. His castle has been overrun by the Pollutants and now he wants us to clean up the place. He's promised to pay us in solid gold, so I don't have to tell you what's at stake here. You know the drill: go in, foam up the place, get rid of the Pollutants, decontaminate the area, and don't irradiate yourself."
-config/version="alpha 1.0.0"
+config/version="0.1.0"
 run/main_scene="uid://dodyq4d6gm02c"
 config/custom_user_dir_name="toxicorp_fives"
 config/features=PackedStringArray("4.7", "GL Compatibility")
@@ -23,8 +23,8 @@ boot_splash/stretch_mode=2
 boot_splash/use_filter=false
 boot_splash/image="uid://b4rkl3u8i4j16"
 config/icon="uid://iud5lfp5pv3n"
-config/macos_native_icon="uid://iud5lfp5pv3n"
-config/windows_native_icon="uid://iud5lfp5pv3n"
+config/macos_native_icon="res://icon.icns"
+config/windows_native_icon="res://icon.ico"
 boot_splash/minimum_display_time=2500
 
 [autoload]

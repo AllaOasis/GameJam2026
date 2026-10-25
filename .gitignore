@@ -1,3 +1,5 @@
 # Godot 4+ specific ignores
 .godot/
+Source/.godot/
 /android/
+Source/android/
