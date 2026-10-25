@@ -87,23 +87,17 @@ func _process(delta: float) -> void:
 
 # Health
 func restore_health(amount: int) -> void:
-	if amount <= 0:
-		return
+	if amount <= 0: return
 
 	var health_cap: int = mini(max_regen(), max_health)
 	var previous_health: int = current_health
 
-	current_health = mini(
-		current_health + amount,
-		health_cap
-	)
+	current_health = mini(current_health + amount, health_cap)
 
-	if current_health != previous_health:
-		health_changed.emit(current_health, max_health)
+	if current_health != previous_health: health_changed.emit(current_health, max_health)
 
 func take_damage(amount: int) -> void:
-	if damageImunity or amount <= 0 or damage_imunity_timer > 0 or GameData.is_player_dead:
-		return
+	if damageImunity or amount <= 0 or damage_imunity_timer > 0 or GameData.is_player_dead: return
 
 	var previous_health: int = current_health
 
@@ -115,13 +109,11 @@ func take_damage(amount: int) -> void:
 		health_regen_accumulator = 0.0
 		health_changed.emit(current_health, max_health)
 	
-	if current_health <= 0:
-		GameData.is_player_dead = true
+	if current_health <= 0: GameData.is_player_dead = true
 
 # Toxins
 func _update_toxin_curve() -> void:
-	if toxin_tween == null:
-		return
+	if toxin_tween == null: return
 
 	toxin_tween.min_value = 0.0
 	toxin_tween.max_value = float(max_health)
@@ -140,8 +132,7 @@ func purify_toxin_fragments() -> int:
 	return purified_amount
 	
 func collect_toxin_fragments(amount: int) -> void:
-	if amount <= 0:
-		return
+	if amount <= 0: return
 
 	var previous_coins: int = toxin_coins
 

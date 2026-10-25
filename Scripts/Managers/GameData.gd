@@ -28,16 +28,19 @@ var q1: bool = false:
 		if q1 != value:
 			q1 = value
 			save_data()
+
 var q2: bool = false:
 	set(value):
 		if q2 != value:
 			q2 = value
 			save_data()
+			
 var q3: bool = false:
 	set(value):
 		if q3 != value:
 			q3 = value
 			save_data()
+
 var q4: bool = false:
 	set(value):
 		if q4 != value:
@@ -53,8 +56,7 @@ var is_touch: bool = TOUCH_DEFAULT:
 
 # Persistant storage
 const SAVE_PATH = "user://savegame.dat"
-func _ready() -> void:
-	load_data()
+func _ready() -> void: load_data()
 	
 func load_data() -> void:
 	if not FileAccess.file_exists(SAVE_PATH):
@@ -99,7 +101,6 @@ func save_data() -> void:
 	data_changed.emit()
 
 func reset_data() -> void:
-	# Back up the existing save before resetting.
 	if FileAccess.file_exists(SAVE_PATH):
 		var backup_path = SAVE_PATH + ".bak"
 
@@ -119,12 +120,10 @@ func reset_data() -> void:
 			push_error("Failed to read save for backup.")
 			return
 
-	# Reset saved game data to defaults.
 	q1 = false
 	q2 = false
 	q3 = false
 	q4 = false
 	is_touch = TOUCH_DEFAULT
 
-	# Write the reset state to the save file.
 	save_data()

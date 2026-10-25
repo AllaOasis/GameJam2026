@@ -10,10 +10,8 @@ func _ready() -> void:
 	change_texture()
 
 func change_texture() -> void:
-	if(PauseManager.is_paused):
-		return
-	if textures.size() < 1:
-		return
+	if(PauseManager.is_paused): return
+	if textures.size() < 1: return
 	texture = textures.pick_random()
 
 	var timer := randf_range(min_interval, max_interval)

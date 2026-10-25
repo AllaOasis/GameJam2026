@@ -14,8 +14,6 @@ func resume_game() -> void:
 
 
 func toggle_pause() -> void:
-	if is_paused:
-		resume_game()
-	else:
-		pause_game()
+	if is_paused: resume_game()
+	else: pause_game()
 		

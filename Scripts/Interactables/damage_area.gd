@@ -12,12 +12,8 @@ func _ready() -> void:
 	body_exited.connect(_on_body_exited)
 
 func _on_body_entered(body: Node2D) -> void:
-	if not body is PlayerController:
-		return
-
-	if player_controller == null:
-		player_controller = body as PlayerController
-		
+	if not body is PlayerController: return
+	if player_controller == null: player_controller = body as PlayerController
 	if player_controller == null:
 		push_warning("Spike: Could not find PlayerController.")
 		return
@@ -31,15 +27,12 @@ func _on_body_entered(body: Node2D) -> void:
 
 
 func _on_body_exited(body: Node2D) -> void:
-	if not body is CharacterBody2D:
-		return
+	if not body is CharacterBody2D: return
 	player_in_range = false
 
 func _try_damage() -> void:
-	if player_controller == null or player_controller.hazard_system == null:
-		return
+	if player_controller == null or player_controller.hazard_system == null: return
 	player_controller.hazard_system.take_damage(damage_amount)
 
 func _process(_delta: float) -> void:
-	if player_in_range:
-		_try_damage()
+	if player_in_range: _try_damage()

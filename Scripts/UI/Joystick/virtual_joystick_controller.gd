@@ -70,21 +70,15 @@ func _update_joystick(screen_pos: Vector2) -> void:
 	joystick_moved.emit(direction)
 	simulate_direction(direction)
 
-
 func _release_joystick() -> void:
 	dragging = false
 	touch_index = -1
 	direction = Vector2.ZERO
 
-	# Reset the knob to the center of the base
-	knob.global_position = (
-		base.global_position + (base.size - knob.size) / 2.0
-	)
+	knob.global_position = (base.global_position + (base.size - knob.size) / 2.0)
 
-	# Release simulated inputs
 	simulate_direction(Vector2.ZERO)
 	joystick_moved.emit(direction)
-
 
 func simulate_direction(dir: Vector2) -> void:
 	# Horizontal: Left and Right
@@ -99,7 +93,5 @@ func simulate_direction(dir: Vector2) -> void:
 		Input.action_release("Right")
 
 	# Vertical: Down only (positive Y)
-	if dir.y > 0.5:
-		Input.action_press("Down", dir.y)
-	else:
-		Input.action_release("Down")
+	if dir.y > 0.5: Input.action_press("Down", dir.y)
+	else: Input.action_release("Down")

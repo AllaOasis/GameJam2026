@@ -58,20 +58,15 @@ var death_button_timer: float = 0
 
 
 func _ready() -> void:
-	# Android & Touch
 	if !touch_controlls:
 		push_warning("UIHandler: Assign TouchControlls.")
-		
 	if pause_menu: pause_menu.hide()
 	if touch_controlls: touch_controlls.hide()
 
-	# Health & Toxins
 	while !player_controller:
 		var player_node: Node = get_tree().get_first_node_in_group("player")
-		if player_node != null:
-			player_controller = player_node as PlayerController
-		if !player_controller:
-			await get_tree().process_frame
+		if player_node != null: player_controller = player_node as PlayerController
+		if !player_controller: await get_tree().process_frame
 
 	if !player_controller.hazard_system:
 		push_warning("UIHandler: PlayerController has no HazardSystem.")
@@ -101,7 +96,6 @@ func _ready() -> void:
 		push_warning("UIHandler: Assign Foam Tank.")
 		return
 
-	# Connect to HazardSystem™ signals.
 	if not player_controller.hazard_system.health_changed.is_connected(_on_health_changed):
 		player_controller.hazard_system.health_changed.connect(_on_health_changed)
 
@@ -123,7 +117,6 @@ func _ready() -> void:
 	death_button.visible = false
 	death_text.visible = false
 	
-	# Win screen
 	win_text.modulate.a = 0.0
 	win_button.modulate.a = 0.0
 
@@ -144,16 +137,11 @@ func update_toxins() -> void:
 	
 
 func create_hearts() -> void:
-	# Remove existing hearts.
-	for child in hearts_container.get_children():
-		child.queue_free()
-
+	for child in hearts_container.get_children(): child.queue_free()
 	hearts.clear()
 
 	# One heart represents two health points.
-	var heart_count: int = ceili(
-		float(player_controller.hazard_system.max_health) / 2.0
-	)
+	var heart_count: int = ceili(float(player_controller.hazard_system.max_health) / 2.0)
 
 	for i in range(heart_count):
 		var heart: Heart = heart_scene.instantiate() as Heart
@@ -170,53 +158,30 @@ func update_hearts(current: int, _maximum: int) -> void:
 
 	for i in range(hearts.size()):
 		# Each heart represents two health points.
-		var health_for_heart: int = clampi(
-			current - (i * 2),
-			0,
-			2
-		)
+		var health_for_heart: int = clampi(current - (i * 2), 0, 2)
 
 		# Each heart represents two toxin levels.
-		var toxins_for_heart: int = clampi(
-			toxins - ((hearts.size() - 1 - i) * 2),
-			0,
-			2
-		)
+		var toxins_for_heart: int = clampi(toxins - ((hearts.size() - 1 - i) * 2), 0, 2)
 
-		hearts[i].set_heart_state(
-			health_for_heart,
-			toxins_for_heart
-		)
+		hearts[i].set_heart_state(health_for_heart, toxins_for_heart)
 
 func _on_health_changed(current: int, maximum: int) -> void:
 	update_hearts(current, maximum)
 
 func _on_toxin_level_changed(_toxin_level: int) -> void:
-	update_hearts(
-		player_controller.hazard_system.current_health,
-		player_controller.hazard_system.max_health
-	)
-	
+	update_hearts(player_controller.hazard_system.current_health, player_controller.hazard_system.max_health)
 	update_toxins()
 
 func process_texture(rect: TextureRect, frame_count: int, maximum: float, current: float, sizeX: int, sizeY: int):
-	if !rect:
-		return
-
-	if maximum <= 0.0:
-		return
+	if !rect: return
+	if maximum <= 0.0: return
 
 	var progress: float = clampf(current / maximum, 0.0, 1.0)
 	var frame: int = (frame_count - 1) - roundi(progress * (frame_count - 1))
 
 	var atlas := rect.texture as AtlasTexture
-	if !atlas:
-		return
-
-	atlas.region = Rect2(
-		Vector2(frame * sizeX, 0),
-		Vector2(sizeX,sizeY)
-	)
+	if !atlas:return
+	atlas.region = Rect2(Vector2(frame * sizeX, 0), Vector2(sizeX,sizeY))
 
 func _process(_delta: float) -> void:
 	if GameData.is_player_dead:
@@ -315,15 +280,12 @@ func player_win() -> void:
 		elif current_id == LevelQ4:
 			GameData.q4 = true
 	
-	# Show win screen.
 	win_screen.visible = true
 	win_text.visible = true
 	win_button.visible = true
 
-	# Reset opacity.
 	win_text.modulate.a = 0.0
 	win_button.modulate.a = 0.0
 
-	# Start sequential fade timers.
 	win_text_timer = win_animation_duration / 2.0
 	win_button_timer = win_animation_duration / 2.0
