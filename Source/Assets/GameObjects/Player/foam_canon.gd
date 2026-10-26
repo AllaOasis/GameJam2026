@@ -17,8 +17,10 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	fire_timer = maxf(fire_timer - delta, 0.0)
 
-	if (!hold_to_shoot and Input.is_action_just_pressed("Shoot")) or (hold_to_shoot and Input.is_action_pressed("Shoot")):
-		shoot()
+	if not (Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and GameData.is_touch):
+		if (!hold_to_shoot and Input.is_action_just_pressed("Shoot")) or \
+		(hold_to_shoot and Input.is_action_pressed("Shoot")):
+			shoot()
 
 
 func shoot() -> void:

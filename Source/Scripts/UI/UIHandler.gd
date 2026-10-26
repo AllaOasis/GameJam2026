@@ -60,8 +60,10 @@ var death_button_timer: float = 0
 func _ready() -> void:
 	if !touch_controlls:
 		push_warning("UIHandler: Assign TouchControlls.")
-	if pause_menu: pause_menu.hide()
-	if touch_controlls: touch_controlls.hide()
+		
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	if pause_menu: pause_menu.visible = false
+	if touch_controlls: touch_controlls.visible = false
 
 	while !player_controller:
 		var player_node: Node = get_tree().get_first_node_in_group("player")
@@ -194,6 +196,7 @@ func _process(_delta: float) -> void:
 				death_text.modulate.a = clampf(1.0 - death_text_timer / (animation_duration / 3.0), 0.0, 1.0)
 				death_text_timer -= _delta
 			elif death_button_timer > 0:
+				Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 				death_button.modulate.a = clampf(1.0 - death_button_timer / (animation_duration / 3.0), 0.0, 1.0)
 				death_button_timer -= _delta
 		initial_delay -= _delta
@@ -209,14 +212,15 @@ func _process(_delta: float) -> void:
 			return
 		
 		# Hide pause controls and menu.
-		pause_button.hide()
-		pause_menu.hide()
+		pause_button.visible = false
+		pause_menu.visible = false
 		PauseManager.pause_game()
 		
 		if win_text_timer > 0.0:
 			win_text.modulate.a = clampf(1.0 - win_text_timer / (win_animation_duration / 3.0), 0.0, 1.0)
 			win_text_timer -= _delta
 		elif win_button_timer > 0.0:
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 			win_button.modulate.a = clampf(1.0 - win_button_timer / (win_animation_duration / 3.0), 0.0, 1.0)
 			win_button_timer -= _delta
 		return
@@ -226,16 +230,20 @@ func _process(_delta: float) -> void:
 	
 	if pause_menu:
 		if PauseManager.is_paused: 
-			pause_menu.show()
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+			pause_menu.visible = true
 		else:
-			pause_menu.hide()
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+			pause_menu.visible = false
 			
 	
 	if is_instance_valid(touch_controlls):
 		if GameData.is_touch and not touch_controlls.visible:
-			touch_controlls.show()
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+			touch_controlls.visible = true
 		elif not GameData.is_touch and touch_controlls.visible:
-			touch_controlls.hide()
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+			touch_controlls.visible = false
 	
 	process_texture(dash_cooldown, 21, player_controller.dash_cooldown_time, player_controller.dash_cooldown_timer, 16, 16)
 	process_texture(foam_tank, 31, player_controller.foam_canon.max_foam, player_controller.foam_canon.current_foam, 48, 16)

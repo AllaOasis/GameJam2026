@@ -18,6 +18,9 @@ func _ready() -> void:
 
 
 func _input(event: InputEvent) -> void:
+	if !visible: return
+	if get_parent() and !get_parent().visible: return
+	
 	# Android touch input
 	if event is InputEventScreenTouch:
 		if event.pressed and not dragging:

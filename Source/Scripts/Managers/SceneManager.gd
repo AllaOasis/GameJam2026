@@ -10,6 +10,8 @@ func load_level(level_path: String, player_scene: PackedScene = null, spawn_poin
 	GameData.game_won = false
 	
 	var error: Error = get_tree().change_scene_to_file(level_path)
+	
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 	if error != OK:
 		push_error("SceneManager: Failed to load scene. Error: " + str(error))
@@ -19,8 +21,6 @@ func load_level(level_path: String, player_scene: PackedScene = null, spawn_poin
 	next_spawn_point = spawn_point
 	await get_tree().scene_changed
 	_spawn_player_at_spawn(player_scene)
-
-
 
 func _spawn_player_at_spawn(player_scene: PackedScene) -> void:
 	var current_scene: Node = get_tree().current_scene

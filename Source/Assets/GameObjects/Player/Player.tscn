@@ -20,9 +20,9 @@ radius = 6.0
 height = 24.0
 
 [sub_resource type="Curve" id="Curve_xiq6a"]
-_limits = [0.0, 8.0, 0.0, 4.0]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(4, 8), 0.0, 0.0, 0, 0]
-point_count = 2
+_limits = [0.0, 8.0, 0.0, 6.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1.0471699, 1.0786524), 0.0, 0.0, 0, 0, Vector2(2.037736, 3.05618), 0.0, 0.0, 0, 0, Vector2(3.0000002, 5.1235957), 0.0, 0.0, 0, 0, Vector2(4.0188684, 6.0224724), 0.0, 0.0, 0, 0, Vector2(5.0943403, 6.0224724), 0.0, 0.0, 0, 0, Vector2(6, 8), 0.0, 0.0, 0, 0]
+point_count = 7
 
 [node name="Player" type="CharacterBody2D" unique_id=444719791 node_paths=PackedStringArray("player", "hazard_system", "foam_canon") groups=["player"]]
 collision_layer = 2
@@ -42,6 +42,7 @@ shape = SubResource("CapsuleShape2D_i2024")
 
 [node name="HazardSystem" type="Node" parent="." unique_id=351905984]
 script = ExtResource("3_xiq6a")
+max_toxins = 6
 toxin_tween = SubResource("Curve_xiq6a")
 health_regen_rate = 1.0
 metadata/_custom_type_script = "uid://cnk40ouldcobd"
