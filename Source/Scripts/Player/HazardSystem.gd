@@ -43,6 +43,7 @@ class_name HazardSystem
 # ============================================================
 
 signal health_changed(current_health: int, max_health: int)
+signal took_damage()
 signal toxin_coins_changed(toxin_coins: int)
 signal toxin_level_changed(toxin_level: int)
 
@@ -108,6 +109,7 @@ func take_damage(amount: int) -> void:
 		health_regen_timer = health_regen_delay
 		health_regen_accumulator = 0.0
 		health_changed.emit(current_health, max_health)
+		took_damage.emit()
 	
 	if current_health <= 0: GameData.is_player_dead = true
 

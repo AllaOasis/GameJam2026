@@ -24,13 +24,14 @@ _limits = [0.0, 8.0, 0.0, 6.0]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1.0471699, 1.0786524), 0.0, 0.0, 0, 0, Vector2(2.037736, 3.05618), 0.0, 0.0, 0, 0, Vector2(3.0000002, 5.1235957), 0.0, 0.0, 0, 0, Vector2(4.0188684, 6.0224724), 0.0, 0.0, 0, 0, Vector2(5.0943403, 6.0224724), 0.0, 0.0, 0, 0, Vector2(6, 8), 0.0, 0.0, 0, 0]
 point_count = 7
 
-[node name="Player" type="CharacterBody2D" unique_id=444719791 node_paths=PackedStringArray("player", "hazard_system", "foam_canon") groups=["player"]]
+[node name="Player" type="CharacterBody2D" unique_id=444719791 node_paths=PackedStringArray("player", "hazard_system", "foam_canon", "sprite") groups=["player"]]
 collision_layer = 2
 collision_mask = 129
 script = ExtResource("1_t3fca")
 player = NodePath(".")
 hazard_system = NodePath("HazardSystem")
 foam_canon = NodePath("FoamCanon")
+sprite = NodePath("AnimatedSprite2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1358888923]
 sprite_frames = ExtResource("2_1eb5o")

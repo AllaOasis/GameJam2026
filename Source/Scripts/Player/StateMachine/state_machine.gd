@@ -6,11 +6,18 @@ class_name StateMachine
 @export var player_controller: PlayerController
 @export var default_state: StringName
 
+@export_subgroup("Damage")
+@export var damage_display_time: float = 0.2
+@export var damage_color: Color = Color.DARK_RED
 @export_subgroup("Sound")
 @export var death_sound: AudioStreamPlayer2D
 
+
 var current_state: State
 var states: Dictionary[StringName, State] = {}
+var damage_display_timer: float = 0
+
+var default_color: Color
 
 func _ready() -> void:
 	if !player || !animated_sprite || !player_controller:
@@ -29,10 +36,13 @@ func _ready() -> void:
 				continue
 			states[child.state_id] = child
 
+	default_color = player_controller.sprite.self_modulate
+
 	# Start Default State
 	change_state(default_state)
 	
 	GameData.player_death.connect(_player_death)
+	player_controller.hazard_system.took_damage.connect(_player_took_damage)
 
 func _physics_process(delta: float) -> void:
 	if GameData.is_player_dead:
@@ -79,4 +89,14 @@ func _player_death(dead: bool):
 	if dead:
 		if death_sound: death_sound.play()
 		animated_sprite.play("death")
-	
+		
+func _process(delta: float) -> void:
+	if damage_display_timer > 0 :
+		damage_display_timer = maxf(damage_display_timer - delta, 0)
+		if player_controller.sprite.self_modulate != damage_color :
+			player_controller.sprite.self_modulate = damage_color
+	elif player_controller.sprite.self_modulate != default_color:
+		player_controller.sprite.self_modulate = default_color
+
+func _player_took_damage(): 
+	damage_display_timer = damage_display_time

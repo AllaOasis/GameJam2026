@@ -1,6 +1,7 @@
 extends Node
 
-const TOUCH_DEFAULT = false
+var TOUCH_DEFAULT: 
+	get(): return OS.get_name() in ["Android", "iOS"]
 
 signal player_death
 signal data_changed
